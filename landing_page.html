@@ -66,10 +66,10 @@
             </nav>
 
             <div class="flex items-center space-x-3">
-                <!-- Нов бутон за превю в навигацията -->
-                <a href="https://skills-studio.github.io/ai-guide/" target="_blank" class="hidden sm:inline-flex items-center text-xs font-semibold px-4 py-2.5 rounded-xl border border-slate-700 hover:border-slate-500 hover:text-white text-slate-300 transition-all">
-                    <i class="fa-solid fa-eye mr-2 text-blue-400"></i> Превю на продукта
-                </a>
+                <!-- Бутон за сваляне на превю в навигацията -->
+                <button onclick="testDownload('ai-guide-preview.pdf')" class="hidden sm:inline-flex items-center text-xs font-semibold px-4 py-2.5 rounded-xl border border-slate-700 hover:border-slate-500 hover:text-white text-slate-300 transition-all">
+                    <i class="fa-solid fa-download mr-2 text-blue-400"></i> Превю на продукта
+                </button>
                 <a href="#pricing" class="px-5 py-2.5 rounded-xl gradient-bg text-white text-xs font-bold shadow-lg shadow-blue-500/20 hover:opacity-90 transition-all">
                     Вземете Наръчника
                 </a>
@@ -87,12 +87,11 @@
             </div>
 
             <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
-                <span class="text-white">AI Наръчник:</span> Вашето най-силно <br>
-                <span class="gradient-text">конкурентно предимство</span>
+                Превърни изкуствения <br> интелект в <span class="gradient-text">своя най-печеливш ход</span>
             </h1>
 
             <p class="text-slate-400 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed">
-                Първият изцяло интерактивен бизнес наръчник в България, който не просто обяснява, а действа. Оптимизирайте процесите си чрез вградено <b>Prompt Studio</b>, библиотека от 35+ готови шаблона и <b>AI Консултант на живо</b>.
+                Първият изцяло интерактивен бизнес наръчник в България с вградено <b>Prompt Studio</b>, 35+ готови промпта за всяка индустрия и <b>AI Консултант в реално време</b>.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -100,10 +99,10 @@
                     <i class="fa-solid fa-rocket text-amber-300"></i>
                     <span>Отключете Pro Изданието (€39.99)</span>
                 </a>
-                <!-- Нов бутон за превю в Hero секцията -->
-                <a href="https://skills-studio.github.io/ai-guide/" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-900 border border-slate-700 hover:border-slate-500 hover:text-white text-slate-200 font-bold text-base transition-all text-center flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-eye text-blue-400"></i> Вижте интерактивно превю
-                </a>
+                <!-- Бутон за сваляне на превю в Hero секцията -->
+                <button onclick="testDownload('ai-guide-preview.pdf')" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-900 border border-slate-700 hover:border-slate-500 hover:text-white text-slate-200 font-bold text-base transition-all text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download text-blue-400"></i> Изтеглете безплатно превю (PDF)
+                </button>
             </div>
 
             <!-- Trust Badges -->
@@ -143,10 +142,10 @@
     <!-- DETAILED PRODUCTS & VALUE SECTION -->
     <section id="overview" class="py-20 bg-slate-900/40 border-y border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-            <div class="text-center space-y-4 max-w-3xl mx-auto">
+            <div class="text-center space-y-4 max-w-4xl mx-auto">
                 <span class="text-xs font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-wider">Завършена Екосистема</span>
-                <h2 class="text-3xl sm:text-5xl font-extrabold">Какво точно получавате в Pro пакета?</h2>
-                <p class="text-slate-400 text-sm sm:text-base">Това не е просто поредната електронна книга. Това е действаща софтуерна среда за цялостна бизнес оптимизация.</p>
+                <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight">Това не е просто поредната електронна книга. Това е действаща софтуерна среда за цялостна бизнес оптимизация.</h2>
+                <p class="text-slate-400 text-lg sm:text-xl font-medium pt-2">Какво точно получавате в Pro пакета?</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -392,47 +391,12 @@
         </div>
     </section>
 
-    <!-- LEAD MAGNET POPUP MODAL -->
-    <div id="leadModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 relative shadow-2xl">
-            <button onclick="closeLeadModal()" class="absolute right-4 top-4 text-slate-500 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div class="space-y-2 text-center">
-                <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xl font-bold">
-                    <i class="fa-solid fa-calendar-days"></i>
-                </div>
-                <h3 class="text-xl font-bold">Свалете Безплатния Дейли Таск Планер</h3>
-                <p class="text-xs text-slate-400">10-минутен одит: Готов ли е вашият бизнес за автоматизация с изкуствен интелект?</p>
-            </div>
-
-            <form onsubmit="handleLeadSubmit(event)" class="space-y-4">
-                <div>
-                    <label class="block text-[11px] font-medium text-slate-400 mb-1">Вашето име</label>
-                    <input type="text" id="leadName" required placeholder="Иван Иванов" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-[11px] font-medium text-slate-400 mb-1">Имейл адрес</label>
-                    <input type="email" id="leadEmail" required placeholder="ivan@company.bg" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500">
-                </div>
-                <button type="submit" class="w-full py-3 rounded-xl gradient-bg text-white font-bold text-xs shadow-lg hover:opacity-90 transition-all">
-                    Изтеглете Планера Веднага (PDF)
-                </button>
-            </form>
-            <p class="text-[10px] text-slate-500 text-center">Гарантирана защита на данните. Никакъв спам.</p>
-        </div>
-    </div>
-
     <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500 space-y-2">
         <p>© 2026 AI Наръчник. Всички права запазени.</p>
         <p>Сигурни плащания чрез Stripe. Изградено от Skills Studio.</p>
     </footer>
 
     <script>
-        function openLeadModal() { document.getElementById('leadModal').classList.remove('hidden'); }
-        function closeLeadModal() { document.getElementById('leadModal').classList.add('hidden'); }
-        
         function testDownload(filename) {
             const msg = document.createElement('div');
             msg.className = 'fixed bottom-5 right-5 bg-blue-600 text-white p-4 rounded-xl shadow-2xl z-50 text-xs font-bold flex items-center gap-2 animate-bounce';
@@ -443,28 +407,6 @@
             const link = document.createElement('a');
             link.href = filename;
             link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        function handleLeadSubmit(e) {
-            e.preventDefault();
-            const nameField = document.getElementById('leadName');
-            const name = nameField ? nameField.value : 'Приятел';
-            const email = document.getElementById('leadEmail').value;
-            
-            const msg = document.createElement('div');
-            msg.className = 'fixed bottom-5 right-5 bg-emerald-600 text-white p-4 rounded-xl shadow-2xl z-50 text-xs font-bold flex items-center gap-2';
-            msg.innerHTML = `<i class="fa-solid fa-circle-check text-lg"></i> Успешно, ${name}! Изтеглянето стартира.`;
-            document.body.appendChild(msg);
-            setTimeout(() => msg.remove(), 5000);
-            closeLeadModal();
-
-            const pdfUrl = 'daily-task-planner.pdf'; 
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.download = 'daily-task-planner.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
