@@ -1,110 +1,293 @@
-import os
+<!DOCTYPE html>
+<html lang="bg" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Наръчник 2026 | Интерактивен Бизнес Наръчник за AI</title>
+    <meta name="description" content="Интерактивен бизнес наръчник с Prompt Studio, 35+ готови промпта и AI Консултант на живо. 6 модула, EU AI Act и GDPR съвместимост. Pro Издание €39.99.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        background: '#FAFAFA',
+                        foreground: '#111827',
+                        primary: '#4F46E5',
+                        'primary-hover': '#4338CA',
+                        muted: '#4B5563',
+                        border: '#E5E7EB',
+                        accent: '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-background text-foreground selection:bg-primary/20">
 
-# Create Faq component
-faq_content = """import React from 'react';
-import { faqs } from './data';
+    <!-- SiteNav -->
+    <nav class="sticky top-0 z-50 w-full border-b border-border bg-white/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="text-2xl font-extrabold tracking-tight">AI <span class="text-primary">Наръчник</span></div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-muted">
+                <a href="#includes" class="hover:text-primary transition-colors">Какво включва</a>
+                <a href="#modules" class="hover:text-primary transition-colors">Модули</a>
+                <a href="#bonuses" class="hover:text-primary transition-colors">Бонуси</a>
+                <a href="#pricing" class="hover:text-primary transition-colors">Цени</a>
+            </div>
+            <a href="#pricing" class="hidden md:inline-flex px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary-hover transition-all shadow-sm">Купи сега</a>
+        </div>
+    </nav>
 
-export const Faq = () => (
-  <section className="py-24 px-6 bg-background">
-    <div className="container mx-auto max-w-3xl">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold">Често задавани въпроси</h2>
-      </div>
-      <div className="space-y-4">
-        {faqs.map((faq, index) => (
-          <div key={index} className="p-6 bg-white border border-border rounded-xl shadow-sm hover:border-primary/30 transition-colors">
-            <h4 className="font-bold text-lg mb-2 text-foreground">{faq.q}</h4>
-            <p className="text-muted leading-relaxed">{faq.a}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-"""
-with open("/mnt/data/components/landing/Faq.tsx", "w") as f:
-    f.write(faq_content)
+    <main>
+        <!-- Hero -->
+        <section class="py-24 md:py-32 text-center px-6">
+            <div class="container mx-auto max-w-4xl">
+                <div class="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-8 animate-fade-in-up">
+                    🚀 Издание 2026 вече е налично
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-foreground leading-tight">
+                    Интерактивен Бизнес <br/> Наръчник за <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">AI</span>
+                </h1>
+                <p class="text-xl text-muted mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Интерактивен бизнес наръчник с Prompt Studio, 35+ готови промпта и AI Консултант на живо. 6 модула, EU AI Act и GDPR съвместимост.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#pricing" class="px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover hover:-translate-y-0.5 transition-all shadow-lg shadow-primary/30">
+                        Вземи Pro за €39.99
+                    </a>
+                    <a href="#modules" class="px-8 py-4 bg-white text-foreground border border-border font-bold rounded-xl hover:bg-gray-50 transition-all shadow-sm">
+                        Разгледай модулите
+                    </a>
+                </div>
+            </div>
+        </section>
 
-# Create LeadMagnet component
-lead_magnet_content = """import React from 'react';
+        <!-- Includes -->
+        <section id="includes" class="py-20 bg-white border-y border-border px-6">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Всичко необходимо за вашата AI трансформация</h2>
+                    <p class="text-muted text-lg">Край на хаотичното тестване. Получавате структурирана система.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-8 rounded-2xl bg-background border border-border hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6">📚</div>
+                        <h3 class="text-xl font-bold mb-3">Теория и Стратегия</h3>
+                        <p class="text-muted">Ясни обяснения без сложен технически жаргон за това как работи AI и как да го внедрите в процесите си.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-background border border-border hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6">⚙️</div>
+                        <h3 class="text-xl font-bold mb-3">Автоматизации</h3>
+                        <p class="text-muted">Интерактивни схеми за връзване на Make.com, Zapier и ChatGPT директно с вашите съществуващи инструменти.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-background border border-border hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6">⚖️</div>
+                        <h3 class="text-xl font-bold mb-3">Правна Рамка</h3>
+                        <p class="text-muted">Пълна съвместимост с EU AI Act и GDPR. Как да предпазите корпоративните си данни.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-export const LeadMagnet = () => (
-  <section className="py-20 px-6">
-    <div className="container mx-auto max-w-4xl bg-primary/10 border border-primary/20 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
-      <div className="relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Все още не сте готови за покупка?</h2>
-        <p className="text-muted mb-8 max-w-xl mx-auto">
-          Изтеглете нашия безплатен чеклист за "Оценка на AI готовността на вашия екип" и разберете откъде да започнете интеграцията безопасно.
-        </p>
-        <form className="flex flex-col sm:flex-row max-w-md mx-auto gap-4" onSubmit={(e) => e.preventDefault()}>
-          <input 
-            type="email" 
-            placeholder="Вашият имейл адрес" 
-            className="flex-1 px-4 py-3 rounded-xl border border-border bg-white focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-            required
-          />
-          <button type="submit" className="px-6 py-3 bg-foreground text-white font-bold rounded-xl hover:bg-gray-800 transition-colors shadow-md">
-            Изтегли безплатно
-          </button>
-        </form>
-        <p className="text-xs text-muted mt-4">Никакъв спам. Отписване по всяко време.</p>
-      </div>
-    </div>
-  </section>
-);
-"""
-with open("/mnt/data/components/landing/LeadMagnet.tsx", "w") as f:
-    f.write(lead_magnet_content)
+        <!-- Modules -->
+        <section id="modules" class="py-24 px-6">
+            <div class="container mx-auto max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Съдържание (6 Модула)</h2>
+                    <p class="text-muted text-lg">Стъпка по стъпка към пълна интеграция</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-6 rounded-2xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">1</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Стратегия & Основи</h4>
+                            <p class="text-muted">Оценка на готовността на вашата организация. Традиционен vs Generative AI.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">2</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Промпт Инженерство</h4>
+                            <p class="text-muted">Овладяване на PCTCO рамката. Few-Shot Prompting, Chain-of-Thought.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">3</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Инструменти & Автоматизация</h4>
+                            <p class="text-muted">Make.com, Zapier и интеграция чрез API на автономни агенти.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">4</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Хора, Култура & Управление</h4>
+                            <p class="text-muted">Преодоляване на съпротивата в екипа и вътрешно обучение.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">5</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Етика, Сигурност & EU AI Act</h4>
+                            <p class="text-muted">Как да работите с AI легално в Европа и защита на данни.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">6</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">ROI & Оценка на резултатите</h4>
+                            <p class="text-muted">Измерване на възвръщаемостта от инвестицията в AI и ключови метрики.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-# Create SiteFooter component
-site_footer_content = """import React from 'react';
+        <!-- Bonuses -->
+        <section id="bonuses" class="py-20 bg-gray-900 text-white px-6 rounded-3xl mx-4 md:mx-auto max-w-6xl my-12 overflow-hidden relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 opacity-50"></div>
+            <div class="relative z-10 text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ексклузивни Бонуси към Pro Изданието</h2>
+            </div>
+            <div class="relative z-10 grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl mb-6">💻</div>
+                    <h3 class="text-xl font-bold mb-2">Prompt Studio</h3>
+                    <p class="text-gray-400">Интерактивна среда за тестване и валидиране на вашите инструкции.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-6">📋</div>
+                    <h3 class="text-xl font-bold mb-2">35+ Готови Промпта</h3>
+                    <p class="text-gray-400">Библиотека с тествани шаблони за маркетинг, продажби, HR и мениджмънт.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-6">🤖</div>
+                    <h3 class="text-xl font-bold mb-2">Live AI Консултант</h3>
+                    <p class="text-gray-400">Вграден AI асистент, обучен специално върху съдържанието на наръчника.</p>
+                </div>
+            </div>
+        </section>
 
-export const SiteFooter = () => (
-  <footer className="py-12 border-t border-border bg-white text-center px-6">
-    <div className="container mx-auto">
-      <div className="text-2xl font-extrabold mb-4 tracking-tight">
-        AI <span className="text-primary">Наръчник</span>
-      </div>
-      <p className="text-muted text-sm mb-8">
-        &copy; 2026 Всички права запазени. | Hosted on <a href="https://skills-studio.github.io" className="text-primary hover:underline">Skills Studio</a>.
-      </p>
-      <div className="flex flex-wrap justify-center gap-6 text-sm text-muted font-medium mb-8">
-        <a href="#" className="hover:text-foreground transition-colors">Общи условия</a>
-        <a href="#" className="hover:text-foreground transition-colors">Политика за поверителност</a>
-        <a href="#" className="hover:text-foreground transition-colors">Контакти</a>
-      </div>
-      <div className="flex justify-center items-center gap-2 text-xs text-muted/70">
-        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.64-2.25 1.64-1.74 0-2.26-1.15-2.32-1.84H7.84c.1 1.58 1.47 2.75 3.06 3.12V19h2.33v-1.67c1.77-.28 2.98-1.46 2.98-2.99 0-2.31-2.18-3.13-3.9-3.48z"/></svg>
-        Сигурни плащания чрез Stripe
-      </div>
-    </div>
-  </footer>
-);
-"""
-with open("/mnt/data/components/landing/SiteFooter.tsx", "w") as f:
-    f.write(site_footer_content)
+        <!-- Pricing -->
+        <section id="pricing" class="py-24 bg-white border-t border-border px-6">
+            <div class="container mx-auto max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Изберете вашия план</h2>
+                    <p class="text-muted text-lg">Еднократна инвестиция. Доживотен достъп.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                    <!-- Starter -->
+                    <div class="p-8 rounded-3xl bg-background border border-border flex flex-col hover:border-primary/30 transition-colors">
+                        <h3 class="text-2xl font-bold mb-2">Starter Edition</h3>
+                        <div class="text-4xl font-extrabold mb-6">€19.99</div>
+                        <ul class="space-y-4 mb-8 flex-1">
+                            <li class="flex items-center gap-3 text-muted font-medium"><span class="text-accent text-lg">✓</span> 6 Основни модула</li>
+                            <li class="flex items-center gap-3 text-muted font-medium"><span class="text-accent text-lg">✓</span> EU AI Act & GDPR</li>
+                            <li class="flex items-center gap-3 text-gray-300 font-medium"><span class="text-gray-300 text-lg">✕</span> Prompt Studio</li>
+                            <li class="flex items-center gap-3 text-gray-300 font-medium"><span class="text-gray-300 text-lg">✕</span> 35+ Готови промпта</li>
+                            <li class="flex items-center gap-3 text-gray-300 font-medium"><span class="text-gray-300 text-lg">✕</span> AI Консултант</li>
+                        </ul>
+                        <!-- Реален Stripe Линк -->
+                        <a href="https://buy.stripe.com/4gM7sNdh8fWt9rS8DFaVa03" class="w-full py-4 rounded-xl border-2 border-border font-bold text-center hover:bg-gray-50 transition-colors">Избери Starter</a>
+                    </div>
+                    
+                    <!-- Pro -->
+                    <div class="p-8 rounded-3xl bg-white border-2 border-primary shadow-2xl relative flex flex-col transform md:-translate-y-4">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-bold tracking-wide uppercase">Най-популярен</div>
+                        <h3 class="text-2xl font-bold mb-2">Pro Edition</h3>
+                        <div class="text-4xl font-extrabold mb-6">€39.99</div>
+                        <ul class="space-y-4 mb-8 flex-1">
+                            <li class="flex items-center gap-3 text-foreground font-medium"><span class="text-accent text-lg">✓</span> 6 Основни модула</li>
+                            <li class="flex items-center gap-3 text-foreground font-medium"><span class="text-accent text-lg">✓</span> EU AI Act & GDPR</li>
+                            <li class="flex items-center gap-3 text-foreground font-medium"><span class="text-accent text-lg">✓</span> Пълен достъп до Prompt Studio</li>
+                            <li class="flex items-center gap-3 text-foreground font-medium"><span class="text-accent text-lg">✓</span> 35+ Готови бизнес промпта</li>
+                            <li class="flex items-center gap-3 text-foreground font-medium"><span class="text-accent text-lg">✓</span> Live AI Консултант</li>
+                        </ul>
+                        <!-- Реален Stripe Линк -->
+                        <a href="https://buy.stripe.com/aFacN7gtkeSpbA08DFaVa04" class="w-full py-4 rounded-xl bg-primary text-white font-bold text-center hover:bg-primary-hover shadow-lg transition-colors">Купи Pro Edition</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-# Create data.ts file for FAQs
-data_ts_content = """export const faqs = [
-  {
-    q: "Нужни ли са ми технически познания или умения по програмиране?",
-    a: "Категорично не. Наръчникът е създаден специално за бизнес лидери, мениджъри и предприемачи. Всички автоматизации са обяснени стъпка по стъпка чрез визуални no-code платформи като Make.com и Zapier, които не изискват писане на код."
-  },
-  {
-    q: "Ще получа ли фактура за фирмата си?",
-    a: "Да. При преминаване към плащане чрез нашата сигурна Stripe интеграция, ще имате възможност да въведете данните на вашата компания. Фактурата ще бъде генерирана и изпратена автоматично на вашия имейл."
-  },
-  {
-    q: "Каква е разликата между Starter и Pro пакета?",
-    a: "Starter пакетът ви дава достъп до фундаменталните знания (6-те модула и правната рамка). Pro пакетът, който е най-предпочитан, добавя огромна практическа стойност: пълен достъп до Prompt Studio за тестване на инструкции, библиотека с 35+ готови бизнес промпта и достъп до нашия Live AI Консултант, обучен върху цялото съдържание."
-  },
-  {
-    q: "Достъпът до материалите ограничен ли е във времето?",
-    a: "Не. Инвестицията ви е еднократна и ви осигурява доживотен достъп до материалите от Издание 2026, както и до всички техни бъдещи актуализации."
-  }
-];
-"""
-with open("/mnt/data/components/landing/data.ts", "w") as f:
-    f.write(data_ts_content)
+        <!-- FAQ -->
+        <section class="py-24 px-6 bg-background border-t border-border">
+            <div class="container mx-auto max-w-3xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold">Често задавани въпроси</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-6 bg-white border border-border rounded-xl shadow-sm hover:border-primary/30 transition-colors">
+                        <h4 class="font-bold text-lg mb-2 text-foreground">Нужни ли са ми технически познания или умения по програмиране?</h4>
+                        <p class="text-muted leading-relaxed">Категорично не. Наръчникът е създаден специално за бизнес лидери, мениджъри и предприемачи. Всички автоматизации са обяснени стъпка по стъпка чрез визуални no-code платформи като Make.com и Zapier, които не изискват писане на код.</p>
+                    </div>
+                    <div class="p-6 bg-white border border-border rounded-xl shadow-sm hover:border-primary/30 transition-colors">
+                        <h4 class="font-bold text-lg mb-2 text-foreground">Ще получа ли фактура за фирмата си?</h4>
+                        <p class="text-muted leading-relaxed">Да. При преминаване към плащане чрез нашата сигурна Stripe интеграция, ще имате възможност да въведете данните на вашата компания. Фактурата ще бъде генерирана и изпратена автоматично на вашия имейл.</p>
+                    </div>
+                    <div class="p-6 bg-white border border-border rounded-xl shadow-sm hover:border-primary/30 transition-colors">
+                        <h4 class="font-bold text-lg mb-2 text-foreground">Каква е разликата между Starter и Pro пакета?</h4>
+                        <p class="text-muted leading-relaxed">Starter пакетът ви дава достъп до фундаменталните знания (6-те модула и правната рамка). Pro пакетът, който е най-предпочитан, добавя огромна практическа стойност: пълен достъп до Prompt Studio за тестване на инструкции, библиотека с 35+ готови бизнес промпта и достъп до нашия Live AI Консултант, обучен върху цялото съдържание.</p>
+                    </div>
+                    <div class="p-6 bg-white border border-border rounded-xl shadow-sm hover:border-primary/30 transition-colors">
+                        <h4 class="font-bold text-lg mb-2 text-foreground">Достъпът до материалите ограничен ли е във времето?</h4>
+                        <p class="text-muted leading-relaxed">Не. Инвестицията ви е еднократна и ви осигурява доживотен достъп до материалите от Издание 2026, както и до всички техни бъдещи актуализации.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-print("Created final React components and data files.")
+        <!-- Lead Magnet -->
+        <section class="py-20 px-6 bg-white">
+            <div class="container mx-auto max-w-4xl bg-primary/10 border border-primary/20 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
+                <div class="relative z-10">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Все още не сте готови за покупка?</h2>
+                    <p class="text-muted mb-8 max-w-xl mx-auto">
+                        Изтеглете нашия безплатен чеклист за "Оценка на AI готовността на вашия екип" и разберете откъде да започнете интеграцията безопасно.
+                    </p>
+                    <form class="flex flex-col sm:flex-row max-w-md mx-auto gap-4" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Вашият имейл адрес" class="flex-1 px-4 py-3 rounded-xl border border-border bg-white focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" required>
+                        <button type="submit" class="px-6 py-3 bg-foreground text-white font-bold rounded-xl hover:bg-gray-800 transition-colors shadow-md">
+                            Изтегли безплатно
+                        </button>
+                    </form>
+                    <p class="text-xs text-muted mt-4">Никакъв спам. Отписване по всяко време.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SiteFooter -->
+    <footer class="py-12 border-t border-border bg-white text-center px-6">
+        <div class="container mx-auto">
+            <div class="text-2xl font-extrabold mb-4 tracking-tight">
+                AI <span class="text-primary">Наръчник</span>
+            </div>
+            <p class="text-muted text-sm mb-8">
+                &copy; 2026 Всички права запазени. | Hosted on <a href="https://skills-studio.github.io" class="text-primary hover:underline">Skills Studio</a>.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6 text-sm text-muted font-medium mb-8">
+                <a href="#" class="hover:text-foreground transition-colors">Общи условия</a>
+                <a href="#" class="hover:text-foreground transition-colors">Политика за поверителност</a>
+                <a href="#" class="hover:text-foreground transition-colors">Контакти</a>
+            </div>
+            <div class="flex justify-center items-center gap-2 text-xs text-muted/70">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.64-2.25 1.64-1.74 0-2.26-1.15-2.32-1.84H7.84c.1 1.58 1.47 2.75 3.06 3.12V19h2.33v-1.67c1.77-.28 2.98-1.46 2.98-2.99 0-2.31-2.18-3.13-3.9-3.48z"/></svg>
+                Сигурни плащания чрез Stripe
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
