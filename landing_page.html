@@ -3,312 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Наръчник 2026 | Интерактивен Бизнес Наръчник за AI</title>
-    <meta name="description" content="Интерактивен бизнес наръчник с Prompt Studio, 35+ готови промпта и AI Консултант на живо. 6 модула, EU AI Act и GDPR съвместимост. Pro Издание €39.99.">
+    <title>AI Наръчник 2026 Pro Edition | Автоматизирайте бизнес процесите си с Изкуствен Интелект</title>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        background: '#FAFAFA',
-                        foreground: '#111827',
-                        primary: '#4F46E5',
-                        'primary-hover': '#4338CA',
-                        muted: '#4B5563',
-                        border: '#E5E7EB',
-                        accent: '#10B981'
-                    }
+                        brand: { 50: '#f0f7ff', 500: '#2563eb', 600: '#1d4ed8', 700: '#1e40af', 900: '#0f172a' },
+                        accent: { purple: '#7c3aed', amber: '#f59e0b', emerald: '#10b981', rose: '#f43f5e' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
             }
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #db2777 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-effect { box-shadow: 0 0 50px -12px rgba(37, 99, 235, 0.35); }
     </style>
 </head>
-<body class="min-h-screen bg-background text-foreground selection:bg-primary/20">
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-blue-500 selection:text-white">
 
-    <!-- SiteNav -->
-    <nav class="sticky top-0 z-50 w-full border-b border-border bg-white/80 backdrop-blur-md">
-        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="text-2xl font-extrabold tracking-tight">AI <span class="text-primary">Наръчник</span></div>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-muted">
-                <a href="#includes" class="hover:text-primary transition-colors">Какво включва</a>
-                <a href="#modules" class="hover:text-primary transition-colors">Модули</a>
-                <a href="#bonuses" class="hover:text-primary transition-colors">Бонуси</a>
-                <a href="#pricing" class="hover:text-primary transition-colors">Цени</a>
+    <!-- Urgency Top Banner -->
+    <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white text-center py-2.5 px-4 text-xs font-bold tracking-wide flex items-center justify-center gap-2 shadow-md">
+        <i class="fa-solid fa-fire text-amber-300 animate-pulse"></i>
+        <span>ЕКСКЛУЗИВНА ОФЕРТА: СПЕЦИАЛНАТА ЦЕНА Е ВАЛИДНА САМО ДО КРАЯ НА СЕДМИЦАТА!</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/20">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight">AI Наръчник</span>
+                    <span class="text-xs px-2 py-0.5 ml-2 rounded-full bg-blue-900/50 text-blue-400 font-semibold border border-blue-800">2026 Pro</span>
+                </div>
             </div>
-            <a href="#pricing" class="hidden md:inline-flex px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary-hover transition-all shadow-sm">Купи сега</a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#overview" class="hover:text-blue-400 transition-colors">Какво включва</a>
+                <a href="#bonuses" class="hover:text-blue-400 transition-colors">Бонуси</a>
+                <a href="#modules" class="hover:text-blue-400 transition-colors">Модули</a>
+                <a href="#pricing" class="hover:text-blue-400 transition-colors">Инвестиция</a>
+                <a href="#faq" class="hover:text-blue-400 transition-colors">ЧЗВ</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="openLeadModal()" class="hidden sm:inline-flex text-xs font-semibold px-4 py-2.5 rounded-xl border border-slate-700 hover:border-slate-500 text-slate-300 transition-all">
+                    <i class="fa-solid fa-download mr-2 text-amber-400"></i> Безплатен Планер (PDF)
+                </button>
+                <a href="#pricing" class="px-5 py-2.5 rounded-xl gradient-bg text-white text-xs font-bold shadow-lg shadow-blue-500/20 hover:opacity-90 transition-all">
+                    Вземете Наръчника
+                </a>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <main>
-        <!-- Hero -->
-        <section class="py-24 md:py-32 text-center px-6">
-            <div class="container mx-auto max-w-4xl">
-                <div class="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-8">
-                    🚀 Издание 2026 вече е налично
-                </div>
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-foreground leading-tight">
-                    Интерактивен Бизнес <br/> Наръчник за <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">AI</span>
-                </h1>
-                <p class="text-xl text-muted mb-10 max-w-2xl mx-auto leading-relaxed">
-                    Интерактивен бизнес наръчник с Prompt Studio, 35+ готови промпта и AI Консултант на живо. 6 модула, EU AI Act и GDPR съвместимост.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#pricing" class="px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover hover:-translate-y-0.5 transition-all shadow-lg shadow-primary/30">
-                        Вземи Pro за €39.99
-                    </a>
-                    <a href="#modules" class="px-8 py-4 bg-white text-foreground border border-border font-bold rounded-xl hover:bg-gray-50 transition-all shadow-sm">
-                        Разгледай модулите
-                    </a>
-                </div>
-            </div>
-        </section>
+    <!-- HERO SECTION -->
+    <section class="relative pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[550px] gradient-bg opacity-20 rounded-full blur-[140px] pointer-events-none"></div>
 
-        <!-- Includes -->
-        <section id="includes" class="py-20 bg-white border-y border-border px-6">
-            <div class="container mx-auto max-w-6xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Всичко необходимо за вашата AI трансформация</h2>
-                    <p class="text-muted text-lg">Край на хаотичното тестване. Получавате структурирана система.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="p-8 rounded-3xl bg-background border border-border hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Теория и Стратегия</h3>
-                        <p class="text-muted">Ясни обяснения без сложен технически жаргон за това как работи AI и как да го внедрите в процесите си.</p>
-                    </div>
-                    <div class="p-8 rounded-3xl bg-background border border-border hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Автоматизации</h3>
-                        <p class="text-muted">Интерактивни схеми за връзване на Make.com, Zapier и ChatGPT директно с вашите съществуващи инструменти.</p>
-                    </div>
-                    <div class="p-8 rounded-3xl bg-background border border-border hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Правна Рамка</h3>
-                        <p class="text-muted">Пълна съвместимост с EU AI Act и GDPR. Как да предпазите корпоративните си данни.</p>
-                    </div>
-                </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/40 border border-blue-700/50 text-blue-300 text-xs font-semibold">
+                <i class="fa-solid fa-shield-halved text-emerald-400"></i> Пълна съвместимост с EU AI Act & GDPR регулациите
             </div>
-        </section>
 
-        <!-- Modules -->
-        <section id="modules" class="py-24 px-6">
-            <div class="container mx-auto max-w-4xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Съдържание (6 Модула)</h2>
-                    <p class="text-muted text-lg">Стъпка по стъпка към пълна интеграция</p>
-                </div>
-                <div class="space-y-4">
-                    <div class="p-6 rounded-3xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">1</div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Стратегия & Основи</h4>
-                            <p class="text-muted">Оценка на готовността на вашата организация. Традиционен vs Generative AI.</p>
-                        </div>
-                    </div>
-                    <div class="p-6 rounded-3xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">2</div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Промпт Инженерство</h4>
-                            <p class="text-muted">Овладяване на PCTCO рамката. Few-Shot Prompting, Chain-of-Thought.</p>
-                        </div>
-                    </div>
-                    <div class="p-6 rounded-3xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">3</div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Инструменти & Автоматизация</h4>
-                            <p class="text-muted">Make.com, Zapier и интеграция чрез API на автономни агенти.</p>
-                        </div>
-                    </div>
-                    <div class="p-6 rounded-3xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">4</div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Хора, Култура & Управление</h4>
-                            <p class="text-muted">Преодоляване на съпротивата в екипа и вътрешно обучение.</p>
-                        </div>
-                    </div>
-                    <div class="p-6 rounded-3xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">5</div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Етика, Сигурност & EU AI Act</h4>
-                            <p class="text-muted">Как да работите с AI легално в Европа и защита на данни.</p>
-                        </div>
-                    </div>
-                    <div class="p-6 rounded-3xl bg-white border border-border flex flex-col md:flex-row items-start gap-6 hover:border-primary/50 transition-colors shadow-sm">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl">6</div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">ROI & Оценка на резултатите</h4>
-                            <p class="text-muted">Измерване на възвръщаемостта от инвестицията в AI и ключови метрики.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight max-w-5xl mx-auto">
+                Превърнете изкуствения интелект в <br>
+                <span class="gradient-text">най-силното си конкурентно предимство</span>
+            </h1>
 
-        <!-- UPDATED Bonuses Section (Lovable Style) -->
-        <section id="bonuses" class="py-24 bg-background px-6">
-            <div class="container mx-auto max-w-6xl">
-                <div class="text-center mb-16">
-                    <div class="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-semibold text-primary mb-6">
-                        🎁 Ексклузивни Бонуси
-                    </div>
-                    <h2 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight text-foreground">Какво получавате към Pro пакета?</h2>
-                    <p class="text-muted text-lg max-w-2xl mx-auto">Отключете пълния потенциал на наръчника с тези три безплатни допълнения, създадени да ускорят вашата работа.</p>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Bonus 1 -->
-                    <div class="group p-8 rounded-3xl bg-white border border-border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-foreground">Prompt Studio</h3>
-                        <p class="text-muted leading-relaxed">Интерактивна среда за тестване и валидиране на вашите инструкции. Експериментирайте безопасно преди да приложите в реална среда.</p>
-                    </div>
-                    
-                    <!-- Bonus 2 -->
-                    <div class="group p-8 rounded-3xl bg-white border border-border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-foreground">35+ Готови Промпта</h3>
-                        <p class="text-muted leading-relaxed">Богата библиотека с тествани шаблони за маркетинг, продажби, HR и мениджмънт. Копирайте и адаптирайте за секунди.</p>
-                    </div>
-                    
-                    <!-- Bonus 3 -->
-                    <div class="group p-8 rounded-3xl bg-white border border-border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-foreground">Live AI Консултант</h3>
-                        <p class="text-muted leading-relaxed">Вграден AI асистент, обучен специално върху съдържанието на наръчника. Готов да отговаря на специфични въпроси 24/7.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing -->
-        <section id="pricing" class="py-24 bg-white border-t border-border px-6">
-            <div class="container mx-auto max-w-4xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Изберете вашия план</h2>
-                    <p class="text-muted text-lg">Еднократна инвестиция. Доживотен достъп.</p>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                    <!-- Starter -->
-                    <div class="p-8 rounded-3xl bg-background border border-border flex flex-col hover:border-primary/30 transition-colors shadow-sm hover:shadow-md">
-                        <h3 class="text-2xl font-bold mb-2">Starter Edition</h3>
-                        <div class="text-4xl font-extrabold mb-6">€19.99</div>
-                        <ul class="space-y-4 mb-8 flex-1">
-                            <li class="flex items-center gap-3 text-muted font-medium"><span class="text-accent text-lg">✓</span> 6 Основни модула</li>
-                            <li class="flex items-center gap-3 text-muted font-medium"><span class="text-accent text-lg">✓</span> EU AI Act & GDPR</li>
-                            <li class="flex items-center gap-3 text-gray-300 font-medium"><span class="text-gray-300 text-lg">✕</span> Prompt Studio</li>
-                            <li class="flex items-center gap-3 text-gray-300 font-medium"><span class="text-gray-300 text-lg">✕</span> 35+ Готови промпта</li>
-                            <li class="flex items-center gap-3 text-gray-300 font-medium"><span class="text-gray-300 text-lg">✕</span> AI Консултант</li>
-                        </ul>
-                        <a href="https://buy.stripe.com/4gM7sNdh8fWt9rS8DFaVa03" class="w-full py-4 rounded-xl border-2 border-border font-bold text-center hover:bg-gray-50 transition-colors">Избери Starter</a>
-                    </div>
-                    
-                    <!-- Pro -->
-                    <div class="p-8 rounded-3xl bg-white border-2 border-primary shadow-2xl relative flex flex-col transform md:-translate-y-4">
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-bold tracking-wide uppercase shadow-sm">Най-популярен</div>
-                        <h3 class="text-2xl font-bold mb-2">Pro Edition</h3>
-                        <div class="text-4xl font-extrabold mb-6">€39.99</div>
-                        <ul class="space-y-4 mb-8 flex-1">
-                            <li class="flex items-center gap-3 text-foreground font-medium"><span class="text-accent text-lg">✓</span> 6 Основни модула</li>
-                            <li class="flex items-center gap-3 text-foreground font-medium"><span class="text-accent text-lg">✓</span> EU AI Act & GDPR</li>
-                            <li class="flex items-center gap-3 text-foreground font-medium"><span class="text-accent text-lg">✓</span> Пълен достъп до Prompt Studio</li>
-                            <li class="flex items-center gap-3 text-foreground font-medium"><span class="text-accent text-lg">✓</span> 35+ Готови бизнес промпта</li>
-                            <li class="flex items-center gap-3 text-foreground font-medium"><span class="text-accent text-lg">✓</span> Live AI Консултант</li>
-                        </ul>
-                        <a href="https://buy.stripe.com/aFacN7gtkeSpbA08DFaVa04" class="w-full py-4 rounded-xl bg-primary text-white font-bold text-center hover:bg-primary-hover shadow-lg transition-colors hover:-translate-y-1">Купи Pro Edition</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section class="py-24 px-6 bg-background border-t border-border">
-            <div class="container mx-auto max-w-3xl">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold">Често задавани въпроси</h2>
-                </div>
-                <div class="space-y-4">
-                    <div class="p-6 bg-white border border-border rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-                        <h4 class="font-bold text-lg mb-2 text-foreground">Нужни ли са ми технически познания или умения по програмиране?</h4>
-                        <p class="text-muted leading-relaxed">Категорично не. Наръчникът е създаден специално за бизнес лидери, мениджъри и предприемачи. Всички автоматизации са обяснени стъпка по стъпка чрез визуални no-code платформи като Make.com и Zapier, които не изискват писане на код.</p>
-                    </div>
-                    <div class="p-6 bg-white border border-border rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-                        <h4 class="font-bold text-lg mb-2 text-foreground">Ще получа ли фактура за фирмата си?</h4>
-                        <p class="text-muted leading-relaxed">Да. При преминаване към плащане чрез нашата сигурна Stripe интеграция, ще имате възможност да въведете данните на вашата компания. Фактурата ще бъде генерирана и изпратена автоматично на вашия имейл.</p>
-                    </div>
-                    <div class="p-6 bg-white border border-border rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-                        <h4 class="font-bold text-lg mb-2 text-foreground">Каква е разликата между Starter и Pro пакета?</h4>
-                        <p class="text-muted leading-relaxed">Starter пакетът ви дава достъп до фундаменталните знания (6-те модула и правната рамка). Pro пакетът, който е най-предпочитан, добавя огромна практическа стойност: пълен достъп до Prompt Studio за тестване на инструкции, библиотека с 35+ готови бизнес промпта и достъп до нашия Live AI Консултант, обучен върху цялото съдържание.</p>
-                    </div>
-                    <div class="p-6 bg-white border border-border rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-                        <h4 class="font-bold text-lg mb-2 text-foreground">Достъпът до материалите ограничен ли е във времето?</h4>
-                        <p class="text-muted leading-relaxed">Не. Инвестицията ви е еднократна и ви осигурява доживотен достъп до материалите от Издание 2026, както и до всички техни бъдещи актуализации.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Lead Magnet -->
-        <section class="py-20 px-6 bg-white">
-            <div class="container mx-auto max-w-4xl bg-primary/5 border border-primary/20 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
-                <div class="relative z-10">
-                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Все още не сте готови за покупка?</h2>
-                    <p class="text-muted mb-8 max-w-xl mx-auto">
-                        Изтеглете нашия безплатен чеклист за "Оценка на AI готовността на вашия екип" и разберете откъде да започнете интеграцията безопасно.
-                    </p>
-                    <form class="flex flex-col sm:flex-row max-w-md mx-auto gap-4" onsubmit="event.preventDefault();">
-                        <input type="email" placeholder="Вашият имейл адрес" class="flex-1 px-4 py-3 rounded-2xl border border-border bg-white focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-sm" required>
-                        <button type="submit" class="px-6 py-3 bg-foreground text-white font-bold rounded-2xl hover:bg-gray-800 transition-colors shadow-md hover:-translate-y-0.5">
-                            Изтегли безплатно
-                        </button>
-                    </form>
-                    <p class="text-xs text-muted mt-4">Никакъв спам. Отписване по всяко време.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- SiteFooter -->
-    <footer class="py-12 border-t border-border bg-white text-center px-6">
-        <div class="container mx-auto">
-            <div class="text-2xl font-extrabold mb-4 tracking-tight">
-                AI <span class="text-primary">Наръчник</span>
-            </div>
-            <p class="text-muted text-sm mb-8">
-                &copy; 2026 Всички права запазени. | Hosted on <a href="https://skills-studio.github.io" class="text-primary hover:underline">Skills Studio</a>.
+            <p class="text-slate-400 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed">
+                Първият изцяло интерактивен бизнес наръчник в България, който не просто обяснява, а действа. Оптимизирайте процесите си чрез вградено <b>Prompt Studio</b>, библиотека от 35+ готови шаблона и <b>AI Консултант на живо</b>.
             </p>
-            <div class="flex flex-wrap justify-center gap-6 text-sm text-muted font-medium mb-8">
-                <a href="#" class="hover:text-foreground transition-colors">Общи условия</a>
-                <a href="#" class="hover:text-foreground transition-colors">Политика за поверителност</a>
-                <a href="#" class="hover:text-foreground transition-colors">Контакти</a>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="https://buy.stripe.com/aFacN7gtkeSpbA08DFaVa04" class="w-full sm:w-auto px-8 py-4 rounded-2xl gradient-bg text-white font-extrabold text-base shadow-2xl shadow-blue-500/30 hover:scale-105 transition-all text-center flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-rocket text-amber-300"></i>
+                    <span>Отключете Pro Изданието (€39.99)</span>
+                </a>
+                <button onclick="openLeadModal()" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-200 font-bold text-base transition-all text-center">
+                    <i class="fa-solid fa-calendar-days mr-2 text-amber-400"></i> Изтеглете БЕЗПЛАТЕН Дейли Таск Планер
+                </button>
             </div>
-            <div class="flex justify-center items-center gap-2 text-xs text-muted/70">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.64-2.25 1.64-1.74 0-2.26-1.15-2.32-1.84H7.84c.1 1.58 1.47 2.75 3.06 3.12V19h2.33v-1.67c1.77-.28 2.98-1.46 2.98-2.99 0-2.31-2.18-3.13-3.9-3.48z"/></svg>
-                Сигурни плащания чрез Stripe
+
+            <!-- Trust Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-12 border-t border-slate-800/80 text-left">
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/40 border border-slate-800">
+                    <i class="fa-solid fa-bolt text-amber-400 text-xl"></i>
+                    <div>
+                        <h4 class="font-bold text-xs">Моментален Достъп</h4>
+                        <p class="text-[10px] text-slate-400">Стартирайте веднага след плащане</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/40 border border-slate-800">
+                    <i class="fa-solid fa-code text-blue-400 text-xl"></i>
+                    <div>
+                        <h4 class="font-bold text-xs">Интерактивна Среда</h4>
+                        <p class="text-[10px] text-slate-400">Вграден генератор за тестване на идеи</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/40 border border-slate-800">
+                    <i class="fa-solid fa-book-bookmark text-purple-400 text-xl"></i>
+                    <div>
+                        <h4 class="font-bold text-xs">35+ Бизнес Промпта</h4>
+                        <p class="text-[10px] text-slate-400">Готови шаблони за Маркетинг, HR, Продажби</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/40 border border-slate-800">
+                    <i class="fa-solid fa-shield-halved text-emerald-400 text-xl"></i>
+                    <div>
+                        <h4 class="font-bold text-xs">Пълна Сигурност</h4>
+                        <p class="text-[10px] text-slate-400">GDPR & EU AI Act съвместимост</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- DETAILED PRODUCTS & VALUE SECTION -->
+    <section id="overview" class="py-20 bg-slate-900/40 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            <div class="text-center space-y-4 max-w-3xl mx-auto">
+                <span class="text-xs font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-wider">Завършена Екосистема</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold">Какво точно получавате в Pro пакета?</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Това не е просто поредната електронна книга. Това е действаща софтуерна среда за цялостна бизнес оптимизация.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-3xl bg-slate-950 border border-slate-800 space-y-6 hover:border-blue-500/50 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-2xl font-bold shadow-lg">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold">6 Структурирани Модула</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Овладейте стратегическото планиране, PCTCO рамката за инструкции, no-code автоматизациите с Make/Zapier, управлението на промяната и измерването на ROI.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2 pt-4 border-t border-slate-900">
+                        <li><i class="fa-solid fa-check text-blue-400 mr-2"></i> 4 Нива на AI Зрялост за вашия екип</li>
+                        <li><i class="fa-solid fa-check text-blue-400 mr-2"></i> Формули за изчисляване на реалната възвръщаемост</li>
+                        <li><i class="fa-solid fa-check text-blue-400 mr-2"></i> SOP документи за сигурна интеграция</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-8 rounded-3xl bg-slate-950 border border-slate-800 space-y-6 hover:border-purple-500/50 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl font-bold shadow-lg">
+                        <i class="fa-solid fa-terminal"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold">Prompt Studio & Ексклузивна Библиотека</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Интерактивен генератор на инструкции в реално време, съчетан с каталог от 35+ готови бизнес шаблона. Копирайте, адаптирайте и прилагайте за секунди.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2 pt-4 border-t border-slate-900">
+                        <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Висококонвертиращи шаблони за Маркетинг</li>
+                        <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Готови скриптове за Продажби и Обслужване</li>
+                        <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Специализирани промптове за HR и Мениджмънт</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-8 rounded-3xl bg-slate-950 border border-slate-800 space-y-6 hover:border-emerald-500/50 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl font-bold shadow-lg">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold">Live AI Бизнес Консултант</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Вашият денонощен виртуален асистент. Обучен експертно върху съдържанието на наръчника, за да решава специфичните казуси на вашия бизнес.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2 pt-4 border-t border-slate-900">
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Интелигентен и бърз чат интерфейс</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Незабавна помощ при технически затруднения</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i> 15+ вградени експертни сценария за анализ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BONUSES SECTION - MARKETING CTA -->
+    <section id="bonuses" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-wider">Ексклузивни Бонуси (На стойност €90)</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold">Отключете тези 3 ключови бонуса напълно безплатно</h2>
+                <p class="text-slate-400 text-sm">Добавени автоматично към Pro пакета. Приложете ги още днес, за да ускорите резултатите си.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Bonus 1 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <span class="text-amber-400 font-bold text-xs">БОНУС #1 (€30 Стойност)</span>
+                        <h3 class="font-bold text-base">Дейли Таск Планер</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Готова система за приоритизиране на задачите и ефективно делегиране на рутината към автономни AI агенти.</p>
+                    </div>
+                    <button onclick="testDownload('daily-task-planner.pdf')" class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-extrabold shadow-lg shadow-blue-500/20 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bolt text-amber-300"></i> Вземете Бонус #1 Сега
+                    </button>
+                </div>
+
+                <!-- Bonus 2 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <span class="text-amber-400 font-bold text-xs">БОНУС #2 (€30 Стойност)</span>
+                        <h3 class="font-bold text-base">Make.com Автоматизации</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Готови работни потоци (схеми) за свързване на платформи, създаване на авто-отговори и масова обработка на данни.</p>
+                    </div>
+                    <button onclick="testDownload('make-automations-guide.pdf')" class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-extrabold shadow-lg shadow-blue-500/20 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bolt text-amber-300"></i> Вземете Бонус #2 Сега
+                    </button>
+                </div>
+
+                <!-- Bonus 3 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <span class="text-amber-400 font-bold text-xs">БОНУС #3 (€30 Стойност)</span>
+                        <h3 class="font-bold text-base">Чеклист за EU AI Act</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Правен пътеводител за избягване на санкции, защита на данните и правилно категоризиране на рисковете според европейското законодателство.</p>
+                    </div>
+                    <button onclick="testDownload('eu-ai-act-checklist.pdf')" class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-extrabold shadow-lg shadow-blue-500/20 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bolt text-amber-300"></i> Вземете Бонус #3 Сега
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULES OVERVIEW -->
+    <section id="modules" class="py-20 bg-slate-900/30 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center space-y-4 max-w-3xl mx-auto">
+                <h2 class="text-3xl sm:text-5xl font-extrabold">Какво ще научите в 6-те модула?</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Синтезирано, структурирано и насочено към постигането на реални бизнес резултати.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+                    <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Модул 1</span>
+                    <h3 class="text-lg font-bold">Стратегия & Основи</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Научете как да идентифицирате правилните процеси за автоматизация и да избегнете капана на ненужните софтуерни абонаменти.</p>
+                </div>
+                <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+                    <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">Модул 2</span>
+                    <h3 class="text-lg font-bold">Промпт Инженерство (PCTCO)</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Майсторски клас по писане на перфектни инструкции (промптове) за езикови модели, гарантиращи над 95% точност и предвидимост.</p>
+                </div>
+                <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+                    <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Модул 3</span>
+                    <h3 class="text-lg font-bold">Инструменти & Автоматизация</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Практическо свързване на платформи като Make.com, Zapier и Gemini API за изграждане на напълно автономни работни потоци.</p>
+                </div>
+                <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+                    <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">Модул 4</span>
+                    <h3 class="text-lg font-bold">Хора & Култура</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Утвърдени стратегии за управление на промяната, преодоляване на съпротивата в екипа и ефективно вътрешно обучение.</p>
+                </div>
+                <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+                    <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">Модул 5</span>
+                    <h3 class="text-lg font-bold">Етика, GDPR & EU AI Act</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Разберете как да защитите корпоративните си данни и да оперирате легално според най-новите стриктни европейски изисквания.</p>
+                </div>
+                <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+                    <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Модул 6</span>
+                    <h3 class="text-lg font-bold">ROI & Метрики за успех</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Точни формули и ключови метрики (KPIs) за измерване на реалната финансова възвръщаемост от вашата инвестиция в AI технологии.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="py-20 bg-slate-900/50 border-t border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center space-y-4 max-w-3xl mx-auto">
+                <span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-wider">Ограничена Промоция</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold">Изберете подходящия за вас план</h2>
+                <p class="text-slate-400 text-sm">Еднократна инвестиция. Доживотен достъп до всички бъдещи актуализации и допълнения към наръчника.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Starter -->
+                <div class="p-8 rounded-3xl bg-slate-900 border border-slate-800 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold">Starter Edition</h3>
+                        <p class="text-xs text-slate-400">За индивидуални специалисти и фрийлансъри, търсещи стабилна основа.</p>
+                        <div class="text-4xl font-extrabold">€19.99 <span class="text-xs font-normal text-slate-500">/ еднократно</span></div>
+                        <ul class="text-xs text-slate-300 space-y-3 pt-4 border-t border-slate-800">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Пълен достъп до 6-те модула</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Интерактивен куиз и проследяване на прогреса</li>
+                            <li class="flex items-center gap-2 text-slate-500"><i class="fa-solid fa-xmark text-rose-500"></i> Без достъп до Prompt Studio и Чат Асистент</li>
+                        </ul>
+                    </div>
+                    <a href="https://buy.stripe.com/4gM7sNdh8fWt9rS8DFaVa03" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs text-center transition-all">
+                        Изберете Starter (€19.99)
+                    </a>
+                </div>
+
+                <!-- PRO (Highlighted) -->
+                <div class="p-8 rounded-3xl bg-slate-900 border-2 border-blue-500 space-y-6 flex flex-col justify-between relative shadow-2xl shadow-blue-500/20 scale-105">
+                    <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full gradient-bg text-white text-[10px] font-extrabold tracking-wider uppercase">Най-популярен избор</span>
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold">Pro Edition (Пълен Комплект)</h3>
+                        <p class="text-xs text-slate-400">За предприемачи, мениджъри и експерти, готови за мащабиране на процесите.</p>
+                        <div class="text-5xl font-extrabold text-blue-400">€39.99 <span class="text-xs font-normal text-slate-500 line-through">€80</span></div>
+                        <ul class="text-xs text-slate-300 space-y-3 pt-4 border-t border-slate-800">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Всичко от Starter пакета</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <b>Prompt Studio</b> (Интерактивен генератор)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <b>Live AI Бизнес Консултант</b></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Библиотека с <b>35+ готови бизнес промпта</b></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <b>3 Ексклузивни Бонуса (на стойност €90)</b></li>
+                        </ul>
+                    </div>
+                    <a href="https://buy.stripe.com/aFacN7gtkeSpbA08DFaVa04" class="w-full py-4 rounded-xl gradient-bg text-white font-extrabold text-xs text-center shadow-xl hover:opacity-90 transition-all transform active:scale-95 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bolt text-amber-300"></i>
+                        <span>Вземете Pro Изданието (€39.99)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="text-center space-y-3">
+            <h2 class="text-3xl font-extrabold">Често Задавани Въпроси</h2>
+            <p class="text-slate-400 text-xs">Всичко, което трябва да знаете, преди да направите своята инвестиция.</p>
+        </div>
+
+        <div class="space-y-4 text-xs">
+            <details class="group bg-slate-900 p-5 rounded-2xl border border-slate-800 cursor-pointer">
+                <summary class="font-bold text-slate-200 flex justify-between items-center">
+                    Как получавам достъп след плащане?
+                    <i class="fa-solid fa-chevron-down text-slate-500 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="mt-3 text-slate-400 leading-relaxed">
+                    Достъпът е моментален. Веднага след успешна транзакция системата ще ви пренасочи директно към интерактивния наръчник и ще ви изпрати постоянен линк за достъп на вашия имейл адрес.
+                </p>
+            </details>
+
+            <details class="group bg-slate-900 p-5 rounded-2xl border border-slate-800 cursor-pointer">
+                <summary class="font-bold text-slate-200 flex justify-between items-center">
+                    Необходими ли са ми технически умения или опит с програмиране?
+                    <i class="fa-solid fa-chevron-down text-slate-500 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="mt-3 text-slate-400 leading-relaxed">
+                    Категорично не. Наръчникът е създаден специално за бизнес лидери и специалисти без технически опит. Всичко е обяснено на достъпен български език, с готови за използване шаблони и визуални no-code платформи.
+                </p>
+            </details>
+        </div>
+    </section>
+
+    <!-- LEAD MAGNET POPUP MODAL -->
+    <div id="leadModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 relative shadow-2xl">
+            <button onclick="closeLeadModal()" class="absolute right-4 top-4 text-slate-500 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="space-y-2 text-center">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xl font-bold">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <h3 class="text-xl font-bold">Свалете Безплатния Дейли Таск Планер</h3>
+                <p class="text-xs text-slate-400">10-минутен одит: Готов ли е вашият бизнес за автоматизация с изкуствен интелект?</p>
+            </div>
+
+            <form onsubmit="handleLeadSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-[11px] font-medium text-slate-400 mb-1">Вашето име</label>
+                    <input type="text" id="leadName" required placeholder="Иван Иванов" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-medium text-slate-400 mb-1">Имейл адрес</label>
+                    <input type="email" id="leadEmail" required placeholder="ivan@company.bg" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl gradient-bg text-white font-bold text-xs shadow-lg hover:opacity-90 transition-all">
+                    Изтеглете Планера Веднага (PDF)
+                </button>
+            </form>
+            <p class="text-[10px] text-slate-500 text-center">Гарантирана защита на данните. Никакъв спам.</p>
+        </div>
+    </div>
+
+    <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500 space-y-2">
+        <p>© 2026 AI Наръчник. Всички права запазени.</p>
+        <p>Сигурни плащания чрез Stripe. Изградено от Skills Studio.</p>
     </footer>
 
+    <script>
+        function openLeadModal() { document.getElementById('leadModal').classList.remove('hidden'); }
+        function closeLeadModal() { document.getElementById('leadModal').classList.add('hidden'); }
+        
+        function testDownload(filename) {
+            const msg = document.createElement('div');
+            msg.className = 'fixed bottom-5 right-5 bg-blue-600 text-white p-4 rounded-xl shadow-2xl z-50 text-xs font-bold flex items-center gap-2 animate-bounce';
+            msg.innerHTML = `<i class="fa-solid fa-download text-lg"></i> Изтегляне на ${filename}...`;
+            document.body.appendChild(msg);
+            setTimeout(() => msg.remove(), 4000);
+
+            const link = document.createElement('a');
+            link.href = filename;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function handleLeadSubmit(e) {
+            e.preventDefault();
+            const nameField = document.getElementById('leadName');
+            const name = nameField ? nameField.value : 'Приятел';
+            const email = document.getElementById('leadEmail').value;
+            
+            const msg = document.createElement('div');
+            msg.className = 'fixed bottom-5 right-5 bg-emerald-600 text-white p-4 rounded-xl shadow-2xl z-50 text-xs font-bold flex items-center gap-2';
+            msg.innerHTML = `<i class="fa-solid fa-circle-check text-lg"></i> Успешно, ${name}! Изтеглянето стартира.`;
+            document.body.appendChild(msg);
+            setTimeout(() => msg.remove(), 5000);
+            closeLeadModal();
+
+            const pdfUrl = 'daily-task-planner.pdf'; 
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'daily-task-planner.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
 </body>
 </html>
