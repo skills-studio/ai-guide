@@ -35,7 +35,7 @@
         }
         .glow-effect { box-shadow: 0 0 50px -12px rgba(37, 99, 235, 0.35); }
         
-        /* Interactive Click Active States */
+        /* Interactive Click Active States for Modules */
         .interactive-card {
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -44,6 +44,28 @@
             border-color: #7c3aed !important;
             box-shadow: 0 0 25px rgba(124, 58, 237, 0.3) !important;
             transform: translateY(-4px);
+        }
+
+        /* Interactive Click Active States for Bonuses (Yellow Theme) */
+        .interactive-bonus-card {
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .interactive-bonus-card.active {
+            border-color: #f59e0b !important;
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.3) !important;
+            transform: translateY(-4px);
+        }
+
+        /* Interactive Click Active States for FAQ */
+        .interactive-faq-card {
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .interactive-faq-card.active {
+            border-color: #2563eb !important;
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.3) !important;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -248,7 +270,7 @@
         </div>
     </section>
 
-    <!-- BONUSES SECTION - MARKETING CTA -->
+    <!-- BONUSES SECTION - MARKETING CTA (Yellow Glow Theme) -->
     <section id="bonuses" class="py-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div class="text-center space-y-3">
@@ -259,7 +281,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Bonus 1 -->
-                <div onclick="toggleCard(this)" class="interactive-card p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 flex flex-col justify-between">
+                <div onclick="toggleBonusCard(this)" class="interactive-bonus-card p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 flex flex-col justify-between">
                     <div class="space-y-3">
                         <span class="text-amber-400 font-bold text-xs">БОНУС #1 (€30 Стойност)</span>
                         <h3 class="font-bold text-base">Дейли Таск Планер</h3>
@@ -271,7 +293,7 @@
                 </div>
 
                 <!-- Bonus 2 -->
-                <div onclick="toggleCard(this)" class="interactive-card p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 flex flex-col justify-between">
+                <div onclick="toggleBonusCard(this)" class="interactive-bonus-card p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 flex flex-col justify-between">
                     <div class="space-y-3">
                         <span class="text-amber-400 font-bold text-xs">БОНУС #2 (€30 Стойност)</span>
                         <h3 class="font-bold text-base">Make.com Автоматизации</h3>
@@ -283,7 +305,7 @@
                 </div>
 
                 <!-- Bonus 3 -->
-                <div onclick="toggleCard(this)" class="interactive-card p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 flex flex-col justify-between">
+                <div onclick="toggleBonusCard(this)" class="interactive-bonus-card p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 flex flex-col justify-between">
                     <div class="space-y-3">
                         <span class="text-amber-400 font-bold text-xs">БОНУС #3 (€30 Стойност)</span>
                         <h3 class="font-bold text-base">Чеклист за EU AI Act</h3>
@@ -399,43 +421,33 @@
         </div>
     </section>
 
-    <!-- FAQ SECTION -->
+    <!-- FAQ SECTION (Updated with specific text and Interactive Cards) -->
     <section id="faq" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div class="text-center space-y-3">
             <h2 class="text-3xl font-extrabold">Често Задавани Въпроси</h2>
-            <p class="text-slate-400 text-xs">Всичко, което трябва да знаете, преди да направите своята инвестиция.</p>
+            <p class="text-slate-400 text-xs">Всичко, което трябва да знаеш преди да направиш поръчка.</p>
         </div>
 
         <div class="space-y-4 text-xs">
-            <details class="group bg-slate-900 p-5 rounded-2xl border border-slate-800 cursor-pointer">
-                <summary class="font-bold text-slate-200 flex justify-between items-center">
-                    Как получавам достъп след плащане?
-                    <i class="fa-solid fa-chevron-down text-slate-500 group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <p class="mt-3 text-slate-400 leading-relaxed">
-                    Достъпът е моментален. Веднага след успешна транзакция системата ще ви пренасочи директно към интерактивния наръчник и ще ви изпрати постоянен линк за достъп на вашия имейл адрес.
-                </p>
-            </details>
+            <div onclick="toggleFaqCard(this)" class="interactive-faq-card p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                <h4 class="font-bold text-sm text-slate-200">Как получавам достъп след плащане?</h4>
+                <p class="text-slate-400 leading-relaxed">Достъпът е моментален. Веднага след успешна транзакция системата те пренасочва директно към интерактивния наръчник и ти изпраща постоянен линк на имейла.</p>
+            </div>
 
-            <details class="group bg-slate-900 p-5 rounded-2xl border border-slate-800 cursor-pointer">
-                <summary class="font-bold text-slate-200 flex justify-between items-center">
-                    Каква е разликата между Starter и Pro пакета?
-                    <i class="fa-solid fa-chevron-down text-slate-500 group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <p class="mt-3 text-slate-400 leading-relaxed">
-                    Starter пакетът ви дава достъп до фундаменталните знания (6-те модула), всички 3 бонуса и ограничен достъп до Prompt Studio. Pro пакетът, който е най-предпочитан, добавя огромна практическа стойност: пълен, неограничен достъп до Prompt Studio, ексклузивна библиотека с 35+ готови бизнес промпта и денонощен достъп до нашия Live AI Консултант.
-                </p>
-            </details>
+            <div onclick="toggleFaqCard(this)" class="interactive-faq-card p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                <h4 class="font-bold text-sm text-slate-200">Необходими ли са ми технически умения?</h4>
+                <p class="text-slate-400 leading-relaxed">Наръчникът е създаден специално за мениджъри и специалисти без технически опит. Всичко е обяснено на разбираем български език с готови за ползване шаблони.</p>
+            </div>
 
-            <details class="group bg-slate-900 p-5 rounded-2xl border border-slate-800 cursor-pointer">
-                <summary class="font-bold text-slate-200 flex justify-between items-center">
-                    Необходими ли са ми технически умения или опит с програмиране?
-                    <i class="fa-solid fa-chevron-down text-slate-500 group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <p class="mt-3 text-slate-400 leading-relaxed">
-                    Категорично не. Наръчникът е създаден специално за бизнес лидери и специалисти без технически опит. Всичко е обяснено на достъпен български език, с готови за използване шаблони и визуални no-code платформи.
-                </p>
-            </details>
+            <div onclick="toggleFaqCard(this)" class="interactive-faq-card p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                <h4 class="font-bold text-sm text-slate-200">Има ли абонамент или скрити такси?</h4>
+                <p class="text-slate-400 leading-relaxed">Не. Плащаш еднократно и получаваш доживотен достъп, включително до всички бъдещи актуализации на съдържанието и промпт библиотеката.</p>
+            </div>
+
+            <div onclick="toggleFaqCard(this)" class="interactive-faq-card p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                <h4 class="font-bold text-sm text-slate-200">Мога ли да надградя от Starter към Pro по-късно?</h4>
+                <p class="text-slate-400 leading-relaxed">Да. Доплащаш само разликата в цената и получаваш Prompt Studio, AI Консултанта и трите ексклузивни бонуса.</p>
+            </div>
         </div>
     </section>
 
@@ -460,14 +472,30 @@
             document.body.removeChild(link);
         }
 
-        // Toggle Active Glow Class on Card Click with Motion
+        // Toggle Active Glow Class on Module Cards Click with Motion
         function toggleCard(cardElement) {
-            // Remove active from sibling cards within the same parent section/grid
             const container = cardElement.parentElement;
             container.querySelectorAll('.interactive-card').forEach(card => {
                 if (card !== cardElement) card.classList.remove('active');
             });
-            // Toggle active state on clicked card
+            cardElement.classList.toggle('active');
+        }
+
+        // Toggle Active Yellow Glow Class on Bonus Cards Click with Motion
+        function toggleBonusCard(cardElement) {
+            const container = cardElement.parentElement;
+            container.querySelectorAll('.interactive-bonus-card').forEach(card => {
+                if (card !== cardElement) card.classList.remove('active');
+            });
+            cardElement.classList.toggle('active');
+        }
+
+        // Toggle Active FAQ Card Click with Motion
+        function toggleFaqCard(cardElement) {
+            const container = cardElement.parentElement;
+            container.querySelectorAll('.interactive-faq-card').forEach(card => {
+                if (card !== cardElement) card.classList.remove('active');
+            });
             cardElement.classList.toggle('active');
         }
     </script>
