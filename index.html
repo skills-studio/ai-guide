@@ -1002,7 +1002,7 @@
                 const loadingId = appendLoading();
                 try {
                     const apiKey = ""; // API Key handled automatically
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
                     const payload = {
                         contents: [{ role: "user", parts: [{ text: userText }] }],
                         systemInstruction: { parts: [{ text: "Ти си полезен бизнес AI консултант. Отговаряй на български език. Бъди кратък и точен." }] }
@@ -1062,3 +1062,4 @@
     </script>
 </body>
 </html>
+```[cite: 3]
