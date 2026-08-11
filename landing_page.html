@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Навигация | Business AI System 2026</title>
+    <title>AI CONTROL™ | Business AI System 2026 Pro Edition</title>
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -27,7 +26,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -38,6 +37,7 @@
         .cyber-border { border: 1px solid #1e293b; }
         .cyber-border-active { border: 1px solid #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
         .cyber-glow { text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+        .cyber-glow-emerald { text-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
         
         /* Interactive Click Active States */
         .interactive-card {
@@ -60,36 +60,34 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white">
+<body class="antialiased selection:bg-blue-500 selection:text-white overflow-x-hidden">
 
-    <!-- PROMO BAR (System Mode) -->
+    <!-- PROMO BAR -->
     <div class="bg-blue-600 text-white text-center py-2.5 px-4 text-[10px] sm:text-xs font-mono font-bold tracking-widest flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(37,99,235,0.5)] relative z-50">
         <span class="animate-pulse h-2 w-2 bg-emerald-300 rounded-full shrink-0"></span>
-        <span class="leading-tight">CONTROL MODE OFFER — ОТКЛЮЧИ ПЪЛНАТА AI СИСТЕМА НА СПЕЦИАЛНА ЦЕНА €39.99</span>
+        <span class="leading-tight">CONTROL MODE OFFER — Отключи пълната AI система на специална цена €39.99</span>
     </div>
 
-    <!-- HEADER (Control Panel Interface) -->
+    <!-- HEADER -->
     <header class="sticky top-0 z-40 bg-[#0a0f1c]/90 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
-            <!-- Brand -->
-            <div class="flex items-center justify-start space-x-3 w-full md:w-auto">
+            <div class="flex items-center justify-start space-x-3 w-full md:w-auto hover:opacity-80 transition-opacity cursor-pointer" onclick="window.scrollTo(0,0)">
                 <div class="w-8 h-8 sm:w-10 sm:h-10 rounded border border-slate-700 bg-slate-900 flex items-center justify-center text-blue-500 font-bold text-lg sm:text-xl shadow-[0_0_10px_rgba(37,99,235,0.2)] shrink-0">
                     <i class="fa-solid fa-microchip"></i>
                 </div>
                 <div class="flex items-center whitespace-nowrap">
-                    <span class="font-extrabold text-xl tracking-tight text-white">AI Навигация</span>
+                    <span class="font-extrabold text-xl tracking-tight text-white">AI CONTROL<span class="text-blue-500">™</span></span>
                 </div>
             </div>
 
-            <!-- Nav (Hidden on Mobile) -->
             <nav class="hidden lg:flex items-center space-x-8 text-sm font-mono text-slate-400">
                 <a href="#overview" class="hover:text-blue-400 transition-colors">[ SYSTEM ]</a>
-                <a href="#modules" class="hover:text-blue-400 transition-colors">[ MODULES ]</a>
                 <a href="#bonuses" class="hover:text-blue-400 transition-colors">[ BONUSES ]</a>
+                <a href="#levels" class="hover:text-blue-400 transition-colors">[ LEVELS ]</a>
+                <a href="#score" class="hover:text-blue-400 transition-colors">[ SCORE ]</a>
                 <a href="#faq" class="hover:text-blue-400 transition-colors">[ FAQ ]</a>
             </nav>
 
-            <!-- Buttons -->
             <div class="hidden md:flex items-center space-x-3">
                 <a href="#pricing" class="px-6 py-2.5 rounded bg-blue-600 text-white text-xs font-bold font-mono shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:bg-blue-500 transition-all uppercase tracking-wider">
                     [ ACCESS SYSTEM ]
@@ -98,59 +96,64 @@
         </div>
     </header>
 
-    <!-- HERO SECTION (The Control Room) -->
-    <section class="relative pt-10 pb-16 md:pt-20 md:pb-24 overflow-hidden px-4 bg-[#0a0f1c]">
-        <!-- Tech Background Glow -->
+    <!-- HERO SECTION -->
+    <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden px-4 bg-[#0a0f1c]">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             
-            <!-- Left Column: Copy -->
+            <!-- Left Column: Core Copy -->
             <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-left">
                 
-                <!-- System Tag -->
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded border border-slate-700 bg-slate-900 text-slate-400 text-[10px] sm:text-xs font-mono tracking-widest">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded border border-slate-700 bg-slate-900 text-slate-400 text-[10px] sm:text-xs font-mono tracking-widest uppercase">
                     <span class="h-1.5 w-1.5 bg-blue-500 rounded-full shadow-[0_0_5px_#3b82f6]"></span> 
                     BUSINESS AI SYSTEM • 2026 PRO EDITION
                 </div>
 
-                <!-- Subheadline (Swapped to top) -->
-                <p class="text-blue-400 font-bold text-sm sm:text-base leading-relaxed max-w-2xl uppercase tracking-widest drop-shadow-[0_0_10px_rgba(37,99,235,0.3)]">
-                    Превърни хаотичното използване на AI инструменти в ясна система за реален бизнес резултат.
-                </p>
-
-                <!-- Headline -->
                 <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-white">
-                    <span class="block text-white">AI НАВИГАЦИЯ</span>
+                    <span class="block text-slate-500">AI НЕ Е СЛОЖЕН.</span>
+                    <span class="block text-slate-300 mt-1">ХАОСЪТ ОКОЛО НЕГО Е.</span>
+                    <span class="block text-blue-500 mt-3 drop-shadow-[0_0_10px_rgba(37,99,235,0.3)]">Поеми контрола.</span>
                 </h1>
 
-                <!-- Bullets (The "Without/With" shift) -->
-                <div class="space-y-2 text-sm sm:text-base font-medium text-slate-300 font-mono bg-slate-900/50 border border-slate-800 p-5 rounded">
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-medium">
+                    Превърни хаотичното използване на ChatGPT, Gemini, промптове и AI инструменти в <span class="text-white font-bold">ясна система за реален бизнес резултат.</span>
+                </p>
+                <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl">
+                    AI CONTROL събира на едно място стратегия, готови промптове, Prompt Studio, автоматизации, AI Консултант, ROI и практическа рамка за GDPR & EU AI Act.
+                </p>
+
+                <div class="space-y-2 text-sm sm:text-base font-medium text-slate-300 font-mono bg-slate-900/50 border border-slate-800 p-5 rounded max-w-xl">
                     <div class="flex items-center gap-3 text-slate-500 line-through"><i class="fa-solid fa-xmark text-rose-500/50 w-4"></i> Без безкрайни AI курсове.</div>
                     <div class="flex items-center gap-3 text-slate-500 line-through"><i class="fa-solid fa-xmark text-rose-500/50 w-4"></i> Без случайни инструменти.</div>
                     <div class="flex items-center gap-3 text-slate-500 line-through"><i class="fa-solid fa-xmark text-rose-500/50 w-4"></i> Без хаотични промптове.</div>
                     <div class="flex items-center gap-3 text-emerald-400 mt-4 pt-3 border-t border-slate-800"><i class="fa-solid fa-check w-4"></i> От първия промпт до работещ AI процес.</div>
                 </div>
 
-                <!-- CTA Area -->
-                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 pt-4">
                     <div class="flex flex-col gap-2 w-full sm:w-auto">
-                        <a href="#pricing" class="w-full px-6 py-4 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all text-center flex items-center justify-center gap-2 uppercase tracking-widest shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                        <a href="#pricing" class="w-full sm:w-auto px-8 py-4 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all text-center flex items-center justify-center uppercase tracking-widest shadow-[0_0_20px_rgba(37,99,235,0.4)] min-h-[52px]">
                             [ ПОЕМИ AI КОНТРОЛА &rarr; ]
                         </a>
-                        <div class="text-center text-[10px] text-slate-500 font-mono tracking-widest">€39.99 • ЕДНОКРАТНО • ДОЖИВОТЕН ДОСТЪП</div>
+                        <div class="text-center sm:text-left text-[10px] text-slate-500 font-mono tracking-widest uppercase">€39.99 • еднократно • доживотен достъп</div>
                     </div>
-                    <a href="https://skills-studio.github.io/ai-guide/ai-guide-preview.pdf" target="_blank" class="w-full sm:w-auto px-6 py-4 rounded bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-300 font-bold text-sm transition-all text-center flex items-center justify-center uppercase tracking-widest h-fit">
-                        [ БЕЗПЛАТНО ПРЕВЮ (15 СТР.) ]
-                    </a>
+                    
+                    <div class="hidden sm:flex items-center justify-center min-h-[52px]">
+                        <span class="text-[10px] text-slate-500 font-mono tracking-widest uppercase">ИЛИ</span>
+                    </div>
+                    
+                    <div class="w-full sm:w-auto">
+                        <a href="https://skills-studio.github.io/ai-guide/ai-guide-preview.pdf" target="_blank" class="w-full sm:w-auto px-6 py-4 rounded bg-transparent border border-slate-700 hover:border-blue-500 hover:bg-slate-900 text-slate-300 font-bold text-sm transition-all text-center flex items-center justify-center uppercase tracking-widest min-h-[52px]">
+                            [ РАЗГЛЕДАЙ БЕЗПЛАТНОТО ПРЕВЮ ]
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right Column: The Dashboard / Control Status -->
+            <!-- Right Column: Control Status Dashboard -->
             <div class="lg:col-span-5 relative mt-8 lg:mt-0">
-                <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-purple-600/10 blur-xl rounded"></div>
-                <div class="relative bg-[#0d1323] border border-slate-700 rounded p-1">
-                    <!-- Interface Top Bar -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-emerald-600/10 blur-xl rounded pointer-events-none"></div>
+                <div class="relative bg-[#0d1323] border border-slate-700 rounded p-1 shadow-2xl">
                     <div class="flex items-center gap-2 px-3 py-2 bg-slate-900 border-b border-slate-800 rounded-t">
                         <div class="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
                         <div class="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
@@ -158,7 +161,6 @@
                         <div class="ml-2 text-[10px] font-mono text-slate-500 tracking-widest">CONTROL_STATUS_UI</div>
                     </div>
 
-                    <!-- Dashboard Body -->
                     <div class="p-5 sm:p-6 space-y-4 font-mono">
                         <div class="text-xs text-slate-500 border-b border-slate-800 pb-2 mb-4 flex justify-between items-center">
                             <span>SYSTEM STATUS</span>
@@ -167,7 +169,7 @@
                         
                         <div class="space-y-3">
                             <!-- Access -->
-                            <div class="bg-slate-900/50 border border-slate-800 p-3.5 rounded flex justify-between items-center hover:border-blue-500/50 transition-colors">
+                            <div class="bg-slate-900/50 border border-slate-800 p-3.5 rounded flex justify-between items-center">
                                 <div>
                                     <div class="text-[10px] text-slate-500 mb-1">ACCESS</div>
                                     <div class="text-xs text-white font-bold tracking-wider">INSTANT</div>
@@ -175,15 +177,15 @@
                                 <div class="text-[10px] text-slate-400 text-right">Започни<br>веднага</div>
                             </div>
                             <!-- Prompts -->
-                            <div class="bg-slate-900/50 border border-slate-800 p-3.5 rounded flex justify-between items-center hover:border-blue-500/50 transition-colors">
+                            <div class="bg-slate-900/50 border border-slate-800 p-3.5 rounded flex justify-between items-center border-l-2 border-l-blue-500">
                                 <div>
                                     <div class="text-[10px] text-slate-500 mb-1">PROMPT CONTROL</div>
                                     <div class="text-xs text-blue-400 font-bold tracking-wider">40 READY</div>
                                 </div>
-                                <div class="text-[10px] text-slate-400 text-right">Маркетинг<br>Продажби • HR</div>
+                                <div class="text-[10px] text-slate-400 text-right">Маркетинг • Продажби<br>HR</div>
                             </div>
                             <!-- Autopilot -->
-                            <div class="bg-slate-900/50 border border-slate-800 p-3.5 rounded flex justify-between items-center hover:border-blue-500/50 transition-colors">
+                            <div class="bg-slate-900/50 border border-slate-800 p-3.5 rounded flex justify-between items-center">
                                 <div>
                                     <div class="text-[10px] text-slate-500 mb-1">AUTOPILOT</div>
                                     <div class="text-xs text-purple-400 font-bold tracking-wider">READY</div>
@@ -191,7 +193,7 @@
                                 <div class="text-[10px] text-slate-400 text-right">Make • Zapier<br>AI workflows</div>
                             </div>
                             <!-- Risk -->
-                            <div class="bg-slate-900/50 border border-slate-800 p-3.5 rounded flex justify-between items-center hover:border-blue-500/50 transition-colors">
+                            <div class="bg-slate-900/50 border border-slate-800 p-3.5 rounded flex justify-between items-center">
                                 <div>
                                     <div class="text-[10px] text-slate-500 mb-1">RISK CONTROL</div>
                                     <div class="text-xs text-emerald-400 font-bold tracking-wider">ACTIVE</div>
@@ -205,24 +207,24 @@
         </div>
     </section>
 
-    <!-- TRANSITION SECTION (Problem -> Solution) -->
+    <!-- PROBLEM & TRANSFORMATION -->
     <section class="py-20 border-y border-slate-800 bg-[#0d1323]">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-8">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-10">
             <div class="text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase">ОТ AI CHAOS &rarr; AI CONTROL</div>
             
             <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
                 Не ти трябва още един AI инструмент.<br>
-                <span class="text-blue-500">Трябва ти система.</span>
+                <span class="text-blue-500 mt-2 inline-block">Трябва ти система.</span>
             </h2>
             
-            <p class="text-slate-400 text-sm sm:text-lg leading-relaxed">
-                ChatGPT. Gemini. Make. Zapier. AI агенти. Стотици промптове. Десетки абонаменти.<br>
-                Инструментите стават повече. Но въпросът остава:<br><br>
-                <strong class="text-white">Как точно AI прави бизнеса ти по-добър?</strong>
-            </p>
+            <div class="text-slate-400 text-sm sm:text-lg leading-relaxed space-y-4 max-w-2xl mx-auto">
+                <p>ChatGPT. Gemini. Make. Zapier. AI агенти. Стотици промптове. Десетки абонаменти.</p>
+                <p>Инструментите стават повече.<br>Но въпросът остава:</p>
+                <p class="text-xl text-white font-bold border-y border-slate-800 py-6 my-6">Как точно AI прави бизнеса ти по-добър?</p>
+            </div>
 
             <div class="text-left bg-slate-900 border border-slate-800 rounded p-6 sm:p-8 max-w-2xl mx-auto shadow-lg space-y-4">
-                <p class="text-sm font-mono text-blue-400 mb-4">AI CONTROL ти дава структурата, с която да решиш:</p>
+                <p class="text-sm font-mono text-blue-400 mb-4 font-bold">AI CONTROL ти дава структурата, с която да решиш:</p>
                 <ul class="space-y-3 text-sm sm:text-base text-slate-300">
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> <span>Къде AI има реален смисъл</span></li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> <span>Какво си струва да автоматизираш</span></li>
@@ -235,21 +237,25 @@
 
             <div class="pt-6 font-mono text-sm sm:text-base font-bold tracking-wider">
                 <span class="text-rose-500 line-through mr-4">STOP USING AI RANDOMLY.</span>
-                <span class="text-emerald-400">START USING AI STRATEGICALLY.</span>
+                <span class="text-emerald-400 cyber-glow-emerald">START USING AI STRATEGICALLY.</span>
             </div>
         </div>
     </section>
 
-    <!-- OVERVIEW: THE CONTROL CENTER -->
+    <!-- THE CONTROL CENTER OVERVIEW -->
     <section id="overview" class="py-24 bg-[#0a0f1c]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             <div class="text-center space-y-4 max-w-3xl mx-auto">
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">ТВОЯТ AI CONTROL CENTER</h2>
-                <p class="text-slate-400 text-sm sm:text-base">Всичко необходимо, за да преминеш от експериментиране към системно използване на AI.<br>Не просто теория. Не просто PDF. <strong class="text-white">Работеща AI среда за твоя бизнес.</strong></p>
+                <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                    Всичко необходимо, за да преминеш от експериментиране към системно използване на AI.<br>
+                    Не просто теория. Не просто PDF.<br>
+                    <strong class="text-white">Работеща AI среда за твоя бизнес.</strong>
+                </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
+                <!-- 01 Control System -->
                 <div class="interactive-card p-6 sm:p-8 rounded cyber-border bg-[#0d1323] flex flex-col justify-between group">
                     <div class="space-y-6">
                         <div class="text-[10px] font-mono text-blue-500 tracking-widest border-b border-slate-800 pb-3 flex justify-between">
@@ -257,7 +263,7 @@
                             <i class="fa-solid fa-server"></i>
                         </div>
                         <div class="space-y-3">
-                            <h3 class="text-xl font-bold text-white">6 CONTROL LEVELS</h3>
+                            <h3 class="text-xl font-bold text-white uppercase">6 CONTROL LEVELS</h3>
                             <p class="text-sm text-slate-400 leading-relaxed min-h-[100px]">
                                 Премини стъпка по стъпка от AI хаос към структурирана AI система. Щe откриеш как да идентифицираш правилните процеси, да създаваш ефективни инструкции, да автоматизираш задачи, да подготвиш екипа си и да измерваш резултатите.
                             </p>
@@ -275,7 +281,7 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- 02 Prompt Control -->
                 <div class="interactive-card p-6 sm:p-8 rounded cyber-border bg-[#0d1323] flex flex-col justify-between group">
                     <div class="space-y-6">
                         <div class="text-[10px] font-mono text-blue-500 tracking-widest border-b border-slate-800 pb-3 flex justify-between">
@@ -283,27 +289,27 @@
                             <i class="fa-solid fa-terminal"></i>
                         </div>
                         <div class="space-y-3">
-                            <h3 class="text-xl font-bold text-white">Не питай AI. Инструктирай го.</h3>
+                            <h3 class="text-xl font-bold text-white uppercase">Не питай AI. Инструктирай го.</h3>
                             <p class="text-sm text-slate-400 leading-relaxed min-h-[100px]">
-                                Разликата между посредствен и отличен AI резултат често е в начина, по който задаваш задачата. Prompt Studio ти помага да превръщаш идеите си в структурирани AI инструкции. Получаваш и Promt Библиотека с 40 готови бизнес промпта.
+                                Разликата между посредствен и отличен AI резултат често е в начина, по който задаваш задачата. Prompt Studio ти помага да превръщаш идеите си в структурирани AI инструкции. Получаваш и библиотека с 40 готови бизнес промпта, които можеш да адаптираш и използваш веднага.
                             </p>
                         </div>
                     </div>
                     <div class="pt-6 mt-6 border-t border-slate-800">
                         <div class="text-[10px] font-mono text-slate-500 mb-3">READY FOR:</div>
-                        <div class="flex flex-wrap gap-2 text-[10px] font-mono text-blue-300">
-                            <span class="bg-blue-900/30 border border-blue-800 px-2 py-1 rounded">Marketing</span>
-                            <span class="bg-blue-900/30 border border-blue-800 px-2 py-1 rounded">Sales</span>
-                            <span class="bg-blue-900/30 border border-blue-800 px-2 py-1 rounded">HR</span>
-                            <span class="bg-blue-900/30 border border-blue-800 px-2 py-1 rounded">Management</span>
-                            <span class="bg-blue-900/30 border border-blue-800 px-2 py-1 rounded">Design</span>
-                            <span class="bg-blue-900/30 border border-blue-800 px-2 py-1 rounded">Strategy</span>
-                        </div>
+                        <ul class="text-sm text-slate-300 space-y-2 grid grid-cols-2 gap-x-2">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-400 mt-1 text-[10px]"></i> Marketing</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-400 mt-1 text-[10px]"></i> Sales</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-400 mt-1 text-[10px]"></i> HR</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-400 mt-1 text-[10px]"></i> Management</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-400 mt-1 text-[10px]"></i> Design</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-400 mt-1 text-[10px]"></i> Business Strategy</li>
+                        </ul>
                         <div class="mt-4 pt-4 border-t border-slate-800/50 text-[10px] font-mono text-emerald-400 tracking-widest">PROMPT CONTROL: ACTIVE</div>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- 03 AI Copilot -->
                 <div class="interactive-card p-6 sm:p-8 rounded cyber-border bg-[#0d1323] flex flex-col justify-between group">
                     <div class="space-y-6">
                         <div class="text-[10px] font-mono text-blue-500 tracking-widest border-b border-slate-800 pb-3 flex justify-between">
@@ -311,7 +317,7 @@
                             <i class="fa-solid fa-robot"></i>
                         </div>
                         <div class="space-y-3">
-                            <h3 class="text-xl font-bold text-white">Не търси следващия tutorial.</h3>
+                            <h3 class="text-xl font-bold text-white">Когато имаш въпрос, не търси следващия tutorial.</h3>
                             <p class="text-sm text-slate-400 leading-relaxed min-h-[100px]">
                                 Попитай AI Copilot. Вграденият AI Консултант ти помага да приложиш системата към конкретни бизнес ситуации.
                             </p>
@@ -338,8 +344,8 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div class="text-center space-y-3 max-w-3xl mx-auto">
                 <span class="text-[10px] font-mono px-3 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-widest">CONTROL BONUS PACK</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase">3 инструмента със стойност. Включени.</h2>
-                <p class="text-slate-400 text-sm">Не искаме просто да разбереш AI. Искаме да можеш да започнеш да го прилагаш. Налични и в Starter, и в Pro.</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase">3 ИНСТРУМЕНТА. €90 СТОЙНОСТ. ВКЛЮЧЕНИ.</h2>
+                <p class="text-slate-400 text-sm">Не искаме просто да разбереш AI.<br>Искаме да можеш да започнеш да го прилагаш.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -350,17 +356,21 @@
                             <span class="text-amber-400 font-mono font-bold text-[10px] tracking-widest">BONUS 01</span>
                             <i class="fa-solid fa-calendar-check text-slate-600"></i>
                         </div>
-                        <h3 class="font-bold text-lg text-white">AI DAILY CONTROL</h3>
+                        <h3 class="font-bold text-xl text-white">AI DAILY CONTROL</h3>
                         <p class="text-sm text-slate-400 leading-relaxed">Върни контрола върху работния си ден. Практическа система за приоритизиране на задачите и идентифициране на рутината, която може да бъде делегирана към AI.</p>
-                        <div class="text-xs text-slate-500 font-mono pt-2">Резултатът:<br>По-малко repetitive work.<br>Повече време за решения.</div>
+                        <div class="text-xs text-slate-300 font-mono pt-2 bg-slate-900/50 p-3 border border-slate-800 rounded">
+                            <span class="text-slate-500">Резултатът:</span><br>
+                            По-малко repetitive work.<br>
+                            <span class="text-emerald-400">Повече време за решенията, които наистина имат значение.</span>
+                        </div>
                     </div>
                     <div class="pt-4">
-                        <a href="https://skills-studio.github.io/ai-guide/daily-task-planner.pdf" target="_blank" download class="w-full py-3 rounded border border-amber-500/50 hover:bg-amber-500/10 text-amber-400 text-xs font-mono font-bold transition-all flex items-center justify-center gap-2">
+                        <a href="https://skills-studio.github.io/ai-guide/daily-task-planner.pdf" target="_blank" download class="w-full py-3 rounded border border-amber-500/50 hover:bg-amber-500 hover:text-slate-900 text-amber-400 text-xs font-mono font-bold transition-all flex items-center justify-center gap-2 tracking-widest">
                             [ ИЗТЕГЛИ БОНУС 01 ]
                         </a>
                         <div class="mt-4 border-t border-slate-800 pt-3 flex justify-between items-center font-mono text-[10px]">
                             <span class="text-slate-500 line-through">VALUE: €30</span>
-                            <span class="text-emerald-400">INCLUDED FREE ✓</span>
+                            <span class="text-emerald-400 font-bold">INCLUDED FREE ✓</span>
                         </div>
                     </div>
                 </div>
@@ -372,17 +382,20 @@
                             <span class="text-amber-400 font-mono font-bold text-[10px] tracking-widest">BONUS 02</span>
                             <i class="fa-solid fa-code-branch text-slate-600"></i>
                         </div>
-                        <h3 class="font-bold text-lg text-white">AUTOPILOT BLUEPRINTS</h3>
+                        <h3 class="font-bold text-xl text-white">AUTOPILOT BLUEPRINTS</h3>
                         <p class="text-sm text-slate-400 leading-relaxed">Не просто използвай AI. Свържи го с бизнеса си. Готови Make.com automation схеми за свързване на приложения, автоматични отговори и обработка на информация.</p>
-                        <div class="text-xs text-slate-500 font-mono pt-2">От: MANUAL &rarr; AUTOMATED<br>От: COPY / PASTE &rarr; AUTOPILOT</div>
+                        <div class="text-xs text-slate-300 font-mono pt-2 bg-slate-900/50 p-3 border border-slate-800 rounded space-y-1">
+                            <div><span class="text-slate-500">От:</span> MANUAL &rarr; AUTOMATED</div>
+                            <div><span class="text-slate-500">От:</span> COPY / PASTE &rarr; AUTOPILOT</div>
+                        </div>
                     </div>
                     <div class="pt-4">
-                        <a href="https://skills-studio.github.io/ai-guide/make-automations-guide.pdf" target="_blank" download class="w-full py-3 rounded border border-amber-500/50 hover:bg-amber-500/10 text-amber-400 text-xs font-mono font-bold transition-all flex items-center justify-center gap-2">
+                        <a href="https://skills-studio.github.io/ai-guide/make-automations-guide.pdf" target="_blank" download class="w-full py-3 rounded border border-amber-500/50 hover:bg-amber-500 hover:text-slate-900 text-amber-400 text-xs font-mono font-bold transition-all flex items-center justify-center gap-2 tracking-widest">
                             [ ИЗТЕГЛИ БОНУС 02 ]
                         </a>
                         <div class="mt-4 border-t border-slate-800 pt-3 flex justify-between items-center font-mono text-[10px]">
                             <span class="text-slate-500 line-through">VALUE: €30</span>
-                            <span class="text-emerald-400">INCLUDED FREE ✓</span>
+                            <span class="text-emerald-400 font-bold">INCLUDED FREE ✓</span>
                         </div>
                     </div>
                 </div>
@@ -394,17 +407,21 @@
                             <span class="text-amber-400 font-mono font-bold text-[10px] tracking-widest">BONUS 03</span>
                             <i class="fa-solid fa-shield-halved text-slate-600"></i>
                         </div>
-                        <h3 class="font-bold text-lg text-white">RISK CONTROL</h3>
+                        <h3 class="font-bold text-xl text-white">RISK CONTROL</h3>
                         <p class="text-sm text-slate-400 leading-relaxed">AI без контрол може да струва скъпо. Практически EU AI Act & GDPR checklist, който ти помага да разбереш основните рискове, категории и задължения при използването на AI.</p>
-                        <div class="text-xs text-slate-500 font-mono pt-2">DATA: PROTECTED<br>RISK: CONTROLLED<br>COMPLIANCE: CHECKED</div>
+                        <div class="text-xs text-emerald-400 font-mono pt-2 bg-slate-900/50 p-3 border border-slate-800 rounded space-y-1 font-bold">
+                            <div>DATA: PROTECTED</div>
+                            <div>RISK: CONTROLLED</div>
+                            <div>COMPLIANCE: CHECKED</div>
+                        </div>
                     </div>
                     <div class="pt-4">
-                        <a href="https://skills-studio.github.io/ai-guide/eu-ai-act-checklist.pdf" target="_blank" download class="w-full py-3 rounded border border-amber-500/50 hover:bg-amber-500/10 text-amber-400 text-xs font-mono font-bold transition-all flex items-center justify-center gap-2">
+                        <a href="https://skills-studio.github.io/ai-guide/eu-ai-act-checklist.pdf" target="_blank" download class="w-full py-3 rounded border border-amber-500/50 hover:bg-amber-500 hover:text-slate-900 text-amber-400 text-xs font-mono font-bold transition-all flex items-center justify-center gap-2 tracking-widest">
                             [ ИЗТЕГЛИ БОНУС 03 ]
                         </a>
                         <div class="mt-4 border-t border-slate-800 pt-3 flex justify-between items-center font-mono text-[10px]">
                             <span class="text-slate-500 line-through">VALUE: €30</span>
-                            <span class="text-emerald-400">INCLUDED FREE ✓</span>
+                            <span class="text-emerald-400 font-bold">INCLUDED FREE ✓</span>
                         </div>
                     </div>
                 </div>
@@ -412,110 +429,130 @@
         </div>
     </section>
 
-    <!-- MODULES (THE CONTROL SYSTEM) -->
-    <section id="modules" class="py-24 bg-[#0a0f1c]">
+    <!-- 6 CONTROL LEVELS -->
+    <section id="levels" class="py-24 bg-[#0a0f1c]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             <div class="text-center space-y-4 max-w-3xl mx-auto">
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white uppercase tracking-tight">THE CONTROL SYSTEM</h2>
-                <p class="text-slate-400 text-sm sm:text-base">6 нива. Една цел. Да превърнеш AI в работещ бизнес процес.<br>Не е нужно да научиш всичко за AI. Трябва да научиш точно това, което може да създаде стойност за твоя бизнес.</p>
+                <div class="text-lg text-blue-400 font-mono font-bold">6 нива. Една цел. Да превърнеш AI в работещ бизнес процес.</div>
+                <p class="text-slate-400 text-sm sm:text-base">Не е нужно да научиш всичко за AI. Трябва да научиш точно това, което може да създаде стойност за твоя бизнес.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
                 <!-- Level 1 -->
-                <div class="p-6 sm:p-8 rounded cyber-border bg-[#0d1323] space-y-4">
-                    <div class="text-[10px] font-mono text-blue-500 tracking-widest mb-1">CONTROL LEVEL 01</div>
-                    <h3 class="text-xl font-bold text-white uppercase">FIND THE OPPORTUNITY</h3>
-                    <div class="text-xs font-mono text-slate-500 mb-3">Стратегия & AI основи</div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Преди да автоматизираш, трябва да знаеш какво си струва да автоматизираш. Открий процесите, в които AI може да спести време, да намали ръчната работа или да подобри резултата. Научи как да избягваш един от най-честите AI капани: <strong class="text-slate-300">Да плащаш за инструменти, от които всъщност нямаш нужда.</strong></p>
-                    <div class="pt-4 border-t border-slate-800 text-[10px] font-mono text-blue-400 tracking-widest">CONTROL LEVEL 01 &rarr; STRATEGY</div>
+                <div class="p-8 rounded border border-slate-800 bg-[#0d1323] space-y-4 relative overflow-hidden group hover:border-blue-500/50 transition-colors">
+                    <div class="text-[10px] font-mono text-slate-500 tracking-widest mb-1 group-hover:text-blue-400 transition-colors">CONTROL LEVEL 01</div>
+                    <h3 class="text-2xl font-bold text-white uppercase">FIND THE OPPORTUNITY</h3>
+                    <div class="text-xs font-mono text-blue-500 mb-3 bg-blue-900/20 inline-block px-2 py-1 rounded">Стратегия & AI основи</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Преди да автоматизираш, трябва да знаеш какво си струва да автоматизираш. Открий процесите, в които AI може да спести време, да намали ръчната работа или да подобри резултата. Научи как да избягваш един от най-честите AI капани:</p>
+                    <p class="text-sm text-white font-medium border-l-2 border-rose-500 pl-3">Да плащаш за инструменти, от които всъщност нямаш нужда.</p>
+                    <div class="pt-4 mt-4 border-t border-slate-800 text-[10px] font-mono text-slate-500 tracking-widest">CONTROL LEVEL 01 &rarr; <span class="text-white font-bold">STRATEGY</span></div>
                 </div>
 
                 <!-- Level 2 -->
-                <div class="p-6 sm:p-8 rounded cyber-border bg-[#0d1323] space-y-4">
-                    <div class="text-[10px] font-mono text-blue-500 tracking-widest mb-1">CONTROL LEVEL 02</div>
-                    <h3 class="text-xl font-bold text-white uppercase">CONTROL THE OUTPUT</h3>
-                    <div class="text-xs font-mono text-slate-500 mb-3">Prompt Engineering • PCTCO</div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Garbage in. Garbage out. AI е толкова добър, колкото инструкциите, които получава. Овладей PCTCO рамката и превръщай неясните заявки в структурирани инструкции, които дават по-предвидими и използваеми резултати.</p>
-                    <div class="pt-4 border-t border-slate-800 text-[10px] font-mono text-emerald-400 tracking-widest">PROMPT CONTROL &rarr; ACTIVE</div>
+                <div class="p-8 rounded border border-slate-800 bg-[#0d1323] space-y-4 relative overflow-hidden group hover:border-blue-500/50 transition-colors">
+                    <div class="text-[10px] font-mono text-slate-500 tracking-widest mb-1 group-hover:text-blue-400 transition-colors">CONTROL LEVEL 02</div>
+                    <h3 class="text-2xl font-bold text-white uppercase">CONTROL THE OUTPUT</h3>
+                    <div class="text-xs font-mono text-blue-500 mb-3 bg-blue-900/20 inline-block px-2 py-1 rounded">Prompt Engineering • PCTCO</div>
+                    <p class="text-sm text-slate-400 leading-relaxed"><span class="text-rose-400 font-mono">Garbage in. Garbage out.</span> AI е толкова добър, колкото инструкциите, които получава. Овладей PCTCO рамката и превръщай неясните заявки в структурирани инструкции, които дават по-предвидими и използваеми резултати.</p>
+                    <div class="pt-4 mt-4 border-t border-slate-800 text-[10px] font-mono text-emerald-400 tracking-widest">PROMPT CONTROL &rarr; <span class="font-bold">ACTIVE</span></div>
                 </div>
 
                 <!-- Level 3 -->
-                <div class="p-6 sm:p-8 rounded cyber-border bg-[#0d1323] space-y-4">
-                    <div class="text-[10px] font-mono text-blue-500 tracking-widest mb-1">CONTROL LEVEL 03</div>
-                    <h3 class="text-xl font-bold text-white uppercase">ACTIVATE AUTOPILOT</h3>
-                    <div class="text-xs font-mono text-slate-500 mb-3">Инструменти & автоматизация</div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Следващото ниво не е да питаш AI повече. А да го накараш да работи без теб. Научи как Make, Zapier и AI услуги могат да бъдат свързани в автоматизирани workflows.<br><br><span class="font-mono text-xs text-slate-500">По-малко: Copy &rarr; Paste &rarr; Send &rarr; Repeat<br>Повече: TRIGGER &rarr; AI &rarr; ACTION &rarr; DONE</span></p>
-                    <div class="pt-4 border-t border-slate-800 text-[10px] font-mono text-emerald-400 tracking-widest">AUTOPILOT &rarr; READY</div>
+                <div class="p-8 rounded border border-slate-800 bg-[#0d1323] space-y-4 relative overflow-hidden group hover:border-blue-500/50 transition-colors">
+                    <div class="text-[10px] font-mono text-slate-500 tracking-widest mb-1 group-hover:text-blue-400 transition-colors">CONTROL LEVEL 03</div>
+                    <h3 class="text-2xl font-bold text-white uppercase">ACTIVATE AUTOPILOT</h3>
+                    <div class="text-xs font-mono text-blue-500 mb-3 bg-blue-900/20 inline-block px-2 py-1 rounded">Инструменти & автоматизация</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Следващото ниво не е да питаш AI повече. А да го накараш да работи без теб. Научи как Make, Zapier и AI услуги могат да бъдат свързани в автоматизирани workflows.</p>
+                    <div class="bg-slate-900 p-3 rounded border border-slate-800 text-xs font-mono space-y-2">
+                        <div class="text-slate-500">По-малко: Copy &rarr; Paste &rarr; Send &rarr; Repeat</div>
+                        <div class="text-blue-400">Повече: TRIGGER &rarr; AI &rarr; ACTION &rarr; DONE</div>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-800 text-[10px] font-mono text-emerald-400 tracking-widest">AUTOPILOT &rarr; <span class="font-bold">READY</span></div>
                 </div>
 
                 <!-- Level 4 -->
-                <div class="p-6 sm:p-8 rounded cyber-border bg-[#0d1323] space-y-4">
-                    <div class="text-[10px] font-mono text-blue-500 tracking-widest mb-1">CONTROL LEVEL 04</div>
-                    <h3 class="text-xl font-bold text-white uppercase">PUT HUMANS IN CONTROL</h3>
-                    <div class="text-xs font-mono text-slate-500 mb-3">Хора & AI култура</div>
+                <div class="p-8 rounded border border-slate-800 bg-[#0d1323] space-y-4 relative overflow-hidden group hover:border-blue-500/50 transition-colors">
+                    <div class="text-[10px] font-mono text-slate-500 tracking-widest mb-1 group-hover:text-blue-400 transition-colors">CONTROL LEVEL 04</div>
+                    <h3 class="text-2xl font-bold text-white uppercase">PUT HUMANS IN CONTROL</h3>
+                    <div class="text-xs font-mono text-blue-500 mb-3 bg-blue-900/20 inline-block px-2 py-1 rounded">Хора & AI култура</div>
                     <p class="text-sm text-slate-400 leading-relaxed">AI трансформацията не е само технологичен проект. Тя е промяна в начина, по който хората работят. Научи как да въвеждаш AI без хаос, съпротива и ненужен страх. Изгради ясни правила. Обучи екипа. Определи кога AI помага — и кога решението трябва да остане човешко.</p>
-                    <div class="pt-4 border-t border-slate-800 text-[10px] font-mono text-emerald-400 tracking-widest">HUMAN CONTROL &rarr; ACTIVE</div>
+                    <div class="pt-4 mt-4 border-t border-slate-800 text-[10px] font-mono text-emerald-400 tracking-widest">HUMAN CONTROL &rarr; <span class="font-bold">ACTIVE</span></div>
                 </div>
 
                 <!-- Level 5 -->
-                <div class="p-6 sm:p-8 rounded cyber-border bg-[#0d1323] space-y-4">
-                    <div class="text-[10px] font-mono text-blue-500 tracking-widest mb-1">CONTROL LEVEL 05</div>
-                    <h3 class="text-xl font-bold text-white uppercase">CONTROL THE RISK</h3>
-                    <div class="text-xs font-mono text-slate-500 mb-3">GDPR • Ethics • EU AI Act</div>
+                <div class="p-8 rounded border border-slate-800 bg-[#0d1323] space-y-4 relative overflow-hidden group hover:border-blue-500/50 transition-colors">
+                    <div class="text-[10px] font-mono text-slate-500 tracking-widest mb-1 group-hover:text-blue-400 transition-colors">CONTROL LEVEL 05</div>
+                    <h3 class="text-2xl font-bold text-white uppercase">CONTROL THE RISK</h3>
+                    <div class="text-xs font-mono text-blue-500 mb-3 bg-blue-900/20 inline-block px-2 py-1 rounded">GDPR • Ethics • EU AI Act</div>
                     <p class="text-sm text-slate-400 leading-relaxed">AI може да спести време. Една грешка с чувствителни данни може да създаде съвсем различен проблем. Разбери основните европейски правила за използване на AI и изгради по-безопасни вътрешни процеси.</p>
-                    <div class="text-xs font-mono text-slate-500 mt-2">PRIVACY: CHECK | AI RISK: CHECK | COMPLIANCE: CHECK</div>
-                    <div class="pt-4 border-t border-slate-800 text-[10px] font-mono text-blue-400 tracking-widest">INNOVATE. WITHOUT LOSING CONTROL.</div>
+                    <div class="flex gap-4 text-[10px] font-mono text-emerald-400 font-bold bg-emerald-900/10 p-2 rounded">
+                        <span>PRIVACY: CHECK</span>
+                        <span>AI RISK: CHECK</span>
+                        <span>COMPLIANCE: CHECK</span>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-800 text-[10px] font-mono text-blue-400 tracking-widest">INNOVATE. WITHOUT LOSING CONTROL.</div>
                 </div>
 
                 <!-- Level 6 -->
-                <div class="p-6 sm:p-8 rounded cyber-border bg-[#0d1323] space-y-4 relative overflow-hidden">
+                <div class="p-8 rounded border border-blue-500/30 bg-blue-900/10 space-y-4 relative overflow-hidden group hover:border-blue-500 transition-colors shadow-[0_0_20px_rgba(37,99,235,0.05)]">
                     <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/5 to-transparent pointer-events-none"></div>
-                    <div class="text-[10px] font-mono text-blue-500 tracking-widest mb-1 relative z-10">CONTROL LEVEL 06</div>
-                    <h3 class="text-xl font-bold text-white uppercase relative z-10">MEASURE WHAT MATTERS</h3>
-                    <div class="text-xs font-mono text-slate-500 mb-3 relative z-10">ROI & Performance</div>
-                    <p class="text-sm text-slate-400 leading-relaxed relative z-10">„Използваме AI“ не е бизнес резултат. Покажи числата. Измери:<br>
-                    ✓ Спестено време | ✓ Намалена ръчна работа<br>
-                    ✓ Разходи за AI инструменти | ✓ ROI от автоматизацията<br>
-                    Превърни AI от интересен експеримент в измерима бизнес инвестиция.</p>
-                    <div class="pt-4 border-t border-slate-800 text-[10px] font-mono text-emerald-400 tracking-widest relative z-10">ROI MONITOR &rarr; ACTIVE</div>
+                    <div class="text-[10px] font-mono text-blue-400 tracking-widest mb-1 relative z-10">CONTROL LEVEL 06</div>
+                    <h3 class="text-2xl font-bold text-white uppercase relative z-10 cyber-glow">MEASURE WHAT MATTERS</h3>
+                    <div class="text-xs font-mono text-blue-300 mb-3 bg-blue-900/40 inline-block px-2 py-1 rounded relative z-10">ROI & Performance</div>
+                    <p class="text-sm text-slate-300 leading-relaxed relative z-10">„Използваме AI“ не е бизнес резултат. Покажи числата. Измери:</p>
+                    <ul class="text-sm text-slate-300 grid grid-cols-2 gap-2 relative z-10 font-mono">
+                        <li>✓ Спестено време</li>
+                        <li>✓ Финансова стойност</li>
+                        <li>✓ Намалена ръчна работа</li>
+                        <li>✓ Разходи за AI инструменти</li>
+                        <li class="col-span-2 text-emerald-400 pt-2">✓ ROI от автоматизацията</li>
+                    </ul>
+                    <p class="text-sm font-bold text-white mt-2 relative z-10 border-l-2 border-blue-500 pl-3">Превърни AI от интересен експеримент в измерима бизнес инвестиция.</p>
+                    <div class="pt-4 mt-4 border-t border-slate-700 text-[10px] font-mono text-emerald-400 tracking-widest relative z-10">ROI MONITOR &rarr; <span class="font-bold">ACTIVE</span></div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- AI SCORE INTERACTIVE DIAGNOSTIC TOOL -->
-            <div class="mt-16 bg-[#0d1323] border border-blue-500/30 p-6 sm:p-10 rounded max-w-4xl mx-auto shadow-[0_0_20px_rgba(37,99,235,0.1)] relative overflow-hidden">
-                <!-- Background visual -->
-                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 rounded-full blur-[80px] pointer-events-none"></div>
+    <!-- AI SCORE INTERACTIVE DIAGNOSTIC TOOL -->
+    <section id="score" class="py-20 border-y border-slate-800 bg-[#0d1323]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-[#0a0f1c] border border-blue-500/30 p-8 sm:p-12 rounded max-w-4xl mx-auto shadow-[0_0_30px_rgba(37,99,235,0.15)] relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px] pointer-events-none"></div>
 
-                <!-- Start Screen -->
                 <div id="scoreStartScreen" class="text-center space-y-6 relative z-10">
-                    <div class="text-[10px] font-mono text-blue-500 tracking-widest mb-1">DIAGNOSTIC TOOL</div>
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white uppercase cyber-glow">Колко AI-ready е бизнесът ти?</h3>
-                    <p class="text-slate-400 text-sm max-w-2xl mx-auto">Имаш ChatGPT. Може би използваш Gemini. Пробвал си автоматизации. Но колко системно всъщност използваш AI? Провери своя AI CONTROL SCORE.</p>
-                    <div class="flex flex-wrap justify-center gap-3 font-mono text-[10px] text-blue-400 mb-4">
-                        <span class="bg-blue-900/40 px-2 py-1 rounded border border-blue-800/50">STRATEGY</span>
-                        <span class="bg-blue-900/40 px-2 py-1 rounded border border-blue-800/50">PROMPTS</span>
-                        <span class="bg-blue-900/40 px-2 py-1 rounded border border-blue-800/50">AUTOMATION</span>
-                        <span class="bg-blue-900/40 px-2 py-1 rounded border border-blue-800/50">RISK</span>
-                        <span class="bg-blue-900/40 px-2 py-1 rounded border border-blue-800/50">ROI</span>
+                    <div class="text-[10px] font-mono text-blue-500 tracking-widest mb-1">AI CONTROL SCORE</div>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white uppercase cyber-glow">Колко AI-ready е бизнесът ти?</h3>
+                    <div class="text-slate-400 text-sm max-w-2xl mx-auto space-y-2">
+                        <p>Имаш ChatGPT. Може би използваш Gemini. Пробвал си автоматизации.</p>
+                        <p class="text-white font-medium">Но колко системно всъщност използваш AI?</p>
+                        <p>Провери своя AI CONTROL SCORE.</p>
                     </div>
-                    <button onclick="startAiTest()" class="mt-4 px-8 py-4 rounded bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold transition-all uppercase tracking-widest shadow-[0_0_15px_rgba(37,99,235,0.4)]">
-                        [ СТАРТИРАЙ АНАЛИЗА &rarr; ]
+                    <div class="flex flex-wrap justify-center gap-3 font-mono text-[10px] text-blue-400 my-6">
+                        <span class="bg-blue-900/40 px-3 py-1 rounded border border-blue-800/50">Оцени: AI STRATEGY</span>
+                        <span class="bg-blue-900/40 px-3 py-1 rounded border border-blue-800/50">PROMPT QUALITY</span>
+                        <span class="bg-blue-900/40 px-3 py-1 rounded border border-blue-800/50">AUTOMATION</span>
+                        <span class="bg-blue-900/40 px-3 py-1 rounded border border-blue-800/50">TEAM READINESS</span>
+                        <span class="bg-blue-900/40 px-3 py-1 rounded border border-blue-800/50">RISK CONTROL</span>
+                        <span class="bg-blue-900/40 px-3 py-1 rounded border border-blue-800/50">ROI TRACKING</span>
+                    </div>
+                    <div class="text-xs font-mono text-slate-500 mb-6">От хаотично използване &rarr; към измерима AI зрялост.</div>
+                    <button onclick="startAiTest()" class="mt-4 px-8 py-4 rounded bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold transition-all uppercase tracking-widest shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                        [ ПРОВЕРИ МОЯ AI CONTROL SCORE &rarr; ]
                     </button>
                 </div>
 
-                <!-- Question Screen -->
                 <div id="scoreQuestionScreen" class="hidden space-y-6 relative z-10 font-mono">
                     <div class="flex justify-between items-center text-[10px] text-slate-500 border-b border-slate-800 pb-2">
                         <span class="animate-pulse text-emerald-400">SCANNING BUSINESS PROCESSES...</span>
-                        <span id="questionProgress" class="text-blue-400">1 / 5</span>
+                        <span id="questionProgress" class="text-blue-400 font-bold">1 / 5</span>
                     </div>
-                    <h4 id="questionText" class="text-lg sm:text-xl font-bold text-white font-sans">Въпрос</h4>
-                    <div id="answersContainer" class="space-y-3 text-xs sm:text-sm">
-                        <!-- Answers generated via JS -->
-                    </div>
+                    <h4 id="questionText" class="text-xl sm:text-2xl font-bold text-white font-sans">Въпрос</h4>
+                    <div id="answersContainer" class="space-y-3 text-xs sm:text-sm"></div>
                 </div>
 
-                <!-- Result Screen -->
                 <div id="scoreResultScreen" class="hidden text-center space-y-6 relative z-10">
                     <div class="text-[10px] font-mono text-slate-500 border-b border-slate-800 pb-2 uppercase tracking-widest">DIAGNOSTIC COMPLETE</div>
                     
@@ -524,102 +561,117 @@
                         <div id="finalScoreDisplay" class="text-6xl sm:text-8xl font-extrabold text-blue-500 font-mono cyber-glow">0%</div>
                     </div>
                     
-                    <div class="bg-[#0a0f1c] border border-slate-800 p-6 rounded text-left max-w-2xl mx-auto space-y-3">
+                    <div class="bg-[#0d1323] border border-slate-800 p-6 sm:p-8 rounded text-left max-w-2xl mx-auto space-y-4">
                         <div id="resultStatus" class="font-mono text-xs font-bold tracking-widest text-rose-500">STATUS: AI CHAOS</div>
-                        <h4 id="resultTitle" class="text-xl font-bold text-white font-sans">Ти си в Хаос</h4>
-                        <p id="resultDesc" class="text-slate-400 text-sm font-sans leading-relaxed">Описание на резултата.</p>
+                        <h4 id="resultTitle" class="text-2xl font-bold text-white font-sans">Ти си в Хаос</h4>
+                        <p id="resultDesc" class="text-slate-400 text-base font-sans leading-relaxed">Описание на резултата.</p>
                     </div>
 
-                    <div class="pt-6">
+                    <div class="pt-8">
                         <a href="#pricing" class="inline-block px-8 py-4 rounded bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold transition-all uppercase tracking-widest shadow-[0_0_15px_rgba(37,99,235,0.4)]">
                             [ ИЗГРАДИ СВОЯТА СИСТЕМА СЕГА ]
                         </a>
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center pt-8 font-mono">
-                <h3 class="text-2xl font-bold text-white">НЕ УЧИ AI. НАКАРАЙ ГО ДА РАБОТИ.</h3>
-                <p class="text-slate-400 text-sm mt-4">Не ти трябват още 40 часа теория. Трябва да знаеш:</p>
-                <p class="text-blue-400 text-xs mt-2">Къде &rarr; Как &rarr; С какво &rarr; Защо &rarr; При какъв риск &rarr; С какъв резултат</p>
-                <p class="text-slate-500 text-xs mt-4">Това е AI CONTROL.</p>
+
+            <!-- Transition Quote -->
+            <div class="text-center pt-16 font-mono space-y-4">
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white uppercase tracking-tight">НЕ УЧИ AI. НАКАРАЙ ГО ДА РАБОТИ.</h3>
+                <p class="text-slate-400 text-sm">Не ти трябват още 40 часа теория. Трябва да знаеш:</p>
+                <div class="text-blue-400 text-xs font-bold flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
+                    <span>Къде</span> &rarr; 
+                    <span>Как</span> &rarr; 
+                    <span>С какво</span> &rarr; 
+                    <span>Защо</span> &rarr; 
+                    <span>При какъв риск</span> &rarr; 
+                    <span class="text-emerald-400 cyber-glow-emerald">С какъв резултат</span>
+                </div>
+                <p class="text-slate-500 text-xs font-bold tracking-widest mt-6 pt-4 border-t border-slate-800 inline-block px-12">ТОВА Е AI CONTROL.</p>
             </div>
         </div>
     </section>
 
     <!-- NEW PRICING SECTION -->
-    <section id="pricing" class="py-24 border-y border-slate-800 bg-[#0d1323] relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section id="pricing" class="py-24 bg-[#0a0f1c] relative border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            
             <div class="text-center space-y-4 max-w-3xl mx-auto">
                 <span class="text-[10px] font-mono px-3 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-widest">CHOOSE YOUR CONTROL LEVEL</span>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white uppercase tracking-tight">Колко контрол искаш?</h2>
-                <p class="text-slate-400 text-sm">Не всеки бизнес е на едно и също ниво.<br>Затова AI CONTROL има два начина да започнеш.</p>
-                <p class="text-slate-500 text-xs font-mono mt-2">Еднократно плащане. Без месечен абонамент. Доживотен достъп.</p>
+                <div class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                    <p>Не всеки бизнес е на едно и също ниво.</p>
+                    <p>Затова AI CONTROL има два начина да започнеш.</p>
+                </div>
+                <div class="inline-block mt-4 px-4 py-2 border border-slate-800 bg-slate-900 rounded text-slate-300 text-xs font-mono">
+                    Еднократно плащане. Без месечен абонамент. Доживотен достъп.
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 
                 <!-- STARTER TIER -->
-                <div class="p-8 rounded cyber-border bg-[#0a0f1c] space-y-6 flex flex-col justify-between">
+                <div class="p-8 rounded cyber-border bg-[#0d1323] space-y-8 flex flex-col justify-between hover:border-slate-600 transition-colors">
                     <div class="space-y-6">
                         <div>
-                            <div class="text-[10px] font-mono text-slate-500 tracking-widest">STARTER EDITION</div>
-                            <h3 class="text-2xl font-bold text-white uppercase mt-1">START WITH CONTROL.</h3>
-                            <p class="text-xs text-slate-400 mt-2 min-h-[40px]">За индивидуални специалисти, фрийлансъри и малки бизнеси, които използват AI, но все още нямат ясна система.</p>
+                            <div class="text-[10px] font-mono text-slate-500 tracking-widest mb-2">AI CONTROL™ STARTER</div>
+                            <h3 class="text-3xl font-bold text-white uppercase">START WITH CONTROL.</h3>
+                            <p class="text-sm text-slate-400 mt-3 min-h-[60px]">За индивидуални специалисти, фрийлансъри и малки бизнеси, които използват AI, но все още нямат ясна система.</p>
                         </div>
                         
-                        <div class="text-4xl font-extrabold text-white font-mono border-b border-slate-800 pb-4">
-                            €19.99 <span class="text-[10px] font-normal text-slate-500 uppercase tracking-widest">/ ONE TIME</span>
+                        <div class="text-5xl font-extrabold text-white font-mono border-b border-slate-800 pb-6">
+                            €19.99 <span class="text-xs font-normal text-slate-500 uppercase tracking-widest">/ ONE TIME</span>
                         </div>
-                        
-                        <!-- Transform Status -->
-                        <div class="bg-slate-900 border border-slate-800 p-4 rounded text-center font-mono text-[10px] tracking-widest">
-                            <div class="text-slate-500">ПРЕМИНИ ОТ:</div>
-                            <div class="text-rose-500 my-1">Random AI use</div>
-                            <div class="text-slate-600">&darr;</div>
-                            <div class="text-emerald-400 mt-1">Clear AI system</div>
+
+                        <!-- Transition Block -->
+                        <div class="bg-slate-900/80 border border-slate-800 p-4 rounded text-center font-mono text-[10px] tracking-widest">
+                            <div class="text-slate-500 mb-1">ПРЕМИНИ ОТ:</div>
+                            <div class="text-rose-400">Random AI use</div>
+                            <div class="text-slate-600 my-1">&darr;</div>
+                            <div class="text-emerald-400 font-bold">Clear AI system</div>
                         </div>
 
                         <div>
-                            <div class="text-[10px] font-mono text-blue-500 mb-3 tracking-widest">INCLUDED</div>
-                            <ul class="text-sm text-slate-300 space-y-2">
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> 6 Control Levels</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Strategy Control</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> PCTCO Prompt Framework</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Automation Framework</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Human Control</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Risk Control</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Performance & ROI Framework</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Interactive Progress</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> 3 Bonus Tools</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> 2 Prompt Control Generations</li>
+                            <div class="text-[10px] font-mono text-blue-500 mb-4 tracking-widest border-b border-slate-800 pb-2">INCLUDED</div>
+                            <ul class="text-sm text-slate-300 space-y-3 font-medium">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>6 Control Levels</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Strategy Control</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>PCTCO Prompt Framework</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Automation Framework</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Human Control</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Risk Control</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Performance & ROI Framework</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Interactive Progress</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>3 Bonus Tools</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>2 Prompt Control Generations</span></li>
                             </ul>
                         </div>
 
-                        <!-- System Status Dashboard -->
-                        <div class="bg-[#0d1323] border border-slate-800 rounded p-4 font-mono text-[10px] space-y-2 tracking-widest">
+                        <!-- Status Dashboard -->
+                        <div class="bg-[#0a0f1c] border border-slate-800 rounded p-4 font-mono text-[10px] space-y-3 tracking-widest">
                             <div class="text-slate-500 border-b border-slate-800 pb-2 mb-2">STARTER STATUS</div>
                             <div class="flex justify-between items-center">
                                 <span class="text-slate-400">CONTROL SYSTEM</span>
-                                <span class="text-emerald-400">● ACTIVE</span>
+                                <span class="text-emerald-400 font-bold">● ACTIVE</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-slate-400">PROMPT CONTROL</span>
-                                <span class="text-amber-500">LIMITED</span>
+                                <span class="text-amber-500 font-bold">LIMITED</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-slate-400">PROMT БИБЛИОТЕКА</span>
-                                <span class="text-slate-500"><i class="fa-solid fa-lock text-[8px]"></i> PRO</span>
+                                <span class="text-slate-400">CONTROL LIBRARY</span>
+                                <span class="text-slate-500"><i class="fa-solid fa-lock text-[8px] mr-1"></i> PRO</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-slate-400">AI COPILOT</span>
-                                <span class="text-slate-500">○ OFFLINE</span>
+                                <span class="text-slate-600 font-bold">○ OFFLINE</span>
                             </div>
                         </div>
 
-                        <div>
+                        <!-- Target Audience -->
+                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800/50">
                             <div class="text-[10px] font-mono text-slate-500 mb-3 tracking-widest">ПОДХОДЯЩ ЗА ТЕБ, АКО:</div>
-                            <ul class="text-[11px] text-slate-400 space-y-2">
+                            <ul class="text-xs text-slate-400 space-y-2 leading-relaxed">
                                 <li>• Използваш ChatGPT, но без ясна система.</li>
                                 <li>• Не знаеш кои процеси си струва да автоматизираш.</li>
                                 <li>• Искаш структурирана AI основа без техническа сложност.</li>
@@ -629,75 +681,77 @@
                     </div>
 
                     <div class="pt-6 border-t border-slate-800 text-center space-y-4">
-                        <div class="font-mono text-xs font-bold text-white tracking-widest">AI CHAOS &rarr; AI CLARITY</div>
-                        <a href="https://buy.stripe.com/4gM7sNdh8fWt9rS8DFaVa03" class="w-full block py-4 rounded border border-slate-600 bg-slate-800 hover:bg-slate-700 text-white font-mono text-xs font-bold transition-all tracking-widest">
+                        <div class="font-mono text-[10px] font-bold text-white tracking-widest bg-slate-800/50 py-2 rounded">
+                            <span class="text-slate-400">AI CHAOS</span> &rarr; <span class="text-emerald-400">AI CLARITY</span>
+                        </div>
+                        <a href="https://buy.stripe.com/4gM7sNdh8fWt9rS8DFaVa03" class="w-full block py-4 rounded border border-slate-600 bg-slate-800 hover:bg-slate-700 text-white font-mono text-sm font-bold transition-all tracking-widest">
                             [ START WITH CONTROL &rarr; ]
                         </a>
-                        <div class="text-[10px] font-mono text-slate-500 tracking-widest">€19.99 • ЕДНОКРАТНО</div>
+                        <div class="text-[10px] font-mono text-slate-500 tracking-widest uppercase">€19.99 • еднократно</div>
                     </div>
                 </div>
 
                 <!-- PRO TIER -->
-                <div class="p-8 rounded cyber-border-active bg-[#0a0f1c] space-y-6 flex flex-col justify-between relative shadow-[0_0_30px_rgba(37,99,235,0.15)]">
-                    <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded bg-blue-600 text-white text-[10px] font-mono font-extrabold tracking-widest uppercase shadow-[0_0_10px_rgba(37,99,235,0.5)]">MOST POPULAR</span>
+                <div class="p-8 rounded cyber-border-active bg-[#0d1323] space-y-8 flex flex-col justify-between relative shadow-[0_0_40px_rgba(37,99,235,0.15)]">
+                    <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded bg-blue-600 text-white text-[10px] font-mono font-extrabold tracking-widest uppercase shadow-[0_0_15px_rgba(37,99,235,0.6)]">MOST POPULAR</span>
                     
                     <div class="space-y-6">
                         <div>
-                            <div class="text-[10px] font-mono text-blue-500 tracking-widest">AI CONTROL™ PRO</div>
-                            <h3 class="text-2xl font-bold text-white uppercase mt-1 cyber-glow">TAKE FULL CONTROL.</h3>
-                            <p class="text-xs text-slate-400 mt-2 min-h-[40px]">За предприемачи, мениджъри, експерти и екипи, които искат не просто да изучават AI, а да го превърнат в работеща бизнес система.</p>
+                            <div class="text-[10px] font-mono text-blue-500 tracking-widest mb-2">AI CONTROL™ PRO</div>
+                            <h3 class="text-3xl font-bold text-white uppercase cyber-glow">TAKE FULL CONTROL.</h3>
+                            <p class="text-sm text-slate-400 mt-3 min-h-[60px]">За предприемачи, мениджъри, експерти и екипи, които искат не просто да изучават AI, а да го превърнат в работеща бизнес система.</p>
                         </div>
                         
-                        <div class="text-4xl font-extrabold text-blue-500 font-mono border-b border-slate-800 pb-4">
-                            €39.99 <span class="text-sm font-normal text-slate-500 line-through mr-1">€80</span><span class="text-[10px] font-normal text-slate-500 uppercase tracking-widest">/ ONE TIME</span>
-                            <div class="text-[10px] font-mono text-slate-500 tracking-widest mt-2">* Отключване на PRO версията само с доплащане на разликата.</div>
+                        <div class="text-5xl font-extrabold text-blue-500 font-mono border-b border-slate-800 pb-6">
+                            €39.99 <span class="text-xl font-normal text-slate-500 line-through mr-1">€80</span><span class="text-xs font-normal text-slate-500 uppercase tracking-widest">/ ONE TIME</span>
                         </div>
-                        
-                        <!-- Transform Status -->
+
+                        <!-- Transition Block -->
                         <div class="bg-blue-900/10 border border-blue-500/30 p-4 rounded text-center font-mono text-[10px] tracking-widest">
-                            <div class="text-slate-500">ПРЕМИНИ ОТ:</div>
-                            <div class="text-slate-300 my-1">AI knowledge</div>
-                            <div class="text-blue-500">&darr;</div>
-                            <div class="text-blue-400 mt-1 font-bold">AI execution</div>
+                            <div class="text-blue-300 mb-1">ПРЕМИНИ ОТ:</div>
+                            <div class="text-slate-300">AI knowledge</div>
+                            <div class="text-blue-500 my-1">&darr;</div>
+                            <div class="text-blue-400 font-bold cyber-glow">AI execution</div>
                         </div>
 
                         <div>
-                            <div class="text-[10px] font-mono text-blue-500 mb-3 tracking-widest">EVERYTHING IN STARTER +</div>
-                            <ul class="text-sm text-slate-200 space-y-2">
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500 text-[10px]"></i> Unlimited Prompt Control™</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500 text-[10px]"></i> 40 Ready Business Prompts</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500 text-[10px]"></i> Promt Библиотека</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500 text-[10px]"></i> AI Copilot™</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500 text-[10px]"></i> Full Automation Resources</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500 text-[10px]"></i> Complete Pro Toolkit</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500 text-[10px]"></i> Future Updates</li>
+                            <div class="text-[10px] font-mono text-blue-500 mb-4 tracking-widest border-b border-slate-800 pb-2">EVERYTHING IN STARTER +</div>
+                            <ul class="text-sm text-white space-y-3 font-medium">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-500 mt-1"></i> <span>Unlimited Prompt Control™</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-500 mt-1"></i> <span class="font-bold">40 Ready Business Prompts</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-500 mt-1"></i> <span>Control Library™</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-500 mt-1"></i> <span>AI Copilot™</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-500 mt-1"></i> <span>Full Automation Resources</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-500 mt-1"></i> <span>Complete Pro Toolkit</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-500 mt-1"></i> <span>Future Updates</span></li>
                             </ul>
                         </div>
 
-                        <!-- System Status Dashboard -->
-                        <div class="bg-[#0d1323] border border-blue-500/30 rounded p-4 font-mono text-[10px] space-y-2 tracking-widest">
+                        <!-- Status Dashboard -->
+                        <div class="bg-[#0a0f1c] border border-blue-500/30 rounded p-4 font-mono text-[10px] space-y-3 tracking-widest">
                             <div class="text-blue-500 border-b border-slate-800 pb-2 mb-2">PRO STATUS</div>
                             <div class="flex justify-between items-center">
                                 <span class="text-slate-300">CONTROL SYSTEM</span>
-                                <span class="text-emerald-400">● ACTIVE</span>
+                                <span class="text-emerald-400 font-bold">● ACTIVE</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-slate-300">PROMPT CONTROL</span>
-                                <span class="text-blue-400">● UNLIMITED</span>
+                                <span class="text-blue-400 font-bold">● UNLIMITED</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-slate-300">PROMT БИБЛИОТЕКА</span>
-                                <span class="text-blue-400">● 40 READY</span>
+                                <span class="text-slate-300">CONTROL LIBRARY</span>
+                                <span class="text-blue-400 font-bold">● 40 READY</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-slate-300">AI COPILOT</span>
-                                <span class="text-emerald-400">● ONLINE</span>
+                                <span class="text-emerald-400 font-bold">● ONLINE</span>
                             </div>
                         </div>
 
-                        <div>
-                            <div class="text-[10px] font-mono text-slate-500 mb-3 tracking-widest">ПОДХОДЯЩ ЗА ТЕБ, АКО:</div>
-                            <ul class="text-[11px] text-slate-400 space-y-2">
+                        <!-- Target Audience -->
+                        <div class="bg-blue-900/10 p-4 rounded border border-blue-900/30">
+                            <div class="text-[10px] font-mono text-blue-400 mb-3 tracking-widest">ПОДХОДЯЩ ЗА ТЕБ, АКО:</div>
+                            <ul class="text-xs text-blue-100/70 space-y-2 leading-relaxed">
                                 <li>• Вече използваш AI редовно.</li>
                                 <li>• Искаш готови промптове за реални бизнес задачи.</li>
                                 <li>• Искаш собствен Prompt Studio без Starter лимита.</li>
@@ -708,54 +762,63 @@
                     </div>
 
                     <div class="pt-6 border-t border-slate-800 text-center space-y-4">
-                        <div class="font-mono text-xs font-bold text-white tracking-widest cyber-glow">AI CLARITY &rarr; AI SYSTEM</div>
-                        <a href="https://buy.stripe.com/aFacN7gtkeSpbA08DFaVa04" class="w-full block py-4 rounded bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold transition-all tracking-widest shadow-[0_0_15px_rgba(37,99,235,0.4)]">
+                        <div class="font-mono text-[10px] font-bold text-white tracking-widest bg-blue-900/20 py-2 rounded">
+                            <span class="text-slate-300">AI CLARITY</span> &rarr; <span class="text-blue-400 cyber-glow">AI SYSTEM</span>
+                        </div>
+                        <a href="https://buy.stripe.com/aFacN7gtkeSpbA08DFaVa04" class="w-full block py-4 rounded bg-blue-600 hover:bg-blue-500 text-white font-mono text-sm font-bold transition-all tracking-widest shadow-[0_0_20px_rgba(37,99,235,0.4)]">
                             [ TAKE FULL CONTROL &rarr; ]
                         </a>
-                        <div class="text-[10px] font-mono text-slate-500 tracking-widest">€39.99 • ЕДНОКРАТНО • ДОЖИВОТЕН ДОСТЪП</div>
+                        <div class="text-[10px] font-mono text-slate-400 tracking-widest uppercase">€39.99 • еднократно • доживотен достъп</div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- VS DECISION TREE -->
-            <div class="max-w-4xl mx-auto pt-16 border-t border-slate-800 text-center space-y-8">
-                <h3 class="text-xl sm:text-2xl font-bold text-white uppercase">НЕ СИ СИГУРЕН КОЙ ДА ИЗБЕРЕШ?</h3>
+            <div class="max-w-4xl mx-auto pt-20 border-t border-slate-800 text-center space-y-12">
+                <h3 class="text-2xl font-extrabold text-white uppercase tracking-tight">НЕ СИ СИГУРЕН КОЙ ДА ИЗБЕРЕШ?</h3>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 relative">
                     <!-- Divider line for desktop -->
-                    <div class="hidden sm:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-800 -translate-x-1/2"></div>
+                    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-800 -translate-x-1/2"></div>
                     
-                    <div class="space-y-4 font-mono">
-                        <div class="text-xs text-slate-400">Избери <span class="text-white font-bold">STARTER</span>, ако:</div>
-                        <div class="bg-slate-900 p-4 rounded border border-slate-800 text-sm text-slate-300">„Искам първо да разбера системата.“</div>
-                        <div class="text-slate-600">&darr;</div>
-                        <div class="text-blue-400 font-bold text-xs tracking-widest">START WITH CONTROL</div>
-                        <div class="pt-4">
-                            <div class="text-white font-bold">STARTER</div>
-                            <div class="text-[10px] text-slate-500">LEARN THE SYSTEM</div>
-                            <div class="text-lg text-white mt-1">€19.99</div>
+                    <!-- Starter Side -->
+                    <div class="space-y-6 flex flex-col items-center">
+                        <div class="text-sm text-slate-400 font-mono tracking-widest">Избери <span class="text-white font-bold">STARTER</span>, ако:</div>
+                        <div class="bg-slate-900 p-6 rounded border border-slate-800 text-base text-slate-300 italic w-full">
+                            „Искам първо да разбера системата.“
+                        </div>
+                        <div class="text-slate-600 text-2xl">&darr;</div>
+                        <div class="text-blue-400 font-mono font-bold text-sm tracking-widest">START WITH CONTROL</div>
+                        <div class="pt-4 border-t border-slate-800 w-full">
+                            <div class="text-xl text-white font-extrabold tracking-tight">STARTER</div>
+                            <div class="text-[10px] font-mono text-slate-500 tracking-widest mt-1">LEARN THE SYSTEM</div>
+                            <div class="text-2xl font-mono text-white mt-3 font-bold">€19.99</div>
                         </div>
                     </div>
 
-                    <div class="space-y-4 font-mono">
-                        <div class="text-xs text-slate-400">Избери <span class="text-blue-400 font-bold">PRO</span>, ако:</div>
-                        <div class="bg-blue-900/10 p-4 rounded border border-blue-500/30 text-sm text-white">„Искам системата + инструментите.“</div>
-                        <div class="text-blue-500">&darr;</div>
-                        <div class="text-blue-400 font-bold text-xs tracking-widest cyber-glow">TAKE FULL CONTROL</div>
-                        <div class="pt-4">
-                            <div class="text-blue-400 font-bold">PRO</div>
-                            <div class="text-[10px] text-blue-500">USE THE SYSTEM</div>
-                            <div class="text-lg text-blue-400 mt-1">€39.99</div>
+                    <!-- Pro Side -->
+                    <div class="space-y-6 flex flex-col items-center">
+                        <div class="text-sm text-slate-400 font-mono tracking-widest">Избери <span class="text-blue-400 font-bold cyber-glow">PRO</span>, ако:</div>
+                        <div class="bg-blue-900/10 p-6 rounded border border-blue-500/30 text-base text-white italic w-full">
+                            „Искам системата + инструментите.“
+                        </div>
+                        <div class="text-blue-500 text-2xl">&darr;</div>
+                        <div class="text-blue-400 font-mono font-bold text-sm tracking-widest cyber-glow">TAKE FULL CONTROL</div>
+                        <div class="pt-4 border-t border-slate-800 w-full">
+                            <div class="text-xl text-blue-400 font-extrabold tracking-tight cyber-glow">PRO</div>
+                            <div class="text-[10px] font-mono text-blue-500 tracking-widest mt-1">USE THE SYSTEM</div>
+                            <div class="text-2xl font-mono text-blue-400 mt-3 font-bold">€39.99</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="pt-8 text-[10px] font-mono text-slate-500 tracking-widest space-x-4">
-                    <span>ONE PAYMENT.</span>
-                    <span>NO SUBSCRIPTION.</span>
-                    <span class="text-slate-400">YOUR CONTROL.</span>
+                <div class="pt-10 flex flex-wrap justify-center gap-6 text-[11px] font-mono text-slate-500 tracking-widest">
+                    <span class="bg-slate-900 px-3 py-1 rounded">ONE PAYMENT.</span>
+                    <span class="bg-slate-900 px-3 py-1 rounded">NO SUBSCRIPTION.</span>
+                    <span class="bg-blue-900/20 text-blue-400 px-3 py-1 rounded border border-blue-900/50">YOUR CONTROL.</span>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -782,8 +845,8 @@
 
                 <div onclick="toggleFaqCard(this)" class="interactive-faq-card p-6 rounded cyber-border bg-[#0d1323] space-y-3">
                     <h4 class="font-bold text-sm text-white">Това курс ли е или електронна книга?</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed">Нито едното описва продукта напълно. AI CONTROL комбинира практическо съдържание с интерактивни инструменти: Control Levels + Prompt Studio + Promt Библиотека + AI Copilot + Automation Resources + Checklists.</p>
-                    <div class="text-[10px] font-mono text-blue-400 tracking-widest pt-2">ЗА ТОВА ГО НАРИЧАМЕ: BUSINESS AI SYSTEM.</div>
+                    <p class="text-slate-400 text-sm leading-relaxed">Нито едното описва продукта напълно. AI CONTROL комбинира практическо съдържание с интерактивни инструменти: Control Levels + Prompt Studio + Prompt Library + AI Copilot + Automation Resources + Checklists. Затова го наричаме: BUSINESS AI SYSTEM.</p>
+                    <div class="text-[10px] font-mono text-blue-400 tracking-widest pt-2">BUSINESS AI SYSTEM.</div>
                 </div>
 
                 <div onclick="toggleFaqCard(this)" class="interactive-faq-card p-6 rounded cyber-border bg-[#0d1323] space-y-3">
@@ -794,7 +857,7 @@
 
                 <div onclick="toggleFaqCard(this)" class="interactive-faq-card p-6 rounded cyber-border bg-[#0d1323] space-y-3">
                     <h4 class="font-bold text-sm text-white">Мога ли да премина от Starter към Pro?</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed">Да. Доплащаш само разликата в цената и получаваш пълен достъп до Prompt Studio (без лимит от 2 генерации), Promt Библиотека (40 готови промпта) и AI Copilot.</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">Да. Можеш да доплатиш само разликата и да отключиш пълния AI CONTROL PRO пакет. Това премахва лимита в Prompt Studio и ти дава пълен достъп до Control Library с 40 готови бизнес промпта и AI Copilot.</p>
                     <div class="text-[10px] font-mono text-emerald-400 tracking-widest pt-2">STARTER &rarr; PRO &rarr; FULL CONTROL</div>
                 </div>
             </div>
@@ -807,8 +870,8 @@
             <p class="text-slate-400 font-mono text-sm">AI инструментите няма да станат по-малко.<br>AI хаосът няма да изчезне сам.</p>
             
             <div class="space-y-2">
-                <p class="text-slate-500">Въпросът вече не е: "Трябва ли да използвам AI?"</p>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Въпросът е: <br><span class="text-blue-500">"КАК ДА ГО ИЗПОЛЗВАМ ПРАВИЛНО?"</span></h2>
+                <p class="text-slate-500">Въпросът вече не е: „Трябва ли да използвам AI?“</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Въпросът е: <br><span class="text-blue-500">„КАК ДА ГО ИЗПОЛЗВАМ ПРАВИЛНО?“</span></h2>
             </div>
             
             <div class="bg-slate-900 border border-slate-800 p-6 rounded inline-block max-w-md mx-auto text-sm text-slate-300 space-y-2 font-mono">
@@ -844,7 +907,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800 bg-[#0a0f1c] py-8 text-center text-[10px] sm:text-xs font-mono text-slate-600 space-y-2">
-        <p>AI Навигация | Business AI System • 2026</p>
+        <p>AI CONTROL™ | Business AI System • 2026</p>
         <p>От хаотично използване на AI към системен бизнес резултат.</p>
         <p class="pt-4 text-slate-700">Изградено от Skills Studio.</p>
     </footer>
