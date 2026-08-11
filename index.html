@@ -792,7 +792,7 @@
         <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gradient-bg text-white">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-bold text-base"><i class="fa-solid fa-robot"></i></div>
-                <div><h3 class="font-bold text-sm">AI Консултант</h3><p class="text-[11px] opacity-80">Задвижван от Gemini 1.5 Flash</p></div>
+                <div><h3 class="font-bold text-sm">AI Консултант</h3><p class="text-[11px] opacity-80">Задвижван от Интелигентен Модел</p></div>
             </div>
             <button id="closeAiConsultantBtn" class="p-1.5 rounded-lg hover:bg-white/20 transition-colors"><i class="fa-solid fa-xmark text-lg"></i></button>
         </div>
@@ -801,7 +801,7 @@
             <div class="flex items-start gap-2.5 animate-fade-in">
                 <div class="w-7 h-7 rounded-full gradient-bg text-white flex items-center justify-center text-xs flex-shrink-0 shadow-md"><i class="fa-solid fa-brain"></i></div>
                 <div class="p-3 bg-white dark:bg-slate-800 rounded-2xl rounded-tl-none max-w-[85%] text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-sm chat-content">
-                    Здравейте! Аз съм вашият виртуален AI консултант в Pro версията. Свързан съм с живия модел. Как мога да ви помогна с бизнес процесите днес?
+                    Здравейте! Аз съм вашият виртуален AI консултант в Pro версията. Как мога да ви помогна с бизнес процесите днес?
                 </div>
             </div>
         </div>
@@ -958,7 +958,7 @@
                 });
             }
 
-            // Real Gemini API Integration
+            // Chat Interface Functions
             const chatMessages = document.getElementById('chatMessages');
             const chatInput = document.getElementById('chatInput');
             const sendChatBtn = document.getElementById('sendChatBtn');
@@ -998,31 +998,38 @@
                 return id;
             };
 
+            // НАЧИН 1: УМЕН ДЕМО РЕЖИМ (СИМУЛИРАН AI)
             const fetchAiResponse = async (userText) => {
                 const loadingId = appendLoading();
-                try {
-                    // РАЗДЕЛЕН API КЛЮЧ - Защита срещу GitHub Secret Scanning
-                    const part1 = 'AQ.Ab8RN6KNKWj3S78p9c';
-                    const part2 = '31vUM5K77oVhxTrlwQ3rqK8Gva7KC6TQ';
-                    const apiKey = part1 + part2;
-                    
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-                    const payload = {
-                        contents: [{ role: "user", parts: [{ text: userText }] }],
-                        systemInstruction: { parts: [{ text: "Ти си полезен бизнес AI консултант. Отговаряй на български език. Бъди кратък и точен." }] }
-                    };
-                    const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                    const result = await response.json();
-                    document.getElementById(loadingId).remove();
-                    if (result.candidates?.[0]?.content) {
-                        appendMessage(result.candidates[0].content.parts[0].text, 'ai');
-                    } else {
-                        appendMessage("Извинете, възникна грешка в комуникацията.", 'ai');
+                
+                // Симулираме време за мислене (1.5 секунди)
+                setTimeout(() => {
+                    if (document.getElementById(loadingId)) {
+                        document.getElementById(loadingId).remove();
                     }
-                } catch (error) {
-                    document.getElementById(loadingId).remove();
-                    appendMessage("Техническа грешка при свързването с AI модела.", 'ai');
-                }
+
+                    const text = userText.toLowerCase();
+                    let reply = "Извинете, въпросът ви е извън моята експертиза. Моля, задайте въпрос, свързан с автоматизации, промптове или AI стратегии от наръчника.";
+
+                    // Логика с ключови думи
+                    if (text.includes("здравей") || text.includes("здравейте") || text.includes("привет")) {
+                        reply = "Здравейте! Аз съм тук, за да ви помогна с бизнес процесите. С какво да започнем?";
+                    } 
+                    else if (text.includes("автоматизаци") || text.includes("zapier") || text.includes("make")) {
+                        reply = "За автоматизации препоръчвам **Make.com** за сложни логики и **Zapier** за бързи интеграции. Винаги започвайте с описване на повтаряемите задачи, които ви отнемат най-много време.";
+                    } 
+                    else if (text.includes("промпт") || text.includes("маркетинг") || text.includes("идеи")) {
+                        reply = "Ето една добра структура по **PCTCO**:\n\n*Ти си маркетинг експерт. Напиши 3 идеи за Facebook пост за нов продукт. Формат: списък.*\n\nМожете да тествате това директно в нашия **Prompt Studio** модул!";
+                    } 
+                    else if (text.includes("риск") || text.includes("eu ai act") || text.includes("закон") || text.includes("gdpr") || text.includes("рисковете")) {
+                        reply = "Според **EU AI Act**, най-важното правило е: *Никога не въвеждайте лични данни в публични AI модели*. Системите се делят на 4 нива на риск, като най-масовите инструменти попадат в 'Ограничен риск' и изискват само прозрачност.";
+                    }
+                    else if (text.includes("roi") || text.includes("възвръщаемост") || text.includes("пари") || text.includes("цена")) {
+                        reply = "За да измерите **ROI** (възвръщаемостта), пресметнете спестените часове на месец по вашата часова ставка, и извадете цената на AI софтуера. Погледнете Модул 6 за подробен калкулатор.";
+                    }
+
+                    appendMessage(reply, 'ai');
+                }, 1500); 
             };
 
             const handleChatSubmit = () => {
