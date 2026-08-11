@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI CONTROL™ | PRO ИЗДАНИЕ</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -18,9 +18,9 @@
                         sidebar: '#0d131f',
                         brand: { 500: '#3b82f6', 600: '#2563eb' }
                     },
-                    fontFamily: { 
+                    fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'] 
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
                     }
                 }
             }
@@ -28,14 +28,14 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #060a10; color: #f1f5f9; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
-        
+
         .cyber-border { border: 1px solid #1e293b; }
         .cyber-border-active { border: 1px solid #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
-        
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #060a10; }
@@ -46,7 +46,13 @@
             background-color: #10b981;
             border-color: #10b981;
         }
-        
+
+        /* Visible keyboard focus everywhere */
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, label:focus-within {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
         /* Category specific colors */
         .badge-marketing { color: #60a5fa; background-color: rgba(30, 58, 138, 0.3); }
         .badge-sales { color: #f59e0b; background-color: rgba(120, 53, 15, 0.3); }
@@ -59,20 +65,52 @@
             0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.2), 0 0 10px rgba(59, 130, 246, 0.1); transform: translateY(0); }
             50% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.4), 0 0 15px rgba(59, 130, 246, 0.15); transform: translateY(-1px); }
         }
-        .btn-neon-motion {
-            animation: neonPulse 2.5s infinite ease-in-out;
-        }
+        .btn-neon-motion { animation: neonPulse 2.5s infinite ease-in-out; }
 
         @keyframes softPulse {
             0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.2); transform: translateY(0); border-color: rgba(59, 130, 246, 0.3); }
             50% { box-shadow: 0 0 12px rgba(59, 130, 246, 0.4); transform: translateY(-1px); border-color: rgba(59, 130, 246, 0.6); }
         }
-        .btn-soft-motion {
-            animation: softPulse 3s infinite ease-in-out;
+        .btn-soft-motion { animation: softPulse 3s infinite ease-in-out; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn-neon-motion, .btn-soft-motion { animation: none; }
+            html { scroll-behavior: auto; }
         }
 
-        /* Sidebar Pro Links Interactive State */
-        <div class="p-6 border-b border-slate-800">
+        /* Sidebar drawer on mobile */
+        #sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.25s ease;
+        }
+        #sidebar.open { transform: translateX(0); }
+        @media (min-width: 768px) {
+            #sidebar { transform: none; position: sticky; }
+        }
+
+        #sidebarBackdrop { display: none; }
+        #sidebarBackdrop.open { display: block; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Mobile top bar -->
+    <div class="md:hidden fixed top-0 left-0 right-0 h-14 bg-sidebar border-b border-slate-800 flex items-center justify-between px-4 z-40">
+        <button onclick="toggleSidebar()" aria-label="Отвори менюто" aria-controls="sidebar" aria-expanded="false" id="sidebarToggleBtn" class="text-white text-xl px-2 py-1 rounded hover:bg-slate-800">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="font-extrabold text-lg tracking-tight">
+            <span class="text-white">AI CONTROL</span><span class="text-amber-500">™</span>
+        </div>
+        <div class="w-8"></div>
+    </div>
+
+    <!-- Backdrop for mobile drawer -->
+    <div id="sidebarBackdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-black/60 z-40 md:hidden"></div>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="fixed md:sticky top-0 left-0 z-50 w-72 max-w-[85vw] h-screen bg-sidebar border-r border-slate-800 flex flex-col">
+        <div class="p-6 border-b border-slate-800 mt-14 md:mt-0">
             <div class="font-extrabold text-2xl tracking-tight leading-none mb-4 whitespace-nowrap">
                 <span class="text-white">AI CONTROL</span><span class="text-amber-500">™ PRO</span>
             </div>
@@ -81,7 +119,7 @@
             </div>
         </div>
 
-        <div class="flex-1 overflow-y-auto p-6 space-y-8">
+        <nav class="flex-1 overflow-y-auto p-6 space-y-8" aria-label="Основна навигация">
             <div class="space-y-1">
                 <div class="text-[10px] font-mono text-amber-500 mb-3 tracking-widest uppercase">ЦЕНТЪР ЗА УПРАВЛЕНИЕ</div>
                 <a href="#home" class="sidebar-link block py-2 px-3 text-base text-white font-bold bg-slate-800/50 rounded transition-colors" onclick="setActiveLink(this)">
@@ -135,7 +173,7 @@
                 </div>
                 <p class="text-xs text-slate-400 font-mono leading-relaxed mt-2">Изгради системата. След това използвай Pro инструментите, за да я приложиш.</p>
             </div>
-        </div>
+        </nav>
 
         <div class="p-4 border-t border-slate-800 bg-slate-900/50">
             <div class="text-[10px] font-mono text-amber-500 tracking-widest mb-3 font-bold uppercase">PRO СТАТУС</div>
@@ -151,13 +189,13 @@
         </div>
     </aside>
 
-    <main class="flex-1 overflow-y-auto h-screen scroll-smooth pt-8 relative pb-20">
+    <main class="flex-1 overflow-y-auto h-screen scroll-smooth pt-14 md:pt-8 relative pb-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-8 py-10 space-y-24">
 
             <!-- SECTION: HOME / CONTROL CENTER DASHBOARD -->
             <section id="home" class="scroll-mt-16 space-y-8">
                 <div class="border-b border-slate-800 pb-8 space-y-4">
-                    
+
                     <h1 class="text-4xl sm:text-7xl font-black text-white tracking-tighter uppercase leading-[0.95]">
                         АКТИВИРАН ПЪЛЕН КОНТРОЛ.
                     </h1>
@@ -166,7 +204,7 @@
                         Тук AI не е просто тема за изучаване.<br>Тук го превръщаш в система.<br>
                         Имаш пълен достъп до:
                     </p>
-                    
+
                     <div class="flex flex-wrap gap-3 pt-4 text-[11px] font-mono font-bold tracking-widest uppercase text-slate-300">
                         <span class="px-3 py-1.5 border border-emerald-500/50 rounded bg-emerald-900/20 text-emerald-400">6 НИВА НА КОНТРОЛ</span>
                         <span class="px-3 py-1.5 border border-emerald-500/50 rounded bg-emerald-900/20 text-emerald-400">PROMPT CONTROL БЕЗ ЛИМИТ</span>
@@ -191,10 +229,10 @@
                 </div>
 
                 <div class="bg-panel cyber-border rounded p-6 sm:p-8 space-y-6">
-                    <h2 class="text-5xl font-bold text-white tracking-widest uppercase">СТАТУС НА PRO СИСТЕМАТА</h2>
-                    
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-widest uppercase">СТАТУС НА PRO СИСТЕМАТА</h2>
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        
+
                         <div class="bg-blue-900/10 p-5 rounded border border-blue-900/30 flex flex-col justify-between h-full">
                             <div>
                                 <div class="flex items-center gap-2 text-xl font-bold text-white font-mono mb-3 uppercase">
@@ -214,7 +252,7 @@
                             </div>
                             <a href="#pro-copilot" class="text-lg font-bold font-mono text-white bg-blue-900/30 border border-blue-500/50 hover:bg-blue-800/50 transition-all rounded px-4 py-3 block uppercase text-center btn-soft-motion mt-auto">ПОПИТАЙ AI COPILOT</a>
                         </div>
-                        
+
                         <div class="bg-blue-900/10 p-5 rounded border border-blue-900/30 flex flex-col justify-between h-full">
                             <div>
                                 <div class="flex justify-between items-center text-xl font-bold text-white font-mono mb-3 uppercase">
@@ -245,7 +283,7 @@
                             </div>
                             <a href="#pro-library" class="text-lg font-bold font-mono text-white bg-blue-900/30 border border-blue-500/50 hover:bg-blue-800/50 transition-all rounded px-4 py-3 block uppercase text-center btn-soft-motion mt-auto">ОТВОРИ БИБЛИОТЕКАТА</a>
                         </div>
-                        
+
                         <div class="bg-blue-900/10 p-5 rounded border border-blue-900/30 flex flex-col justify-between h-full">
                             <div>
                                 <div class="flex items-center gap-2 text-xl font-bold text-white font-mono mb-3 uppercase">
@@ -269,36 +307,36 @@
 
                 <div class="space-y-4 pt-8">
                     <div class="text-[10px] font-mono text-blue-400 tracking-widest uppercase">ТВОЯТ ПЪТ КЪМ КОНТРОЛ</div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="pathGrid">
+                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800" data-path-level="1">
                             <div class="text-xs font-bold text-white font-mono">01 СТРАТЕГИЯ</div>
                             <div class="text-[10px] text-slate-400 mt-1">ОТКРИЙ ВЪЗМОЖНОСТТА</div>
-                            <div class="text-[10px] font-mono text-slate-500 mt-2">NOT STARTED</div>
+                            <div class="text-[10px] font-mono text-slate-500 mt-2 path-status">NOT STARTED</div>
                         </div>
-                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800">
+                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800" data-path-level="2">
                             <div class="text-xs font-bold text-white font-mono">02 PROMPT CONTROL</div>
                             <div class="text-[10px] text-slate-400 mt-1">КОНТРОЛИРАЙ РЕЗУЛТАТА</div>
-                            <div class="text-[10px] font-mono text-slate-500 mt-2">NOT STARTED</div>
+                            <div class="text-[10px] font-mono text-slate-500 mt-2 path-status">NOT STARTED</div>
                         </div>
-                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800">
+                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800" data-path-level="3">
                             <div class="text-xs font-bold text-white font-mono">03 АВТОПИЛОТ</div>
                             <div class="text-[10px] text-slate-400 mt-1">ИЗГРАДИ ПРОЦЕСА</div>
-                            <div class="text-[10px] font-mono text-slate-500 mt-2">NOT STARTED</div>
+                            <div class="text-[10px] font-mono text-slate-500 mt-2 path-status">NOT STARTED</div>
                         </div>
-                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800">
+                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800" data-path-level="4">
                             <div class="text-xs font-bold text-white font-mono">04 САМОКОНТРОЛ</div>
                             <div class="text-[10px] text-slate-400 mt-1">ОВЛАДЕЙ ЧОВЕШКИЯ ФАКТОР</div>
-                            <div class="text-[10px] font-mono text-slate-500 mt-2">NOT STARTED</div>
+                            <div class="text-[10px] font-mono text-slate-500 mt-2 path-status">NOT STARTED</div>
                         </div>
-                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800">
+                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800" data-path-level="5">
                             <div class="text-xs font-bold text-white font-mono">05 КОНТРОЛИРАН РИСК</div>
                             <div class="text-[10px] text-slate-400 mt-1">ИНОВИРАЙ ОТГОВОРНО</div>
-                            <div class="text-[10px] font-mono text-slate-500 mt-2">NOT STARTED</div>
+                            <div class="text-[10px] font-mono text-slate-500 mt-2 path-status">NOT STARTED</div>
                         </div>
-                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800">
+                        <div class="bg-slate-900/50 p-4 rounded border border-slate-800" data-path-level="6">
                             <div class="text-xs font-bold text-white font-mono">06 РЕЗУЛТАТИ</div>
                             <div class="text-[10px] text-slate-400 mt-1">ИЗМЕРВАЙ ВАЖНОТО</div>
-                            <div class="text-[10px] font-mono text-slate-500 mt-2">NOT STARTED</div>
+                            <div class="text-[10px] font-mono text-slate-500 mt-2 path-status">NOT STARTED</div>
                         </div>
                     </div>
                 </div>
@@ -308,7 +346,7 @@
                 <div class="text-[10px] font-mono text-blue-400 tracking-widest">НИВО 01 / 06</div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight uppercase">СТРАТЕГИЯ</h2>
                 <div class="text-sm font-mono text-blue-400 bg-blue-900/20 inline-block px-3 py-1.5 rounded border border-blue-900/50">ОТКРИЙ ВЪЗМОЖНОСТТА</div>
-                
+
                 <div class="space-y-6 text-slate-300 leading-relaxed max-w-3xl">
                     <p class="text-lg font-medium text-white">Не започвай с AI инструмента.<br>Започни с бизнес проблема.</p>
                     <p>AI стратегията не е списък с приложения.<br>Тя е отговор на три въпроса:</p>
@@ -422,8 +460,8 @@
                     </div>
 
                     <div class="pt-8">
-                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors" onclick="completeLevel(1)">
-                            <input type="checkbox" id="check-lv1" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer">
+                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors">
+                            <input type="checkbox" id="check-lv1" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer" onchange="completeLevel(1)">
                             <span class="text-xs font-mono font-bold tracking-widest text-slate-300 group-hover:text-white transition-colors">ЗАВЪРШИ НИВО 01 ✓</span>
                         </label>
                     </div>
@@ -434,7 +472,7 @@
                 <div class="text-[10px] font-mono text-blue-400 tracking-widest">НИВО 02 / 06</div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight uppercase">PROMPT CONTROL</h2>
                 <div class="text-sm font-mono text-blue-400 bg-blue-900/20 inline-block px-3 py-1.5 rounded border border-blue-900/50">КОНТРОЛИРАЙ РЕЗУЛТАТА</div>
-                
+
                 <div class="space-y-6 text-slate-300 leading-relaxed max-w-3xl">
                     <p class="text-lg font-medium text-white">AI не чете мисли.<br>Той изпълнява инструкции.</p>
                     <p>Разликата между случаен и използваем AI резултат често започва от входа.<br>Вместо:</p>
@@ -443,7 +481,7 @@
 
                     <div class="bg-panel border border-slate-700 p-6 sm:p-8 rounded my-8 space-y-6">
                         <h4 class="font-bold text-white uppercase text-center mb-6 border-b border-slate-800 pb-4">PCTCO РАМКА ЗА КОНТРОЛ</h4>
-                        
+
                         <div>
                             <div class="text-xs font-mono text-blue-400 font-bold mb-1">P PERSONA / РОЛЯ</div>
                             <div class="text-sm text-white mb-1">Коя перспектива трябва да използва AI?</div>
@@ -520,8 +558,8 @@
                     </div>
 
                     <div class="pt-8">
-                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors" onclick="completeLevel(2)">
-                            <input type="checkbox" id="check-lv2" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer">
+                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors">
+                            <input type="checkbox" id="check-lv2" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer" onchange="completeLevel(2)">
                             <span class="text-xs font-mono font-bold tracking-widest text-slate-300 group-hover:text-white transition-colors">ЗАВЪРШИ НИВО 02 ✓</span>
                         </label>
                     </div>
@@ -532,7 +570,7 @@
                 <div class="text-[10px] font-mono text-blue-400 tracking-widest">НИВО 03 / 06</div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight uppercase">АВТОПИЛОТ</h2>
                 <div class="text-sm font-mono text-blue-400 bg-blue-900/20 inline-block px-3 py-1.5 rounded border border-blue-900/50">ИЗГРАДИ ПРОЦЕСА</div>
-                
+
                 <div class="space-y-6 text-slate-300 leading-relaxed max-w-3xl">
                     <p class="text-lg font-medium text-white">Истинската стойност започва, когато AI излезе от отделния чат.</p>
                     <p>Самостоятелният AI разговор решава една задача.<br>Workflow решава процес.</p>
@@ -594,8 +632,8 @@
                     </div>
 
                     <div class="pt-8">
-                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors" onclick="completeLevel(3)">
-                            <input type="checkbox" id="check-lv3" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer">
+                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors">
+                            <input type="checkbox" id="check-lv3" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer" onchange="completeLevel(3)">
                             <span class="text-xs font-mono font-bold tracking-widest text-slate-300 group-hover:text-white transition-colors">ЗАВЪРШИ НИВО 03 ✓</span>
                         </label>
                     </div>
@@ -606,7 +644,7 @@
                 <div class="text-[10px] font-mono text-blue-400 tracking-widest">НИВО 04 / 06</div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight uppercase">САМОКОНТРОЛ</h2>
                 <div class="text-sm font-mono text-blue-400 bg-blue-900/20 inline-block px-3 py-1.5 rounded border border-blue-900/50">ОВЛАДЕЙ ЧОВЕШКИЯ ФАКТОР</div>
-                
+
                 <div class="space-y-6 text-slate-300 leading-relaxed max-w-3xl">
                     <p class="text-lg font-medium text-white">AI трансформацията не е технологичен проект.<br>Тя е организационна промяна.</p>
                     <p>Един екип може да има най-добрите AI инструменти на пазара и въпреки това да няма AI система. Причината:</p>
@@ -662,8 +700,8 @@
                     </div>
 
                     <div class="pt-8">
-                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors" onclick="completeLevel(4)">
-                            <input type="checkbox" id="check-lv4" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer">
+                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors">
+                            <input type="checkbox" id="check-lv4" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer" onchange="completeLevel(4)">
                             <span class="text-xs font-mono font-bold tracking-widest text-slate-300 group-hover:text-white transition-colors">ЗАВЪРШИ НИВО 04 ✓</span>
                         </label>
                     </div>
@@ -674,7 +712,7 @@
                 <div class="text-[10px] font-mono text-blue-400 tracking-widest">НИВО 05 / 06</div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight uppercase">КОНТРОЛИРАН РИСК</h2>
                 <div class="text-sm font-mono text-blue-400 bg-blue-900/20 inline-block px-3 py-1.5 rounded border border-blue-900/50">ИНОВИРАЙ ОТГОВОРНО</div>
-                
+
                 <div class="space-y-6 text-slate-300 leading-relaxed max-w-3xl">
                     <p class="text-lg font-medium text-white">Не всичко, което може да бъде автоматизирано, трябва да бъде автоматизирано по един и същ начин.</p>
                     <p>При бизнес използване на AI провери едновременно:</p>
@@ -706,7 +744,7 @@
                     <div class="bg-panel border border-slate-700 p-6 rounded my-8">
                         <h4 class="font-bold text-white mb-2 uppercase text-center border-b border-slate-800 pb-4">EU AI ACT <span class="text-slate-500 font-normal text-sm block mt-1">РАМКА СПОРЕД РИСКА</span></h4>
                         <p class="text-xs text-slate-400 text-center mb-6">Различните AI приложения могат да попадат под различни изисквания според конкретната система, предназначението ѝ и начина, по който се използва.</p>
-                        
+
                         <div class="space-y-4">
                             <div class="border-l-2 border-rose-500 pl-4">
                                 <div class="text-xs font-mono text-white font-bold mb-1">ЗАБРАНЕНИ ПРАКТИКИ</div>
@@ -746,8 +784,8 @@
                     </div>
 
                     <div class="pt-8">
-                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors" onclick="completeLevel(5)">
-                            <input type="checkbox" id="check-lv5" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer">
+                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors">
+                            <input type="checkbox" id="check-lv5" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer" onchange="completeLevel(5)">
                             <span class="text-xs font-mono font-bold tracking-widest text-slate-300 group-hover:text-white transition-colors">ЗАВЪРШИ НИВО 05 ✓</span>
                         </label>
                     </div>
@@ -758,14 +796,14 @@
                 <div class="text-[10px] font-mono text-blue-400 tracking-widest">НИВО 06 / 06</div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight uppercase">РЕЗУЛТАТИ</h2>
                 <div class="text-sm font-mono text-blue-400 bg-blue-900/20 inline-block px-3 py-1.5 rounded border border-blue-900/50">ИЗМЕРВАЙ ВАЖНОТО</div>
-                
+
                 <div class="space-y-6 text-slate-300 leading-relaxed max-w-3xl">
                     <p class="text-lg font-medium text-white">Използването на AI не е KPI.<br>БИЗНЕС ЕФЕКТ Е.</p>
                     <p>Преди внедряване определи изходно ниво. След внедряване измери промяната.</p>
 
                     <div class="bg-panel border border-slate-700 p-6 rounded my-8">
                         <h4 class="font-bold text-white mb-6 uppercase">МОНИТОРИНГ НА РЕЗУЛТАТИТЕ</h4>
-                        
+
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 font-mono">
                             <div class="bg-slate-900 p-4 rounded border border-slate-800">
                                 <div class="text-[10px] text-slate-500 mb-1">СПЕСТЕНО ВРЕМЕ</div>
@@ -832,8 +870,8 @@
                     </div>
 
                     <div class="pt-8">
-                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors" onclick="completeLevel(6)">
-                            <input type="checkbox" id="check-lv6" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer">
+                        <label class="flex items-center gap-3 cursor-pointer group w-max p-4 bg-slate-900 border border-slate-700 rounded hover:border-emerald-500 transition-colors">
+                            <input type="checkbox" id="check-lv6" class="w-5 h-5 rounded border-slate-600 bg-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer" onchange="completeLevel(6)">
                             <span class="text-xs font-mono font-bold tracking-widest text-slate-300 group-hover:text-white transition-colors">ЗАВЪРШИ НИВО 06 ✓</span>
                         </label>
                     </div>
@@ -847,7 +885,7 @@
                         СТРАТЕГИЯ ✓ | PROMPT CONTROL ✓ | АВТОПИЛОТ ✓<br>
                         САМОКОНТРОЛ ✓ | КОНТРОЛИРАН РИСК ✓ | РЕЗУЛТАТИ ✓
                     </div>
-                    
+
                     <div class="pt-6 border-t border-emerald-900/50 mt-6">
                         <h3 class="text-2xl font-bold text-white uppercase">ОСНОВАТА Е ГОТОВА.<br>ПРИЛОЖИ Я НА ПРАКТИКА.</h3>
                         <p class="text-slate-400 text-sm mt-2">Starter би приключил с основата. PRO започва оттук.<br>Имаш три активни инструмента:</p>
@@ -879,48 +917,48 @@
                 <div class="space-y-6">
                     <h3 class="text-xl font-bold text-white uppercase">СЪЗДАВАЙ ПО-ДОБРИ ИНСТРУКЦИИ.</h3>
                     <p class="text-slate-400 text-sm">Prompt Studio без лимит. Не започвай с празен чат прозорец. Изгради инструкцията системно.</p>
-                    
-                    <div class="bg-[#0a0f1c] border border-slate-700 rounded p-4 sm:p-6 space-y-4 font-mono text-xs">
+
+                    <form id="promptForm" class="bg-[#0a0f1c] border border-slate-700 rounded p-4 sm:p-6 space-y-4 font-mono text-xs" onsubmit="event.preventDefault(); generatePrompt();">
                         <div>
-                            <label class="block text-blue-400 font-bold mb-1 uppercase">ПАРАМЕТЪР 01 PERSONA / РОЛЯ</label>
+                            <label for="p-persona" class="block text-blue-400 font-bold mb-1 uppercase">ПАРАМЕТЪР 01 PERSONA / РОЛЯ</label>
                             <div class="text-[10px] text-slate-500 mb-1">Кой трябва да бъде AI?</div>
-                            <input type="text" id="p-persona" placeholder="напр. Senior Digital Marketing Strategist" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600">
+                            <input type="text" id="p-persona" oninput="updatePromptQuality()" placeholder="напр. Senior Digital Marketing Strategist" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600">
                         </div>
                         <div>
-                            <label class="block text-blue-400 font-bold mb-1 uppercase">ПАРАМЕТЪР 02 CONTEXT / КОНТЕКСТ</label>
+                            <label for="p-context" class="block text-blue-400 font-bold mb-1 uppercase">ПАРАМЕТЪР 02 CONTEXT / КОНТЕКСТ</label>
                             <div class="text-[10px] text-slate-500 mb-1">Какво трябва да знае?</div>
-                            <textarea id="p-context" rows="2" placeholder="напр. Стартираме B2B SaaS продукт за малки компании в ЕС." class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600 resize-none"></textarea>
+                            <textarea id="p-context" oninput="updatePromptQuality()" rows="2" placeholder="напр. Стартираме B2B SaaS продукт за малки компании в ЕС." class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600 resize-none"></textarea>
                         </div>
                         <div>
-                            <label class="block text-blue-400 font-bold mb-1 uppercase">ПАРАМЕТЪР 03 TASK / ЗАДАЧА</label>
+                            <label for="p-task" class="block text-blue-400 font-bold mb-1 uppercase">ПАРАМЕТЪР 03 TASK / ЗАДАЧА</label>
                             <div class="text-[10px] text-slate-500 mb-1">Какво точно трябва да направи?</div>
-                            <textarea id="p-task" rows="2" placeholder="напр. Създай 5 рекламни концепции." class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600 resize-none"></textarea>
+                            <textarea id="p-task" oninput="updatePromptQuality()" rows="2" placeholder="напр. Създай 5 рекламни концепции." class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600 resize-none"></textarea>
                         </div>
                         <div>
-                            <label class="block text-blue-400 font-bold mb-1 uppercase">ПАРАМЕТЪР 04 CONSTRAINTS / ОГРАНИЧЕНИЯ</label>
+                            <label for="p-constraints" class="block text-blue-400 font-bold mb-1 uppercase">ПАРАМЕТЪР 04 CONSTRAINTS / ОГРАНИЧЕНИЯ</label>
                             <div class="text-[10px] text-slate-500 mb-1">Какви правила трябва да спази?</div>
-                            <input type="text" id="p-constraints" placeholder="напр. До 80 думи. Без клишета. Без преувеличени обещания." class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600">
+                            <input type="text" id="p-constraints" oninput="updatePromptQuality()" placeholder="напр. До 80 думи. Без клишета. Без преувеличени обещания." class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600">
                         </div>
                         <div>
-                            <label class="block text-blue-400 font-bold mb-1 uppercase">ПАРАМЕТЪР 05 OUTPUT / ФОРМАТ</label>
+                            <label for="p-output" class="block text-blue-400 font-bold mb-1 uppercase">ПАРАМЕТЪР 05 OUTPUT / ФОРМАТ</label>
                             <div class="text-[10px] text-slate-500 mb-1">Как трябва да изглежда резултатът?</div>
-                            <input type="text" id="p-output" placeholder="напр. Таблица: Concept / Hook / Primary Text / CTA." class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600">
+                            <input type="text" id="p-output" oninput="updatePromptQuality()" placeholder="напр. Таблица: Concept / Hook / Primary Text / CTA." class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600">
                         </div>
 
-                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center flex-wrap gap-3">
                             <div>
                                 <span class="text-slate-500 block mb-1">КАЧЕСТВО НА ПРОМПТА</span>
-                                <span class="text-emerald-400 text-[10px]">РОЛЯ ✓ КОНТЕКСТ ✓ ЗАДАЧА ✓ ОГРАНИЧЕНИЯ ✓ ФОРМАТ ✓</span>
+                                <span id="qualityLabels" class="text-slate-600 text-[10px]">РОЛЯ ○ КОНТЕКСТ ○ ЗАДАЧА ○ ОГРАНИЧЕНИЯ ○ ФОРМАТ ○</span>
                             </div>
                             <div class="text-right">
                                 <span class="text-slate-500 block mb-1">СТАТУС</span>
-                                <span class="text-emerald-400 font-bold">██████████ 100%</span>
+                                <span id="qualityPercent" class="text-slate-500 font-bold">░░░░░░░░░░ 0%</span>
                             </div>
                         </div>
-                        <button onclick="generatePrompt()" id="generateBtn" class="w-full mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-colors uppercase tracking-widest text-[10px]">
+                        <button type="submit" id="generateBtn" class="w-full mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-colors uppercase tracking-widest text-[10px]">
                             ГЕНЕРИРАЙ КОНТРОЛИРАН ПРОМПТ &rarr;
                         </button>
-                    </div>
+                    </form>
 
                     <div id="promptResultBox" class="hidden bg-[#0a0f1c] border border-emerald-500/50 rounded p-6 space-y-4 font-mono text-xs">
                         <div class="flex justify-between items-center text-emerald-400 font-bold border-b border-slate-800 pb-2">
@@ -929,9 +967,9 @@
                         </div>
                         <div id="outputPromptText" class="bg-slate-900 p-4 rounded text-slate-200 whitespace-pre-line border border-slate-800"></div>
                         <div class="flex flex-wrap gap-2 pt-2">
-                            <button onclick="copyPromptText(event)" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold">КОПИРАЙ ПРОМПТА</button>
-                            <button onclick="saveToHistory(event)" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold">ЗАПАЗИ В ИСТОРИЯТА</button>
-                            <button onclick="resetPromptStudio()" class="px-4 py-2 bg-blue-900/30 hover:bg-blue-900/50 text-blue-400 border border-blue-800 rounded font-bold">СЪЗДАЙ НОВ</button>
+                            <button type="button" onclick="copyPromptText(event)" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold">КОПИРАЙ ПРОМПТА</button>
+                            <button type="button" onclick="saveToHistory(event)" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold">ЗАПАЗИ В ИСТОРИЯТА</button>
+                            <button type="button" onclick="resetPromptStudio()" class="px-4 py-2 bg-blue-900/30 hover:bg-blue-900/50 text-blue-400 border border-blue-800 rounded font-bold">СЪЗДАЙ НОВ</button>
                         </div>
                     </div>
 
@@ -939,11 +977,12 @@
                         <div class="bg-slate-900 p-4 rounded border border-slate-800 font-mono text-xs space-y-3">
                             <div class="text-white font-bold uppercase">ИСТОРИЯ НА ПРОМПТОВЕТЕ</div>
                             <div class="text-slate-500">ТВОИТЕ КОНТРОЛИРАНИ ПРОМПТОВЕ</div>
-                            <div class="text-blue-400 font-bold">12 ЗАПАЗЕНИ</div>
+                            <div id="historyCount" class="text-blue-400 font-bold">0 ЗАПАЗЕНИ</div>
                             <div class="flex gap-4 text-slate-400 pt-2 border-t border-slate-800 font-bold">
-                                <span class="hover:text-white cursor-pointer">ВИЖ ИСТОРИЯТА &rarr;</span>
-                                <span class="hover:text-rose-400 cursor-pointer">ИЗЧИСТИ ИСТОРИЯТА</span>
+                                <button type="button" onclick="toggleHistoryView()" class="hover:text-white cursor-pointer">ВИЖ ИСТОРИЯТА &rarr;</button>
+                                <button type="button" onclick="clearHistory()" class="hover:text-rose-400 cursor-pointer">ИЗЧИСТИ ИСТОРИЯТА</button>
                             </div>
+                            <div id="historyList" class="hidden space-y-2 pt-2 border-t border-slate-800 max-h-52 overflow-y-auto"></div>
                         </div>
                         <div class="bg-blue-900/10 p-4 rounded border border-blue-900/30 font-mono text-xs flex flex-col justify-center">
                             <div class="text-blue-400 font-bold text-sm mb-1">PRO СТАТУС</div>
@@ -968,8 +1007,8 @@
 
                 <div class="space-y-6">
                     <h3 class="text-xl font-bold text-white uppercase">40 ГОТОВИ ЗА ИЗПОЛЗВАНЕ БИЗНЕС ПРОМПТА.</h3>
-                    <p class="text-slate-400 text-sm">Не започвай всяка задача от нулата. Избери готова структура. Адаптирай контекста. Активирай.</p>
-                    
+                    <p class="text-slate-400 text-sm">Не започвай всяка задача от нулата. Избери готова структура. Адаптирай контекста. Активирай — всеки шаблон зарежда старт в Prompt Control по-долу.</p>
+
                     <div class="text-[10px] font-mono text-slate-500 uppercase flex flex-wrap gap-4 font-bold">
                         <span>6 КАТЕГОРИИ</span>
                         <span class="text-emerald-400">&bull; ПЪЛЕН ДОСТЪП</span>
@@ -977,123 +1016,10 @@
 
                     <div class="pt-4 border-t border-slate-800">
                         <div class="text-[10px] font-mono text-slate-500 mb-3 uppercase">ФИЛТРИ</div>
-                        <div class="flex flex-wrap gap-2 text-[10px] font-mono font-bold" id="libraryFilters">
-                            <button onclick="filterTemplates('all', event)" class="lib-filter-btn px-3 py-1.5 bg-blue-600 text-white rounded transition-colors">ВСИЧКИ</button>
-                            <button onclick="filterTemplates('marketing', event)" class="lib-filter-btn px-3 py-1.5 border border-slate-700 text-slate-400 hover:text-white hover:border-blue-500 rounded transition-colors">МАРКЕТИНГ</button>
-                            <button onclick="filterTemplates('sales', event)" class="lib-filter-btn px-3 py-1.5 border border-slate-700 text-slate-400 hover:text-white hover:border-blue-500 rounded transition-colors">ПРОДАЖБИ</button>
-                            <button onclick="filterTemplates('hr', event)" class="lib-filter-btn px-3 py-1.5 border border-slate-700 text-slate-400 hover:text-white hover:border-blue-500 rounded transition-colors">HR И МЕНИДЖМЪНТ</button>
-                            <button onclick="filterTemplates('tech', event)" class="lib-filter-btn px-3 py-1.5 border border-slate-700 text-slate-400 hover:text-white hover:border-blue-500 rounded transition-colors">ТЕХНОЛОГИИ И АВТОМАТИЗАЦИЯ</button>
-                            <button onclick="filterTemplates('strategy', event)" class="lib-filter-btn px-3 py-1.5 border border-slate-700 text-slate-400 hover:text-white hover:border-blue-500 rounded transition-colors">СТРАТЕГИЯ</button>
-                            <button onclick="filterTemplates('creative', event)" class="lib-filter-btn px-3 py-1.5 border border-slate-700 text-slate-400 hover:text-white hover:border-blue-500 rounded transition-colors">КРЕАТИВНИ</button>
-                        </div>
+                        <div class="flex flex-wrap gap-2 text-[10px] font-mono font-bold" id="libraryFilters"></div>
                     </div>
 
-                    <div id="templateContainer" class="space-y-8 mt-8">
-                        
-                        <!-- MARKETING -->
-                        <div class="template-category" data-category="marketing">
-                            <h4 class="text-sm font-bold text-white uppercase border-b border-slate-800 pb-2 mb-4">МАРКЕТИНГ ПАКЕТ</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group">
-                                    <div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 01</span><span class="text-[10px] font-mono font-bold badge-marketing px-1.5 py-0.5 rounded uppercase">МАРКЕТИНГ</span></div>
-                                    <h4 class="font-bold text-white text-sm mb-1 uppercase">SEO META ГЕНЕРАТОР</h4><p class="text-xs text-slate-400 mb-3">Създава варианти за meta заглавия и описания.</p><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div>
-                                </div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group">
-                                    <div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 02</span><span class="text-[10px] font-mono font-bold badge-marketing px-1.5 py-0.5 rounded uppercase">МАРКЕТИНГ</span></div>
-                                    <h4 class="font-bold text-white text-sm mb-1 uppercase">АРХИТЕКТ НА СЪДЪРЖАНИЕ</h4><p class="text-xs text-slate-400 mb-3">Изгражда структурирани структури за статии.</p><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div>
-                                </div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group">
-                                    <div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 03</span><span class="text-[10px] font-mono font-bold badge-marketing px-1.5 py-0.5 rounded uppercase">МАРКЕТИНГ</span></div>
-                                    <h4 class="font-bold text-white text-sm mb-1 uppercase">ПЛАНЕР ЗА СОЦИАЛНИ МРЕЖИ</h4><p class="text-xs text-slate-400 mb-3">Създава месечен календар за социални мрежи.</p><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div>
-                                </div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group">
-                                    <div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 04</span><span class="text-[10px] font-mono font-bold badge-marketing px-1.5 py-0.5 rounded uppercase">МАРКЕТИНГ</span></div>
-                                    <h4 class="font-bold text-white text-sm mb-1 uppercase">ГЕНЕРАТОР ЗА META ADS ТЕКСТОВЕ</h4><p class="text-xs text-slate-400 mb-3">Генерира варианти за рекламни текстове.</p><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div>
-                                </div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group">
-                                    <div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 05</span><span class="text-[10px] font-mono font-bold badge-marketing px-1.5 py-0.5 rounded uppercase">МАРКЕТИНГ</span></div>
-                                    <h4 class="font-bold text-white text-sm mb-1 uppercase">СЪЗДАТЕЛ НА ИМЕЙЛ КАМПАНИИ</h4><p class="text-xs text-slate-400 mb-3">Структурира имейл комуникация и CTA.</p><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div>
-                                </div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group">
-                                    <div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 06</span><span class="text-[10px] font-mono font-bold badge-marketing px-1.5 py-0.5 rounded uppercase">МАРКЕТИНГ</span></div>
-                                    <h4 class="font-bold text-white text-sm mb-1 uppercase">АНАЛИЗ НА АУДИТОРИЯТА</h4><p class="text-xs text-slate-400 mb-3">Изгражда профил на целевия клиент и анализ на аудиторията.</p><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div>
-                                </div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group">
-                                    <div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 07</span><span class="text-[10px] font-mono font-bold badge-marketing px-1.5 py-0.5 rounded uppercase">МАРКЕТИНГ</span></div>
-                                    <h4 class="font-bold text-white text-sm mb-1 uppercase">ГЕНЕРАТОР НА ВИДЕО СЦЕНАРИИ</h4><p class="text-xs text-slate-400 mb-3">Създава структура и сценарий за видео.</p><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- SALES -->
-                        <div class="template-category" data-category="sales">
-                            <h4 class="text-sm font-bold text-white uppercase border-b border-slate-800 pb-2 mb-4">ПАКЕТ ЗА ПРОДАЖБИ</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 08</span><span class="text-[10px] font-mono font-bold badge-sales px-1.5 py-0.5 rounded uppercase">ПРОДАЖБИ</span></div><h4 class="font-bold text-white text-sm uppercase">ГЕНЕРАТОР НА COLD EMAIL</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 09</span><span class="text-[10px] font-mono font-bold badge-sales px-1.5 py-0.5 rounded uppercase">ПРОДАЖБИ</span></div><h4 class="font-bold text-white text-sm uppercase">СЪЗДАТЕЛ НА LINKEDIN ПОКАНИ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 10</span><span class="text-[10px] font-mono font-bold badge-sales px-1.5 py-0.5 rounded uppercase">ПРОДАЖБИ</span></div><h4 class="font-bold text-white text-sm uppercase">ОТГОВОРИ НА ВЪЗРАЖЕНИЯ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 11</span><span class="text-[10px] font-mono font-bold badge-sales px-1.5 py-0.5 rounded uppercase">ПРОДАЖБИ</span></div><h4 class="font-bold text-white text-sm uppercase">FOLLOW-UP ГЕНЕРАТОР</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 12</span><span class="text-[10px] font-mono font-bold badge-sales px-1.5 py-0.5 rounded uppercase">ПРОДАЖБИ</span></div><h4 class="font-bold text-white text-sm uppercase">АРХИТЕКТ НА ОФЕРТИ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 13</span><span class="text-[10px] font-mono font-bold badge-sales px-1.5 py-0.5 rounded uppercase">ПРОДАЖБИ</span></div><h4 class="font-bold text-white text-sm uppercase">НАЧАЛО НА COLD CALL</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 14</span><span class="text-[10px] font-mono font-bold badge-sales px-1.5 py-0.5 rounded uppercase">ПРОДАЖБИ</span></div><h4 class="font-bold text-white text-sm uppercase">ПОДГОТОВКА ЗА ПРЕГОВОРИ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                            </div>
-                        </div>
-
-                        <!-- HR & MANAGEMENT -->
-                        <div class="template-category" data-category="hr">
-                            <h4 class="text-sm font-bold text-white uppercase border-b border-slate-800 pb-2 mb-4">HR И МЕНИДЖМЪНТ ПАКЕТ</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 15</span><span class="text-[10px] font-mono font-bold badge-hr px-1.5 py-0.5 rounded uppercase">HR & MGMT</span></div><h4 class="font-bold text-white text-sm uppercase">СЪЗДАТЕЛ НА ОБЯВИ ЗА РАБОТА</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 16</span><span class="text-[10px] font-mono font-bold badge-hr px-1.5 py-0.5 rounded uppercase">HR & MGMT</span></div><h4 class="font-bold text-white text-sm uppercase">ВЪПРОСИ ЗА ИНТЕРВЮ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 17</span><span class="text-[10px] font-mono font-bold badge-hr px-1.5 py-0.5 rounded uppercase">HR & MGMT</span></div><h4 class="font-bold text-white text-sm uppercase">ОЦЕНКА НА ПРЕДСТАВЯНЕТО</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 18</span><span class="text-[10px] font-mono font-bold badge-hr px-1.5 py-0.5 rounded uppercase">HR & MGMT</span></div><h4 class="font-bold text-white text-sm uppercase">ONBOARDING АРХИТЕКТ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 19</span><span class="text-[10px] font-mono font-bold badge-hr px-1.5 py-0.5 rounded uppercase">HR & MGMT</span></div><h4 class="font-bold text-white text-sm uppercase">ПОЛИТИКА ЗА ДИСТАНЦИОННА РАБОТА</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 20</span><span class="text-[10px] font-mono font-bold badge-hr px-1.5 py-0.5 rounded uppercase">HR & MGMT</span></div><h4 class="font-bold text-white text-sm uppercase">ИДЕИ ЗА ТИЙМБИЛДИНГ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 21</span><span class="text-[10px] font-mono font-bold badge-hr px-1.5 py-0.5 rounded uppercase">HR & MGMT</span></div><h4 class="font-bold text-white text-sm uppercase">ПЛАНЕР ЗА 1:1 СРЕЩИ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                            </div>
-                        </div>
-
-                        <!-- TECH & AUTOMATION -->
-                        <div class="template-category" data-category="tech">
-                            <h4 class="text-sm font-bold text-white uppercase border-b border-slate-800 pb-2 mb-4">ТЕХНОЛОГИИ И АВТОМАТИЗАЦИЯ</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 22</span><span class="text-[10px] font-mono font-bold badge-tech px-1.5 py-0.5 rounded uppercase">TECH</span></div><h4 class="font-bold text-white text-sm uppercase">MAKE.COM АРХИТЕКТ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 23</span><span class="text-[10px] font-mono font-bold badge-tech px-1.5 py-0.5 rounded uppercase">TECH</span></div><h4 class="font-bold text-white text-sm uppercase">REGEX ГЕНЕРАТОР</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 24</span><span class="text-[10px] font-mono font-bold badge-tech px-1.5 py-0.5 rounded uppercase">TECH</span></div><h4 class="font-bold text-white text-sm uppercase">SQL АСИСТЕНТ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 25</span><span class="text-[10px] font-mono font-bold badge-tech px-1.5 py-0.5 rounded uppercase">TECH</span></div><h4 class="font-bold text-white text-sm uppercase">ПРЕГЛЕД НА КОД</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 26</span><span class="text-[10px] font-mono font-bold badge-tech px-1.5 py-0.5 rounded uppercase">TECH</span></div><h4 class="font-bold text-white text-sm uppercase">ZAPIER CRM АРХИТЕКТ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 27</span><span class="text-[10px] font-mono font-bold badge-tech px-1.5 py-0.5 rounded uppercase">TECH</span></div><h4 class="font-bold text-white text-sm uppercase">JSON СТРУКТУРИ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 28</span><span class="text-[10px] font-mono font-bold badge-tech px-1.5 py-0.5 rounded uppercase">TECH</span></div><h4 class="font-bold text-white text-sm uppercase">АСИСТЕНТ ЗА SHEETS ФОРМУЛИ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                            </div>
-                        </div>
-
-                        <!-- STRATEGY -->
-                        <div class="template-category" data-category="strategy">
-                            <h4 class="text-sm font-bold text-white uppercase border-b border-slate-800 pb-2 mb-4">СТРАТЕГИЧЕСКИ ПАКЕТ</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 29</span><span class="text-[10px] font-mono font-bold badge-strategy px-1.5 py-0.5 rounded uppercase">STRATEGY</span></div><h4 class="font-bold text-white text-sm uppercase">SWOT АНАЛИЗ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 31</span><span class="text-[10px] font-mono font-bold badge-strategy px-1.5 py-0.5 rounded uppercase">STRATEGY</span></div><h4 class="font-bold text-white text-sm uppercase">КОНКУРЕНТЕН АНАЛИЗ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 32</span><span class="text-[10px] font-mono font-bold badge-strategy px-1.5 py-0.5 rounded uppercase">STRATEGY</span></div><h4 class="font-bold text-white text-sm uppercase">OKR ГЕНЕРАТОР</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 33</span><span class="text-[10px] font-mono font-bold badge-strategy px-1.5 py-0.5 rounded uppercase">STRATEGY</span></div><h4 class="font-bold text-white text-sm uppercase">ИДЕИ ЗА ПРОДУКТИ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 34</span><span class="text-[10px] font-mono font-bold badge-strategy px-1.5 py-0.5 rounded uppercase">STRATEGY</span></div><h4 class="font-bold text-white text-sm uppercase">УПРАВЛЕНИЕ НА РИСКА</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 35</span><span class="text-[10px] font-mono font-bold badge-strategy px-1.5 py-0.5 rounded uppercase">STRATEGY</span></div><h4 class="font-bold text-white text-sm uppercase">АРХИТЕКТ НА PITCH DECK</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                            </div>
-                        </div>
-
-                        <!-- CREATIVE -->
-                        <div class="template-category" data-category="creative">
-                            <h4 class="text-sm font-bold text-white uppercase border-b border-slate-800 pb-2 mb-4">КРЕАТИВЕН ПАКЕТ</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 30</span><span class="text-[10px] font-mono font-bold badge-creative px-1.5 py-0.5 rounded uppercase">CREATIVE</span></div><h4 class="font-bold text-white text-sm uppercase">AI ПРОМПТ ЗА ИЗОБРАЖЕНИЕ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 36</span><span class="text-[10px] font-mono font-bold badge-creative px-1.5 py-0.5 rounded uppercase">CREATIVE</span></div><h4 class="font-bold text-white text-sm uppercase">ИДЕИ ЗА REELS / TIKTOK</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 37</span><span class="text-[10px] font-mono font-bold badge-creative px-1.5 py-0.5 rounded uppercase">CREATIVE</span></div><h4 class="font-bold text-white text-sm uppercase">ГЕНЕРАТОР НА ВИЗУАЛНИ ПРОМПТОВЕ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 38</span><span class="text-[10px] font-mono font-bold badge-creative px-1.5 py-0.5 rounded uppercase">CREATIVE</span></div><h4 class="font-bold text-white text-sm uppercase">СЪЗДАТЕЛ НА BRAND VOICE</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 39</span><span class="text-[10px] font-mono font-bold badge-creative px-1.5 py-0.5 rounded uppercase">CREATIVE</span></div><h4 class="font-bold text-white text-sm uppercase">ПОДКАСТ АРХИТЕКТ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                                <div class="template-card bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group"><div class="flex justify-between items-start mb-2"><span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН 40</span><span class="text-[10px] font-mono font-bold badge-creative px-1.5 py-0.5 rounded uppercase">CREATIVE</span></div><h4 class="font-bold text-white text-sm uppercase">СЪЗДАТЕЛ НА ВИЗУАЛНИ КАМПАНИИ</h4><div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase mt-2 font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div></div>
-                            </div>
-                        </div>
-
-                    </div>
+                    <div id="templateContainer" class="space-y-8 mt-8"></div>
 
                     <div class="bg-panel border border-slate-700 p-6 rounded text-center mt-8">
                         <div class="text-[10px] font-mono text-slate-500 tracking-widest uppercase mb-4">ПРАВИЛО ЗА CONTROL LIBRARY</div>
@@ -1107,12 +1033,6 @@
                         </div>
                         <div class="text-emerald-400 my-2">&darr;</div>
                         <div class="font-bold text-emerald-400 uppercase tracking-widest text-sm">ПО-ДОБЪР БИЗНЕС РЕЗУЛТАТ</div>
-                    </div>
-                    
-                    <div class="text-center pt-4">
-                        <button class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white text-xs font-mono font-bold rounded transition-colors uppercase tracking-widest border border-slate-600">
-                            ОТВОРИ ШАБЛОН &rarr;
-                        </button>
                     </div>
                 </div>
             </section>
@@ -1136,30 +1056,30 @@
                         <div class="space-y-4">
                             <div class="text-[10px] font-mono text-slate-500 tracking-widest uppercase">ПОПИТАЙ AI COPILOT ЗА</div>
                             <div class="space-y-4">
-                                <div class="bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
+                                <button type="button" onclick="askCopilotPreset('Кои процеси в малката ми агенция са най-подходящи за AI?')" class="w-full text-left bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
                                     <div class="text-xs font-bold text-blue-400 font-mono mb-1 uppercase">СТРАТЕГИЯ</div>
                                     <div class="text-sm text-slate-300 italic">Кои процеси в малката ми агенция са най-подходящи за AI?</div>
-                                </div>
-                                <div class="bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
+                                </button>
+                                <button type="button" onclick="askCopilotPreset('Помогни ми да подобря този промпт.')" class="w-full text-left bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
                                     <div class="text-xs font-bold text-blue-400 font-mono mb-1 uppercase">ПРОМПТОВЕ</div>
                                     <div class="text-sm text-slate-300 italic">Помогни ми да подобря този промпт.</div>
-                                </div>
-                                <div class="bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
+                                </button>
+                                <button type="button" onclick="askCopilotPreset('Как бих могъл да автоматизирам входящите запитвания?')" class="w-full text-left bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
                                     <div class="text-xs font-bold text-blue-400 font-mono mb-1 uppercase">АВТОМАТИЗАЦИЯ</div>
                                     <div class="text-sm text-slate-300 italic">Как бих могъл да автоматизирам входящите запитвания?</div>
-                                </div>
-                                <div class="bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
+                                </button>
+                                <button type="button" onclick="askCopilotPreset('Как да изчисля стойността на тази автоматизация?')" class="w-full text-left bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
                                     <div class="text-xs font-bold text-blue-400 font-mono mb-1 uppercase">ROI</div>
                                     <div class="text-sm text-slate-300 italic">Как да изчисля стойността на тази автоматизация?</div>
-                                </div>
-                                <div class="bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
+                                </button>
+                                <button type="button" onclick="askCopilotPreset('Как да структурирам този работен процес?')" class="w-full text-left bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
                                     <div class="text-xs font-bold text-blue-400 font-mono mb-1 uppercase">ПРОЦЕСИ</div>
                                     <div class="text-sm text-slate-300 italic">Как да структурирам този работен процес?</div>
-                                </div>
-                                <div class="bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
+                                </button>
+                                <button type="button" onclick="askCopilotPreset('Какви рискове трябва да проверя преди внедряването?')" class="w-full text-left bg-slate-900 border border-slate-800 p-4 rounded hover:border-blue-500/50 transition-colors">
                                     <div class="text-xs font-bold text-blue-400 font-mono mb-1 uppercase">РИСК</div>
                                     <div class="text-sm text-slate-300 italic">Какви рискове трябва да проверя преди внедряването?</div>
-                                </div>
+                                </button>
                             </div>
                         </div>
 
@@ -1169,17 +1089,18 @@
                                     <div class="text-[10px] font-mono text-blue-400 tracking-widest uppercase">ВЪПРОС КЪМ COPILOT</div>
                                     <div class="text-sm text-white font-bold mt-1">Какво искаш да подобриш в бизнеса си?</div>
                                 </div>
-                                
-                                <div id="copilotChatWindow" class="p-4 flex-1 overflow-y-auto font-mono text-xs space-y-4 min-h-[250px]">
+
+                                <div id="copilotChatWindow" class="p-4 flex-1 overflow-y-auto font-mono text-xs space-y-2 min-h-[250px]" role="log" aria-live="polite">
                                     <div class="text-emerald-400 opacity-80">[ SYSTEM ]: AI Copilot свързан. Готов за работа.</div>
                                 </div>
-                                
-                                <div class="p-4 border-t border-blue-900/30 space-y-3">
+
+                                <form id="copilotForm" class="p-4 border-t border-blue-900/30 space-y-3" onsubmit="event.preventDefault(); sendCopilotMessage();">
+                                    <label for="copilotInput" class="sr-only">Въпрос към AI Copilot</label>
                                     <textarea id="copilotInput" rows="2" placeholder="Задай въпрос към AI Copilot..." class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:border-blue-500 focus:outline-none placeholder-slate-600 resize-none font-mono text-xs"></textarea>
-                                    <button onclick="sendCopilotMessage()" class="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded transition-colors text-xs font-mono uppercase tracking-widest shadow-[0_0_10px_rgba(37,99,235,0.3)]">
+                                    <button type="submit" class="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded transition-colors text-xs font-mono uppercase tracking-widest shadow-[0_0_10px_rgba(37,99,235,0.3)]">
                                         ИЗПРАТИ &rarr;
                                     </button>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -1187,11 +1108,11 @@
                     <div class="pt-6 border-t border-slate-800">
                         <div class="text-[10px] font-mono text-slate-500 tracking-widest mb-3 uppercase">БЪРЗИ ДЕЙСТВИЯ</div>
                         <div class="flex flex-wrap gap-2 text-xs font-mono">
-                            <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-slate-300 hover:border-blue-500 hover:text-white cursor-pointer transition-colors">Открий задача за автоматизация</span>
-                            <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-slate-300 hover:border-blue-500 hover:text-white cursor-pointer transition-colors">Подобри мой промпт</span>
-                            <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-slate-300 hover:border-blue-500 hover:text-white cursor-pointer transition-colors">Изчисли AI ROI</span>
-                            <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-slate-300 hover:border-blue-500 hover:text-white cursor-pointer transition-colors">Анализирай процес</span>
-                            <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-slate-300 hover:border-blue-500 hover:text-white cursor-pointer transition-colors">Провери потенциални рискове</span>
+                            <button type="button" onclick="askCopilotPreset('Помогни ми да открия задача за автоматизация.')" class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-slate-300 hover:border-blue-500 hover:text-white cursor-pointer transition-colors">Открий задача за автоматизация</button>
+                            <button type="button" onclick="askCopilotPreset('Помогни ми да подобря моя промпт.')" class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-slate-300 hover:border-blue-500 hover:text-white cursor-pointer transition-colors">Подобри мой промпт</button>
+                            <button type="button" onclick="askCopilotPreset('Помогни ми да изчисля AI ROI.')" class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-slate-300 hover:border-blue-500 hover:text-white cursor-pointer transition-colors">Изчисли AI ROI</button>
+                            <button type="button" onclick="askCopilotPreset('Помогни ми да анализирам процес.')" class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-slate-300 hover:border-blue-500 hover:text-white cursor-pointer transition-colors">Анализирай процес</button>
+                            <button type="button" onclick="askCopilotPreset('Провери потенциални рискове за моята AI задача.')" class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-slate-300 hover:border-blue-500 hover:text-white cursor-pointer transition-colors">Провери потенциални рискове</button>
                         </div>
                     </div>
 
@@ -1275,11 +1196,11 @@
                         <div class="text-[10px] font-mono text-blue-500 tracking-widest uppercase">PRO ТАБЛО ЗА УПРАВЛЕНИЕ</div>
                         <h3 class="text-2xl font-bold text-white uppercase mt-1">ПРЕГЛЕД НА СИСТЕМАТА</h3>
                     </div>
-                    
+
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs mb-8">
                         <div class="bg-[#0a0f1c] p-4 rounded border border-slate-700 text-center">
                             <div class="text-slate-500 mb-1">НИВА НА КОНТРОЛ</div>
-                            <div class="text-emerald-400 font-bold">6 / 6</div>
+                            <div id="summaryLevels" class="text-emerald-400 font-bold">0 / 6</div>
                         </div>
                         <div class="bg-[#0a0f1c] p-4 rounded border border-slate-700 text-center">
                             <div class="text-slate-500 mb-1">PROMPT CONTROL</div>
@@ -1380,7 +1301,7 @@
             <section class="py-24 border-t border-slate-800 mt-20 text-center">
                 <div class="max-w-3xl mx-auto space-y-8">
                     <div class="text-[10px] font-mono text-blue-500 tracking-widest uppercase">ФИНАЛЕН PRO ЕКРАН</div>
-                    
+
                     <div class="bg-blue-900/10 border border-blue-500/30 p-4 rounded inline-block text-xs font-mono">
                         <span class="text-slate-400">AI CONTROL™ PRO</span><br>
                         <span class="text-emerald-400 font-bold">СИСТЕМА &bull; ПЪЛЕН КОНТРОЛ</span>
@@ -1427,7 +1348,7 @@
         </div>
     </main>
 
-    <div class="fixed bottom-0 left-0 right-0 h-10 bg-slate-900 border-t border-slate-800 flex items-center justify-between px-4 sm:px-6 z-50 text-[10px] font-mono uppercase tracking-widest">
+    <div class="fixed bottom-0 left-0 right-0 h-10 bg-slate-900 border-t border-slate-800 flex items-center justify-between px-4 sm:px-6 z-30 text-[10px] font-mono uppercase tracking-widest">
         <div class="hidden sm:flex items-center gap-4 text-slate-500">
             <span class="text-white font-bold">AI CONTROL™</span>
             <span>Бизнес AI система</span>
@@ -1444,37 +1365,72 @@
     </div>
 
     <script>
+        /* ---------------------------------------------------------
+           STATE (in-memory only — resets on reload, no browser storage)
+        --------------------------------------------------------- */
         let levelsCompleted = 0;
-        
+        let promptHistory = [];
+        let currentGeneratedPrompt = '';
+
+        const LEVEL_LABELS = {
+            1: 'ЗАВЪРШЕНО', 2: 'ЗАВЪРШЕНО', 3: 'ЗАВЪРШЕНО',
+            4: 'ЗАВЪРШЕНО', 5: 'ЗАВЪРШЕНО', 6: 'ЗАВЪРШЕНО'
+        };
+
+        /* ---------------------------------------------------------
+           MOBILE SIDEBAR
+        --------------------------------------------------------- */
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            const btn = document.getElementById('sidebarToggleBtn');
+            const isOpen = sidebar.classList.toggle('open');
+            backdrop.classList.toggle('open', isOpen);
+            btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+
+        function closeSidebarOnNav() {
+            if (window.innerWidth < 768) {
+                const sidebar = document.getElementById('sidebar');
+                const backdrop = document.getElementById('sidebarBackdrop');
+                sidebar.classList.remove('open');
+                backdrop.classList.remove('open');
+                document.getElementById('sidebarToggleBtn').setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        /* ---------------------------------------------------------
+           LEVEL PROGRESS
+        --------------------------------------------------------- */
         function completeLevel(levelNum) {
             const checkbox = document.getElementById(`check-lv${levelNum}`);
             const dashStatus = document.getElementById(`dash-status-${levelNum}`);
             const navText = document.getElementById('nav-progress-text');
             const navDots = document.getElementById('nav-progress-dots').children;
-            
+            const pathCard = document.querySelector(`[data-path-level="${levelNum}"] .path-status`);
+
             if (checkbox.checked) {
-                if(dashStatus) {
+                if (dashStatus) {
                     dashStatus.className = "w-3 h-3 rounded-full flex items-center justify-center text-[6px] bg-emerald-500 text-black";
                     dashStatus.innerHTML = '<i class="fa-solid fa-check"></i>';
                 }
-                navDots[levelNum-1].className = "h-1.5 flex-1 rounded-full bg-emerald-500 shadow-[0_0_5px_rgba(16,185,129,0.5)]";
+                navDots[levelNum - 1].className = "h-1.5 flex-1 rounded-full bg-emerald-500 shadow-[0_0_5px_rgba(16,185,129,0.5)]";
+                if (pathCard) { pathCard.textContent = LEVEL_LABELS[levelNum]; pathCard.className = "text-[10px] font-mono text-emerald-400 mt-2 path-status font-bold"; }
                 levelsCompleted++;
             } else {
-                if(dashStatus) {
+                if (dashStatus) {
                     dashStatus.className = "w-3 h-3 rounded-full bg-blue-500 flex items-center justify-center text-[6px]";
                     dashStatus.innerHTML = '';
                 }
-                navDots[levelNum-1].className = "h-1.5 flex-1 rounded-full bg-slate-800 border border-slate-700";
+                navDots[levelNum - 1].className = "h-1.5 flex-1 rounded-full bg-slate-800 border border-slate-700";
+                if (pathCard) { pathCard.textContent = 'NOT STARTED'; pathCard.className = "text-[10px] font-mono text-slate-500 mt-2 path-status"; }
                 levelsCompleted--;
             }
-            
+
             navText.innerText = `${levelsCompleted} / 6 ЗАВЪРШЕНИ НИВА`;
-            
-            if(levelsCompleted === 6) {
-                document.getElementById('all-levels-complete').classList.remove('hidden');
-            } else {
-                document.getElementById('all-levels-complete').classList.add('hidden');
-            }
+            document.getElementById('summaryLevels').innerText = `${levelsCompleted} / 6`;
+
+            document.getElementById('all-levels-complete').classList.toggle('hidden', levelsCompleted !== 6);
         }
 
         function setActiveLink(clickedEl) {
@@ -1482,55 +1438,201 @@
                 el.className = "sidebar-link block py-2 px-3 text-base text-slate-400 hover:text-white hover:bg-slate-800/50 rounded transition-colors";
             });
             clickedEl.className = "sidebar-link block py-2 px-3 text-base text-white font-bold bg-slate-800/50 rounded transition-colors";
+            closeSidebarOnNav();
         }
 
-        function filterTemplates(category, event) {
+        /* ---------------------------------------------------------
+           CONTROL LIBRARY — data-driven, sequential numbering, clickable
+        --------------------------------------------------------- */
+        const CATEGORY_META = {
+            marketing: { label: 'МАРКЕТИНГ ПАКЕТ', filterLabel: 'МАРКЕТИНГ', badge: 'badge-marketing', badgeText: 'МАРКЕТИНГ' },
+            sales:     { label: 'ПАКЕТ ЗА ПРОДАЖБИ', filterLabel: 'ПРОДАЖБИ', badge: 'badge-sales', badgeText: 'ПРОДАЖБИ' },
+            hr:        { label: 'HR И МЕНИДЖМЪНТ ПАКЕТ', filterLabel: 'HR И МЕНИДЖМЪНТ', badge: 'badge-hr', badgeText: 'HR & MGMT' },
+            tech:      { label: 'ТЕХНОЛОГИИ И АВТОМАТИЗАЦИЯ', filterLabel: 'ТЕХНОЛОГИИ И АВТОМАТИЗАЦИЯ', badge: 'badge-tech', badgeText: 'TECH' },
+            strategy:  { label: 'СТРАТЕГИЧЕСКИ ПАКЕТ', filterLabel: 'СТРАТЕГИЯ', badge: 'badge-strategy', badgeText: 'STRATEGY' },
+            creative:  { label: 'КРЕАТИВЕН ПАКЕТ', filterLabel: 'КРЕАТИВНИ', badge: 'badge-creative', badgeText: 'CREATIVE' }
+        };
+
+        const TEMPLATES = [
+            // MARKETING
+            { category: 'marketing', title: 'SEO META ГЕНЕРАТОР', desc: 'Създава варианти за meta заглавия и описания.', persona: 'SEO копирайтър с опит в B2B съдържание', task: 'Създай 5 варианта на meta заглавие и meta описание за целева страница', output: 'Таблица: Вариант / Meta заглавие / Meta описание / Дължина в символи' },
+            { category: 'marketing', title: 'АРХИТЕКТ НА СЪДЪРЖАНИЕ', desc: 'Изгражда структурирани структури за статии.', persona: 'Редактор на съдържание с фокус върху четимост', task: 'Изгради структура (H1–H3) за статия по зададена тема', output: 'Йерархичен списък със заглавия и кратко описание за всеки раздел' },
+            { category: 'marketing', title: 'ПЛАНЕР ЗА СОЦИАЛНИ МРЕЖИ', desc: 'Създава месечен календар за социални мрежи.', persona: 'Social media стратег', task: 'Създай месечен календар с теми и формати на публикациите', output: 'Таблица: Дата / Платформа / Тема / Формат / CTA' },
+            { category: 'marketing', title: 'ГЕНЕРАТОР ЗА META ADS ТЕКСТОВЕ', desc: 'Генерира варианти за рекламни текстове.', persona: 'Performance маркетинг специалист', task: 'Създай 5 варианта на рекламен текст с различни ъгли', output: 'Таблица: Вариант / Primary text / Headline / CTA' },
+            { category: 'marketing', title: 'СЪЗДАТЕЛ НА ИМЕЙЛ КАМПАНИИ', desc: 'Структурира имейл комуникация и CTA.', persona: 'Email маркетинг специалист', task: 'Създай последователност от 3 имейла за представяне на продукт', output: 'За всеки имейл: Subject line / Тяло / CTA' },
+            { category: 'marketing', title: 'АНАЛИЗ НА АУДИТОРИЯТА', desc: 'Изгражда профил на целевия клиент и анализ на аудиторията.', persona: 'Пазарен изследовател', task: 'Изгради профил на идеалния клиент на база зададени данни', output: 'Профил: Демография / Болки / Мотивация / Канали за достигане' },
+            { category: 'marketing', title: 'ГЕНЕРАТОР НА ВИДЕО СЦЕНАРИИ', desc: 'Създава структура и сценарий за видео.', persona: 'Видео сценарист за социални мрежи', task: 'Напиши сценарий за 60-секундно видео по зададена тема', output: 'Сценарий по секунди: Кадър / Реплика / Визия' },
+
+            // SALES
+            { category: 'sales', title: 'ГЕНЕРАТОР НА COLD EMAIL', desc: 'Създава персонализирани студени имейли.', persona: 'Sales development представител', task: 'Напиши cold email до конкретен тип купувач', output: 'Subject line + тяло на имейла до 120 думи' },
+            { category: 'sales', title: 'СЪЗДАТЕЛ НА LINKEDIN ПОКАНИ', desc: 'Създава персонализирани покани за връзка.', persona: 'B2B sales специалист', task: 'Напиши покана за връзка в LinkedIn с кратко послание', output: 'Текст до 300 символа' },
+            { category: 'sales', title: 'ОТГОВОРИ НА ВЪЗРАЖЕНИЯ', desc: 'Подготвя отговори на чести възражения.', persona: 'Старши мениджър продажби', task: 'Подготви отговори на 5 чести възражения на клиенти', output: 'Таблица: Възражение / Отговор / Последващ въпрос' },
+            { category: 'sales', title: 'FOLLOW-UP ГЕНЕРАТОР', desc: 'Създава последователност от follow-up съобщения.', persona: 'Account executive', task: 'Създай серия от 3 follow-up съобщения след липса на отговор', output: 'За всяко съобщение: канал / текст / момент на изпращане' },
+            { category: 'sales', title: 'АРХИТЕКТ НА ОФЕРТИ', desc: 'Структурира търговски оферти.', persona: 'Sales мениджър', task: 'Изгради структура на търговска оферта за зададен продукт', output: 'Раздели: Проблем / Решение / Стойност / Цена / Следваща стъпка' },
+            { category: 'sales', title: 'НАЧАЛО НА COLD CALL', desc: 'Подготвя отваряне за студено обаждане.', persona: 'Sales треньор', task: 'Напиши сценарий за първите 30 секунди на студено обаждане', output: 'Скрипт с реплики и възможни реакции' },
+            { category: 'sales', title: 'ПОДГОТОВКА ЗА ПРЕГОВОРИ', desc: 'Подготвя аргументи и позиции за преговори.', persona: 'Преговорен консултант', task: 'Подготви ключови точки и резервни позиции за преговори', output: 'Списък: Цел / Аргументи / Отстъпки / Червени линии' },
+
+            // HR & MANAGEMENT
+            { category: 'hr', title: 'СЪЗДАТЕЛ НА ОБЯВИ ЗА РАБОТА', desc: 'Създава ясни и точни обяви за работа.', persona: 'HR специалист по подбор', task: 'Напиши обява за позиция със зададени изисквания', output: 'Раздели: За ролята / Изисквания / Какво предлагаме / Как да кандидатстваш' },
+            { category: 'hr', title: 'ВЪПРОСИ ЗА ИНТЕРВЮ', desc: 'Подготвя структурирани въпроси за интервю.', persona: 'Мениджър, водещ интервюта', task: 'Подготви 10 въпроса за интервю за зададена позиция', output: 'Списък: Въпрос / Какво оценява' },
+            { category: 'hr', title: 'ОЦЕНКА НА ПРЕДСТАВЯНЕТО', desc: 'Структурира формуляр за оценка на служител.', persona: 'HR бизнес партньор', task: 'Изгради структура за годишна оценка на представянето', output: 'Раздели: Постижения / Развитие / Цели за следващия период' },
+            { category: 'hr', title: 'ONBOARDING АРХИТЕКТ', desc: 'Изгражда план за първите седмици на нов служител.', persona: 'People operations мениджър', task: 'Изгради 30-дневен onboarding план за нова роля', output: 'Таблица: Седмица / Задача / Отговорник / Цел' },
+            { category: 'hr', title: 'ПОЛИТИКА ЗА ДИСТАНЦИОННА РАБОТА', desc: 'Изгражда чернова на вътрешна политика.', persona: 'HR консултант', task: 'Изготви чернова на политика за дистанционна работа', output: 'Раздели: Обхват / Правила / Изключения / Отговорности' },
+            { category: 'hr', title: 'ИДЕИ ЗА ТИЙМБИЛДИНГ', desc: 'Генерира идеи за тиймбилдинг събития.', persona: 'Специалист по вътрешна комуникация', task: 'Предложи 5 идеи за тиймбилдинг според размера на екипа', output: 'Списък: Идея / Времетраене / Бюджет / Цел' },
+            { category: 'hr', title: 'ПЛАНЕР ЗА 1:1 СРЕЩИ', desc: 'Структурира редовни срещи с преки подчинени.', persona: 'Мениджър екип', task: 'Изгради шаблон за структурирана 1:1 среща', output: 'Дневен ред: Статус / Пречки / Развитие / Обратна връзка' },
+
+            // TECH & AUTOMATION
+            { category: 'tech', title: 'MAKE.COM АРХИТЕКТ', desc: 'Помага при проектиране на автоматизации в Make.', persona: 'Автоматизационен инженер', task: 'Проектирай сценарий в Make за зададен работен процес', output: 'Стъпки: Тригер / Модули / Логика / Изходно действие' },
+            { category: 'tech', title: 'REGEX ГЕНЕРАТОР', desc: 'Помага при изграждане на регулярни изрази.', persona: 'Инженер по данни', task: 'Създай regex за зададен модел на текст', output: 'Regex + обяснение на всяка част' },
+            { category: 'tech', title: 'SQL АСИСТЕНТ', desc: 'Помага при писане и обяснение на SQL заявки.', persona: 'Data анализатор', task: 'Напиши SQL заявка за зададена таблица и въпрос', output: 'SQL код + кратко обяснение на логиката' },
+            { category: 'tech', title: 'ПРЕГЛЕД НА КОД', desc: 'Помага при преглед на код за проблеми и подобрения.', persona: 'Старши software инженер', task: 'Прегледай зададен код за грешки и възможности за подобрение', output: 'Списък: Проблем / Риск / Предложение за поправка' },
+            { category: 'tech', title: 'ZAPIER CRM АРХИТЕКТ', desc: 'Проектира автоматизации между CRM и други инструменти.', persona: 'RevOps специалист', task: 'Проектирай Zap за свързване на CRM с друг инструмент', output: 'Стъпки: Тригер / Действия / Условия / Проверка' },
+            { category: 'tech', title: 'JSON СТРУКТУРИ', desc: 'Помага при проектиране на JSON структури за интеграции.', persona: 'Backend инженер', task: 'Проектирай JSON структура за зададен набор от данни', output: 'JSON пример + описание на всяко поле' },
+            { category: 'tech', title: 'АСИСТЕНТ ЗА SHEETS ФОРМУЛИ', desc: 'Помага при изграждане на формули за таблици.', persona: 'Операционен анализатор', task: 'Създай формула за зададена логика в Google Sheets', output: 'Формула + обяснение стъпка по стъпка' },
+
+            // STRATEGY
+            { category: 'strategy', title: 'SWOT АНАЛИЗ', desc: 'Структурира силни, слаби страни, възможности и заплахи.', persona: 'Бизнес стратег', task: 'Изгради SWOT анализ за зададен бизнес или продукт', output: 'Таблица 2x2: Силни / Слаби / Възможности / Заплахи' },
+            { category: 'strategy', title: 'КОНКУРЕНТЕН АНАЛИЗ', desc: 'Сравнява позицията спрямо конкуренти.', persona: 'Пазарен стратег', task: 'Сравни зададена компания с 3 основни конкурента', output: 'Таблица: Критерий / Ние / Конкурент 1 / Конкурент 2 / Конкурент 3' },
+            { category: 'strategy', title: 'OKR ГЕНЕРАТОР', desc: 'Структурира цели и ключови резултати.', persona: 'Оперативен директор', task: 'Изгради OKR за екип за следващото тримесечие', output: 'Списък: Цел / Ключов резултат 1-3 / Метрика' },
+            { category: 'strategy', title: 'ИДЕИ ЗА ПРОДУКТИ', desc: 'Генерира и оценява идеи за нови продукти.', persona: 'Продуктов стратег', task: 'Генерирай 5 идеи за продукт според зададен пазар', output: 'Таблица: Идея / Целева аудитория / Потенциал / Риск' },
+            { category: 'strategy', title: 'УПРАВЛЕНИЕ НА РИСКА', desc: 'Идентифицира и приоритизира бизнес рискове.', persona: 'Риск консултант', task: 'Идентифицирай ключовите рискове за зададена инициатива', output: 'Таблица: Риск / Вероятност / Въздействие / Мярка за смекчаване' },
+            { category: 'strategy', title: 'АРХИТЕКТ НА PITCH DECK', desc: 'Структурира презентация за инвеститори.', persona: 'Стартъп консултант', task: 'Изгради структура на pitch deck от 10 слайда', output: 'Списък: Слайд номер / Заглавие / Ключово послание' },
+
+            // CREATIVE
+            { category: 'creative', title: 'AI ПРОМПТ ЗА ИЗОБРАЖЕНИЕ', desc: 'Изгражда описателни промптове за генериране на изображения.', persona: 'Арт директор', task: 'Създай детайлен промпт за визия по зададена концепция', output: 'Промпт текст + алтернативен по-кратък вариант' },
+            { category: 'creative', title: 'ИДЕИ ЗА REELS / TIKTOK', desc: 'Генерира идеи за кратко видео съдържание.', persona: 'Създател на кратко видео съдържание', task: 'Предложи 5 идеи за Reels/TikTok по зададена тема', output: 'Списък: Идея / Hook / Формат' },
+            { category: 'creative', title: 'ГЕНЕРАТОР НА ВИЗУАЛНИ ПРОМПТОВЕ', desc: 'Изгражда визуални насоки за кампании.', persona: 'Креативен директор', task: 'Опиши визуален стил и настроение за кампания', output: 'Описание: Палитра / Стил / Референции / Тон' },
+            { category: 'creative', title: 'СЪЗДАТЕЛ НА BRAND VOICE', desc: 'Дефинира тон и стил на комуникация на марката.', persona: 'Brand стратег', task: 'Дефинирай тон на гласа на марката според зададени ценности', output: 'Документ: Принципи / Примери какво да казваме и какво не' },
+            { category: 'creative', title: 'ПОДКАСТ АРХИТЕКТ', desc: 'Структурира епизоди на подкаст.', persona: 'Продуцент на подкаст', task: 'Изгради структура на епизод по зададена тема', output: 'Сегменти: Интро / Основна тема / Гост въпроси / Аутро' },
+            { category: 'creative', title: 'СЪЗДАТЕЛ НА ВИЗУАЛНИ КАМПАНИИ', desc: 'Изгражда концепция за визуална кампания.', persona: 'Креативен стратег', task: 'Създай концепция за визуална кампания по зададен бриф', output: 'Концепция: Голяма идея / Ключови визии / Канали' }
+        ];
+
+        function renderLibraryFilters() {
+            const container = document.getElementById('libraryFilters');
+            const cats = ['all', ...Object.keys(CATEGORY_META)];
+            container.innerHTML = cats.map(cat => {
+                const label = cat === 'all' ? 'ВСИЧКИ' : CATEGORY_META[cat].filterLabel;
+                const activeClass = cat === 'all' ? 'bg-blue-600 text-white' : 'border border-slate-700 text-slate-400 hover:text-white hover:border-blue-500';
+                return `<button type="button" onclick="filterTemplates('${cat}', this)" class="lib-filter-btn px-3 py-1.5 rounded transition-colors ${activeClass}" data-cat="${cat}">${label}</button>`;
+            }).join('');
+        }
+
+        function renderLibrary() {
+            const container = document.getElementById('templateContainer');
+            let num = 1;
+            const byCategory = {};
+            TEMPLATES.forEach(t => {
+                if (!byCategory[t.category]) byCategory[t.category] = [];
+                byCategory[t.category].push({ ...t, num: num++ });
+            });
+
+            container.innerHTML = Object.keys(CATEGORY_META).map(cat => {
+                const meta = CATEGORY_META[cat];
+                const items = byCategory[cat] || [];
+                const cards = items.map(t => `
+                    <button type="button" onclick="useTemplate(${t.num})" class="template-card text-left bg-[#0a0f1c] border border-slate-700 p-4 rounded hover:border-blue-500 transition-colors cursor-pointer group w-full">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-mono text-slate-500 uppercase">ШАБЛОН ${String(t.num).padStart(2, '0')}</span>
+                            <span class="text-[10px] font-mono font-bold ${meta.badge} px-1.5 py-0.5 rounded uppercase">${meta.badgeText}</span>
+                        </div>
+                        <h4 class="font-bold text-white text-sm mb-1 uppercase">${t.title}</h4>
+                        <p class="text-xs text-slate-400 mb-3">${t.desc}</p>
+                        <div class="text-[10px] font-mono text-slate-500 group-hover:text-blue-400 transition-colors uppercase font-bold">ИЗПОЛЗВАЙ ШАБЛОНА &rarr;</div>
+                    </button>`).join('');
+                return `
+                    <div class="template-category" data-category="${cat}">
+                        <h4 class="text-sm font-bold text-white uppercase border-b border-slate-800 pb-2 mb-4">${meta.label}</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">${cards}</div>
+                    </div>`;
+            }).join('');
+        }
+
+        function filterTemplates(category, btnEl) {
             document.querySelectorAll('.lib-filter-btn').forEach(btn => {
                 btn.className = "lib-filter-btn px-3 py-1.5 border border-slate-700 text-slate-400 hover:text-white hover:border-blue-500 rounded transition-colors";
             });
-            event.target.className = "lib-filter-btn px-3 py-1.5 bg-blue-600 text-white rounded transition-colors";
+            btnEl.className = "lib-filter-btn px-3 py-1.5 bg-blue-600 text-white rounded transition-colors";
 
-            const categories = document.querySelectorAll('.template-category');
-            categories.forEach(cat => {
-                if (category === 'all' || cat.getAttribute('data-category') === category) {
-                    cat.style.display = 'block';
-                } else {
-                    cat.style.display = 'none';
-                }
+            document.querySelectorAll('.template-category').forEach(cat => {
+                cat.style.display = (category === 'all' || cat.getAttribute('data-category') === category) ? 'block' : 'none';
             });
         }
 
+        function useTemplate(num) {
+            const t = TEMPLATES[num - 1];
+            if (!t) return;
+            document.getElementById('p-persona').value = t.persona;
+            document.getElementById('p-context').value = '';
+            document.getElementById('p-task').value = t.task;
+            document.getElementById('p-constraints').value = '';
+            document.getElementById('p-output').value = t.output;
+            updatePromptQuality();
+            document.getElementById('pro-prompt').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.getElementById('p-context').focus();
+        }
+
+        /* ---------------------------------------------------------
+           PROMPT CONTROL
+        --------------------------------------------------------- */
+        function updatePromptQuality() {
+            const fields = [
+                { id: 'p-persona', name: 'РОЛЯ' },
+                { id: 'p-context', name: 'КОНТЕКСТ' },
+                { id: 'p-task', name: 'ЗАДАЧА' },
+                { id: 'p-constraints', name: 'ОГРАНИЧЕНИЯ' },
+                { id: 'p-output', name: 'ФОРМАТ' }
+            ];
+            let filled = 0;
+            const labels = fields.map(f => {
+                const val = document.getElementById(f.id).value.trim();
+                const ok = val.length > 0;
+                if (ok) filled++;
+                return `${f.name} ${ok ? '✓' : '○'}`;
+            });
+            const pct = Math.round((filled / fields.length) * 100);
+            const bar = '█'.repeat(Math.round(filled * 2)) + '░'.repeat(10 - Math.round(filled * 2));
+
+            const labelsEl = document.getElementById('qualityLabels');
+            labelsEl.textContent = labels.join(' ');
+            labelsEl.className = filled === fields.length ? 'text-emerald-400 text-[10px]' : 'text-slate-500 text-[10px]';
+
+            const pctEl = document.getElementById('qualityPercent');
+            pctEl.textContent = `${bar} ${pct}%`;
+            pctEl.className = filled === fields.length ? 'text-emerald-400 font-bold' : 'text-slate-500 font-bold';
+        }
+
         function generatePrompt() {
-            const persona = document.getElementById('p-persona').value || 'Senior Strategist';
-            const context = document.getElementById('p-context').value || 'Business context';
-            const task = document.getElementById('p-task').value || 'Task requirement';
-            const constraints = document.getElementById('p-constraints').value || 'No constraints';
-            const output = document.getElementById('p-output').value || 'Standard output';
+            const persona = document.getElementById('p-persona').value.trim() || 'Senior Strategist';
+            const context = document.getElementById('p-context').value.trim() || 'Business context';
+            const task = document.getElementById('p-task').value.trim() || 'Task requirement';
+            const constraints = document.getElementById('p-constraints').value.trim() || 'No constraints';
+            const output = document.getElementById('p-output').value.trim() || 'Standard output';
 
-            const formattedPrompt = `Действай като: ${persona}\n\nКонтекст: ${context}\n\nЗадача: ${task}\n\nОграничения: ${constraints}\n\nФормат на резултата: ${output}`;
+            currentGeneratedPrompt = `Действай като: ${persona}\n\nКонтекст: ${context}\n\nЗадача: ${task}\n\nОграничения: ${constraints}\n\nФормат на резултата: ${output}`;
 
-            document.getElementById('outputPromptText').innerText = formattedPrompt;
+            document.getElementById('outputPromptText').innerText = currentGeneratedPrompt;
             document.getElementById('promptResultBox').classList.remove('hidden');
+            document.getElementById('promptResultBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function resetPromptStudio() {
-            document.getElementById('p-persona').value = '';
-            document.getElementById('p-context').value = '';
-            document.getElementById('p-task').value = '';
-            document.getElementById('p-constraints').value = '';
-            document.getElementById('p-output').value = '';
+            document.getElementById('promptForm').reset();
+            updatePromptQuality();
             document.getElementById('promptResultBox').classList.add('hidden');
+            document.getElementById('p-persona').focus();
         }
 
         function copyPromptText(event) {
             const text = document.getElementById('outputPromptText').innerText;
-            const temp = document.createElement('textarea');
-            temp.value = text;
-            document.body.appendChild(temp);
-            temp.select();
-            document.execCommand('copy');
-            document.body.removeChild(temp);
-            
+            navigator.clipboard.writeText(text).catch(() => {
+                const temp = document.createElement('textarea');
+                temp.value = text;
+                document.body.appendChild(temp);
+                temp.select();
+                document.execCommand('copy');
+                document.body.removeChild(temp);
+            });
+
             const btn = event.target;
             const originalText = btn.innerText;
             btn.innerText = "КОПИРАНО ✓";
@@ -1538,27 +1640,100 @@
         }
 
         function saveToHistory(event) {
+            if (!currentGeneratedPrompt) return;
+            promptHistory.unshift({ text: currentGeneratedPrompt, time: new Date().toLocaleString('bg-BG') });
+            renderHistory();
+
             const btn = event.target;
             const originalText = btn.innerText;
             btn.innerText = "ЗАПАЗЕНО ✓";
             setTimeout(() => btn.innerText = originalText, 2000);
         }
 
+        function renderHistory() {
+            document.getElementById('historyCount').innerText = `${promptHistory.length} ЗАПАЗЕНИ`;
+            const list = document.getElementById('historyList');
+            if (promptHistory.length === 0) {
+                list.innerHTML = '<div class="text-slate-500">Няма запазени промптове още.</div>';
+                return;
+            }
+            list.innerHTML = promptHistory.map((h, i) => `
+                <div class="bg-slate-950 border border-slate-800 rounded p-2">
+                    <div class="text-[10px] text-slate-500 mb-1">${h.time}</div>
+                    <div class="text-slate-300 whitespace-pre-line line-clamp-3">${h.text.split('\\n')[0]}</div>
+                </div>`).join('');
+        }
+
+        function toggleHistoryView() {
+            const list = document.getElementById('historyList');
+            list.classList.toggle('hidden');
+            if (!list.classList.contains('hidden')) renderHistory();
+        }
+
+        function clearHistory() {
+            promptHistory = [];
+            renderHistory();
+        }
+
+        /* ---------------------------------------------------------
+           AI COPILOT (canned, keyword-aware responses — no live model call)
+        --------------------------------------------------------- */
+        const COPILOT_RESPONSES = [
+            { keywords: ['автоматиз', 'workflow', 'процес'], reply: 'Преди да автоматизираш: провери дали процесът е повтарящ се, с ясни правила и предвидими входни данни. Ако да — картирай стъпките и избери Make за разклонена логика или Zapier за линейна автоматизация. Задръж човешка проверка там, където грешка би имала реална цена.' },
+            { keywords: ['промпт', 'prompt'], reply: 'За по-добър промпт използвай PCTCO: дефинирай ролята (Persona), дай нужния контекст, опиши точната задача, добави ограничения (дължина, тон, забрани) и посочи желания формат на резултата. Отвори Prompt Control по-долу — можеш да го изградиш стъпка по стъпка.' },
+            { keywords: ['roi', 'стойност', 'изчисля'], reply: 'ROI = Създадена стойност − Разход за внедряване − Разход за инструменти. Първо запиши изходно ниво (колко време/пари отнема процесът сега), после сравни след внедряването. Виж примера в Ниво 06 — Резултати.' },
+            { keywords: ['риск', 'gdpr', 'данни'], reply: 'Провери едновременно: какви данни обработваш (лични, клиентски, финансови), какво е приложението, какво е въздействието при грешка и къде трябва да остане човешки контрол. Ако данните са чувствителни — спри, провери, контролирай, преди да продължиш.' },
+            { keywords: ['стратег', 'къде', 'приоритет'], reply: 'Започни с процеси с висока честота, висок разход на време, ясни правила и измерима стойност. Не добавяй AI, преди да знаеш какъв проблем решаваш и как ще измериш промяната.' }
+        ];
+
+        function pickCopilotReply(userText) {
+            const lower = userText.toLowerCase();
+            const match = COPILOT_RESPONSES.find(r => r.keywords.some(k => lower.includes(k)));
+            if (match) return match.reply;
+            return 'Записах въпроса ти. За по-конкретен отговор: приложи структуриран PCTCO подход в Prompt Control, дефинирай ясно бизнес проблема и провери риска, преди да преминеш към автоматизация.';
+        }
+
+        function appendCopilotMessage(role, text) {
+            const windowEl = document.getElementById('copilotChatWindow');
+            const bubble = role === 'user'
+                ? `<div class="text-white bg-slate-800/50 p-3 rounded-r-lg rounded-bl-lg w-max max-w-[80%] ml-auto mb-2">[ ТИ ]: ${text}</div>`
+                : `<div class="text-emerald-400 bg-emerald-900/10 border border-emerald-900/30 p-3 rounded-l-lg rounded-br-lg w-max max-w-[80%] mb-2">[ SYSTEM ]: ${text}</div>`;
+            windowEl.insertAdjacentHTML('beforeend', bubble);
+            windowEl.scrollTop = windowEl.scrollHeight;
+        }
+
         function sendCopilotMessage() {
             const input = document.getElementById('copilotInput');
-            const windowEl = document.getElementById('copilotChatWindow');
-            if(!input.value.trim()) return;
+            const text = input.value.trim();
+            if (!text) return;
 
-            const userText = input.value;
-            windowEl.innerHTML += `<div class="text-white bg-slate-800/50 p-3 rounded-r-lg rounded-bl-lg w-max max-w-[80%] self-start ml-auto mb-2">[ ТИ ]: ${userText}</div>`;
+            appendCopilotMessage('user', text);
             input.value = '';
-            windowEl.scrollTop = windowEl.scrollHeight;
 
-            setTimeout(() => {
-                windowEl.innerHTML += `<div class="text-emerald-400 bg-emerald-900/10 border border-emerald-900/30 p-3 rounded-l-lg rounded-br-lg w-max max-w-[80%] mb-2">[ SYSTEM ]: Анализирам запитването ти... За постигане на оптимален резултат препоръчвам да приложиш структуриран PCTCO подход и да дефинираш ясен бизнес проблем, преди да пристъпиш към автоматизация.</div>`;
-                windowEl.scrollTop = windowEl.scrollHeight;
-            }, 800);
+            setTimeout(() => appendCopilotMessage('system', pickCopilotReply(text)), 600);
         }
+
+        function askCopilotPreset(text) {
+            document.getElementById('pro-copilot').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const input = document.getElementById('copilotInput');
+            input.value = text;
+            sendCopilotMessage();
+        }
+
+        /* ---------------------------------------------------------
+           INIT
+        --------------------------------------------------------- */
+        document.addEventListener('DOMContentLoaded', () => {
+            renderLibraryFilters();
+            renderLibrary();
+            renderHistory();
+            updatePromptQuality();
+
+            // Close mobile drawer / update active link on any in-page nav click
+            document.querySelectorAll('main a[href^="#"]').forEach(a => {
+                a.addEventListener('click', () => closeSidebarOnNav());
+            });
+        });
     </script>
 </body>
 </html>
