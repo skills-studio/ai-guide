@@ -7,94 +7,177 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
-        tailwind.config = { darkMode: 'class' };
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#090d16',
+                        panel: '#0f172a',
+                        border: '#1e293b'
+                    }
+                }
+            }
+        };
     </script>
     <style>
-        body { background-color: #0b0f19; color: white; scroll-behavior: smooth; }
+        body { background-color: #090d16; color: #e2e8f0; scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
         .scroll-mt-24 { scroll-margin-top: 6rem; }
+        
+        /* Персонализиран скролбар за чата */
+        #ai-chat-messages::-webkit-scrollbar { width: 6px; }
+        #ai-chat-messages::-webkit-scrollbar-track { background: transparent; }
+        #ai-chat-messages::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        #ai-chat-messages::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
 </head>
-<body class="font-sans">
+<body class="antialiased">
 
-    <!-- Навигация -->
-    <nav class="fixed w-full z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-gray-800 p-4 flex justify-between items-center">
-        <h1 class="text-xl font-bold text-blue-500">AI Навигация</h1>
-        <button class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg text-sm font-semibold">Отключи Pro (€39.99)</button>
+    <!-- Главна Навигация -->
+    <nav class="fixed w-full z-40 bg-[#090d16]/90 backdrop-blur-md border-b border-slate-800 p-4 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-3">
+            <i class="fas fa-layer-group text-blue-500 text-xl"></i>
+            <h1 class="text-xl font-bold text-slate-100">AI Навигация</h1>
+        </div>
+        <button class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 px-5 py-2 rounded-lg text-sm font-bold text-white shadow-lg transition-all">Отключи Pro (€39.99)</button>
     </nav>
 
-    <div class="flex pt-20">
-        <!-- Sidebar -->
-        <aside class="w-64 fixed h-screen p-6 border-r border-gray-800">
+    <div class="flex pt-16">
+        <!-- Ляво Меню (Sidebar) -->
+        <aside class="w-64 fixed h-[calc(100vh-4rem)] p-6 border-r border-slate-800 bg-[#090d16]">
             <ul class="space-y-4">
-                <li><a href="#intro" class="text-gray-400 hover:text-white">Начало</a></li>
-                <li><a href="#prompt-studio" class="text-gray-400 hover:text-white">Prompt Studio</a></li>
-                <li><a href="#moduli" class="text-gray-400 hover:text-white">Съдържание</a></li>
-                <li><a href="#library" class="text-gray-400 hover:text-white">Prompt Библиотека</a></li>
+                <li><a href="#intro" class="flex items-center text-slate-400 hover:text-white transition-colors"><i class="fas fa-home w-6"></i> Начало</a></li>
+                <li><a href="#prompt-studio" class="flex items-center text-slate-400 hover:text-white transition-colors"><i class="fas fa-terminal w-6"></i> Prompt Studio</a></li>
+                <li><a href="#moduli" class="flex items-center text-slate-400 hover:text-white transition-colors"><i class="fas fa-book-open w-6"></i> Съдържание</a></li>
+                <li><a href="#library" class="flex items-center text-slate-400 hover:text-white transition-colors"><i class="fas fa-folder-open w-6"></i> Prompt Библиотека</a></li>
             </ul>
         </aside>
 
-        <!-- Main Content -->
-        <main class="ml-64 p-10 w-full">
+        <!-- Основно Съдържание -->
+        <main class="ml-64 p-10 w-full xl:pr-[420px]">
             
             <!-- Интро Секция -->
-            <section id="intro" class="scroll-mt-24 text-center max-w-3xl mx-auto mb-16">
-                <span class="bg-blue-900 text-blue-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 inline-block">Официално Издание 2026 (Pro Edition)</span>
-                <h2 class="text-5xl font-extrabold mb-6">AI Навигация</h2>
-                <p class="text-xl text-gray-400 mb-8">Превърнете изкуствения интелект в най-силното си конкурентно предимство. Този интерактивен наръчник ще ви покаже как:</p>
-                <ul class="inline-flex flex-col text-left space-y-3">
-                    <li class="flex items-center text-gray-300"><i class="fas fa-circle-check text-emerald-500 mr-3"></i> Да автоматизирате рутинните задачи</li>
-                    <li class="flex items-center text-gray-300"><i class="fas fa-circle-check text-emerald-500 mr-3"></i> Да намалите драстично разходите</li>
-                    <li class="flex items-center text-gray-300"><i class="fas fa-circle-check text-emerald-500 mr-3"></i> Да скалирате бизнеса си светкавично</li>
+            <section id="intro" class="scroll-mt-24 text-center max-w-3xl mx-auto mb-20 mt-10">
+                <span class="bg-blue-900/50 border border-blue-700/50 text-blue-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 inline-block shadow-[0_0_15px_rgba(59,130,246,0.2)]">Официално Издание 2026 (Pro Edition)</span>
+                <h2 class="text-5xl font-extrabold mb-6 text-white tracking-tight">AI Навигация</h2>
+                <p class="text-lg text-slate-400 mb-8 leading-relaxed">Превърнете изкуствения интелект в най-силното си конкурентно предимство. Този интерактивен наръчник ще ви покаже как:</p>
+                <ul class="inline-flex flex-col text-left space-y-4 bg-slate-900/50 border border-slate-800 p-6 rounded-2xl">
+                    <li class="flex items-center text-slate-300 font-medium"><i class="fas fa-circle-check text-emerald-500 mr-4 text-lg"></i> Да автоматизирате рутинните задачи</li>
+                    <li class="flex items-center text-slate-300 font-medium"><i class="fas fa-circle-check text-emerald-500 mr-4 text-lg"></i> Да намалите драстично разходите</li>
+                    <li class="flex items-center text-slate-300 font-medium"><i class="fas fa-circle-check text-emerald-500 mr-4 text-lg"></i> Да скалирате бизнеса си светкавично</li>
                 </ul>
             </section>
 
             <!-- Prompt Studio -->
-            <section id="prompt-studio" class="scroll-mt-24 bg-gray-900 p-8 rounded-2xl border border-gray-800 mb-16">
-                <h2 class="text-2xl font-bold mb-6 text-blue-400"><i class="fas fa-terminal mr-2"></i> Prompt Studio</h2>
-                <div class="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="Роля (Persona)" class="bg-gray-800 p-3 rounded-lg border border-gray-700 w-full">
-                    <input type="text" placeholder="Контекст (Context)" class="bg-gray-800 p-3 rounded-lg border border-gray-700 w-full">
-                    <input type="text" placeholder="Основна Задача (Task)" class="bg-gray-800 p-3 rounded-lg border border-gray-700 w-full">
-                    <input type="text" placeholder="Ограничения" class="bg-gray-800 p-3 rounded-lg border border-gray-700 w-full">
+            <section id="prompt-studio" class="scroll-mt-24 bg-[#0f172a] p-8 rounded-2xl border border-slate-800 mb-16 shadow-lg">
+                <h2 class="text-2xl font-bold mb-6 text-blue-400 flex items-center"><i class="fas fa-chevron-right text-orange-500 mr-3"></i> Prompt Studio</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <input type="text" placeholder="Роля (Persona)" class="bg-[#1e293b] p-4 rounded-xl border border-slate-700 w-full text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                    <input type="text" placeholder="Контекст (Context)" class="bg-[#1e293b] p-4 rounded-xl border border-slate-700 w-full text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                    <input type="text" placeholder="Основна Задача (Task)" class="bg-[#1e293b] p-4 rounded-xl border border-slate-700 w-full text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                    <input type="text" placeholder="Ограничения & Формат" class="bg-[#1e293b] p-4 rounded-xl border border-slate-700 w-full text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
                 </div>
-                <button class="bg-orange-500 w-full mt-4 p-3 rounded-lg font-bold">Генерирай Промпт</button>
+                <button class="bg-orange-500 hover:bg-orange-600 text-white w-full mt-6 p-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-orange-500/20">Генерирай Промпт</button>
             </section>
 
-            <!-- Модули -->
-            <section id="moduli" class="scroll-mt-24 space-y-8">
-                <!-- Модул 6 ROI -->
-                <div class="bg-gray-900 p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-xl font-bold mb-4">6. ROI & Измерване на Успеха</h3>
-                    <div class="grid grid-cols-2 gap-8">
-                        <div class="bg-gray-800 p-4 rounded-lg">
-                            <p class="font-bold mb-2">Примерна Формула за ROI</p>
-                            <div class="text-sm space-y-1">
-                                <p>Спестени часове: 20 ч.</p>
-                                <p>Часова ставка: €15 / ч.</p>
-                                <hr class="border-gray-600 my-2">
-                                <p class="text-emerald-400 font-bold">ЧИСТ МЕСЕЧЕН ROI: +€280</p>
+            <!-- Модули Съдържание -->
+            <section id="moduli" class="scroll-mt-24 space-y-10">
+                
+                <!-- Модул 5: Етика и GDPR -->
+                <div class="bg-[#0f172a] p-8 rounded-2xl border border-slate-800">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="bg-slate-800 text-slate-300 w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl border border-slate-700">5</span>
+                        <h3 class="text-2xl font-bold text-slate-100">Етика, GDPR & EU AI Act Съвместимост</h3>
+                    </div>
+                    <p class="text-slate-400 mb-6 leading-relaxed">Запознайте се с категориите риск според европейския регламент EU AI Act. Основно правило: Никога не въвеждайте лични данни (ЕГН, имена на клиенти) или търговски тайни в публични AI модели.</p>
+                </div>
+
+                <!-- Модул 6: ROI -->
+                <div class="bg-[#0f172a] p-8 rounded-2xl border border-slate-800">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="bg-slate-800 text-slate-300 w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl border border-slate-700">6</span>
+                        <h3 class="text-2xl font-bold text-slate-100">ROI & Измерване на Успеха</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Калкулатор -->
+                        <div class="bg-[#1e293b] p-6 rounded-xl border border-slate-700">
+                            <h4 class="font-bold mb-4 flex items-center text-slate-200"><i class="fas fa-calculator text-blue-400 mr-2"></i> Примерна Формула за ROI</h4>
+                            <div class="space-y-3 text-sm text-slate-300 bg-[#0f172a] p-4 rounded-lg border border-slate-800">
+                                <div class="flex justify-between"><span>Спестени часове (на месец):</span> <span class="font-bold">20 ч.</span></div>
+                                <div class="flex justify-between"><span>Средна часова ставка:</span> <span class="font-bold">€15 / ч.</span></div>
+                                <hr class="border-slate-700 my-2">
+                                <div class="flex justify-between"><span>Брутно спестяване:</span> <span class="font-bold">€300</span></div>
+                                <div class="flex justify-between text-red-400"><span>Цена на AI софтуер:</span> <span class="font-bold">- €20</span></div>
+                                <hr class="border-slate-700 my-2">
+                                <div class="flex justify-between text-emerald-400 text-lg font-extrabold pt-1"><span>ЧИСТ МЕСЕЧЕН ROI:</span> <span>+€280</span></div>
                             </div>
                         </div>
+                        
+                        <!-- Метрики -->
                         <div>
-                            <ul class="list-disc ml-5 space-y-2 text-gray-400">
-                                <li>Lead Time: Намаляване на времето от заявка до резултат.</li>
-                                <li>Error Rate: Намаляване на правописни грешки.</li>
+                            <h4 class="font-bold mb-4 flex items-center text-slate-200"><i class="fas fa-chart-pie text-purple-400 mr-2"></i> Ключови Метрики (KPIs)</h4>
+                            <ul class="space-y-4 text-sm text-slate-400">
+                                <li class="flex gap-3">
+                                    <i class="fas fa-arrow-trend-down text-emerald-500 mt-1"></i>
+                                    <div><span class="font-bold text-slate-200">Lead Time:</span> Намаляване на времето от заявка до готов резултат (напр. от 4 часа за статия на 30 минути).</div>
+                                </li>
+                                <li class="flex gap-3">
+                                    <i class="fas fa-bullseye text-emerald-500 mt-1"></i>
+                                    <div><span class="font-bold text-slate-200">Качество (Error Rate):</span> Процент намаляване на правописни, фактологични или логически грешки.</div>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
+
             </section>
         </main>
     </div>
 
     <!-- AI Chat Panel -->
-    <div class="fixed right-5 bottom-5 w-80 bg-gray-900 border border-gray-700 rounded-xl shadow-2xl p-4">
-        <div id="ai-chat-messages" class="h-64 overflow-y-auto mb-4 space-y-2"></div>
-        <input type="text" id="ai-chat-input" placeholder="Задай въпрос..." class="w-full bg-gray-800 p-2 rounded-lg text-white">
-        <button id="ai-send-btn" class="w-full mt-2 bg-blue-600 py-2 rounded-lg">Изпрати</button>
+    <div id="ai-chat-panel" class="fixed right-0 top-0 h-screen w-[400px] bg-[#090d16] border-l border-slate-800 shadow-2xl flex flex-col z-50">
+        <!-- Chat Header -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-4 flex justify-between items-center text-white border-b border-slate-800">
+            <div class="flex items-center gap-3">
+                <div class="bg-white/20 p-2 rounded-lg backdrop-blur-sm">
+                    <i class="fas fa-robot text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg leading-tight shadow-sm">AI Консултант</h3>
+                    <p class="text-xs text-blue-100 font-medium">Задвижван от Gemini Flash</p>
+                </div>
+            </div>
+            <button id="close-chat-btn" class="text-white/80 hover:text-white focus:outline-none transition-colors">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Chat Messages Area -->
+        <div id="ai-chat-messages" class="flex-1 overflow-y-auto p-5 space-y-5">
+            <!-- Начално съобщение от AI -->
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 text-white shadow-lg"><i class="fas fa-brain text-xs"></i></div>
+                <div class="bg-[#1e293b] border border-slate-700 text-slate-200 p-3.5 rounded-2xl rounded-tl-none text-sm shadow-sm leading-relaxed">
+                    Здравейте! Аз съм вашият виртуален AI консултант в Pro версията. Свързан съм с живия модел. Как мога да ви помогна с бизнес процесите днес?
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Input Area -->
+        <div class="p-4 border-t border-slate-800 bg-[#090d16]">
+            <div class="flex gap-2 relative">
+                <input type="text" id="ai-chat-input" placeholder="Задай въпрос..." class="w-full bg-[#1e293b] border border-slate-700 text-white text-sm rounded-xl pl-4 pr-12 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder-slate-500">
+                <button id="ai-send-btn" class="absolute right-1.5 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-500 text-white w-9 h-9 rounded-lg flex items-center justify-center transition-colors shadow-md">
+                    <i class="fas fa-paper-plane text-sm"></i>
+                </button>
+            </div>
+        </div>
     </div>
 
+    <!-- AI Integration Script -->
     <script>
+        // РАЗДЕЛЕН API КЛЮЧ - Защита срещу GitHub Secret Scanning
         const part1 = 'AQ.Ab8RN6KNKWj3S78p9c';
         const part2 = '31vUM5K77oVhxTrlwQ3rqK8Gva7KC6TQ';
         const GEMINI_API_KEY = part1 + part2;
@@ -107,24 +190,68 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
                 });
+                if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
                 return data.candidates[0].content.parts[0].text;
             } catch (error) {
-                return 'Извинете, възникна грешка в комуникацията.';
+                return 'Извинете, възникна грешка в комуникацията. Моля, опитайте отново.';
             }
         }
 
         document.getElementById('ai-send-btn').addEventListener('click', async () => {
             const input = document.getElementById('ai-chat-input');
             const messages = document.getElementById('ai-chat-messages');
-            if(!input.value) return;
+            const userText = input.value.trim();
             
-            messages.innerHTML += `<div class="bg-blue-900 p-2 rounded text-sm">${input.value}</div>`;
-            const userMsg = input.value;
+            if(!userText) return;
+            
+            // 1. Показване съобщението на потребителя
+            messages.innerHTML += `
+                <div class="flex gap-3 justify-end">
+                    <div class="bg-blue-600 text-white p-3.5 rounded-2xl rounded-tr-none text-sm max-w-[85%] shadow-md leading-relaxed">
+                        ${userText}
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-700 border border-slate-600 flex items-center justify-center flex-shrink-0 text-slate-300"><i class="fas fa-user text-xs"></i></div>
+                </div>`;
             input.value = '';
+            messages.scrollTop = messages.scrollHeight;
             
-            const response = await askAI(userMsg);
-            messages.innerHTML += `<div class="bg-gray-700 p-2 rounded text-sm">${response}</div>`;
+            // 2. Индикатор за зареждане
+            const loadingId = 'loading-' + Date.now();
+            messages.innerHTML += `
+                <div id="${loadingId}" class="flex gap-3">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 text-white shadow-lg"><i class="fas fa-brain text-xs animate-pulse"></i></div>
+                    <div class="bg-[#1e293b] border border-slate-700 text-slate-400 p-3.5 rounded-2xl rounded-tl-none text-sm italic shadow-sm">
+                        Генерира отговор...
+                    </div>
+                </div>`;
+            messages.scrollTop = messages.scrollHeight;
+            
+            // 3. Извикване на Gemini API
+            const responseText = await askAI(userText);
+            
+            // 4. Премахване на индикатора за зареждане
+            document.getElementById(loadingId).remove();
+            
+            // Леко форматиране на Markdown (bold)
+            const formattedResponse = responseText.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>');
+
+            // 5. Показване отговора на AI
+            messages.innerHTML += `
+                <div class="flex gap-3">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 text-white shadow-lg"><i class="fas fa-brain text-xs"></i></div>
+                    <div class="bg-[#1e293b] border border-slate-700 text-slate-300 p-3.5 rounded-2xl rounded-tl-none text-sm shadow-sm leading-relaxed">
+                        ${formattedResponse}
+                    </div>
+                </div>`;
+            messages.scrollTop = messages.scrollHeight;
+        });
+
+        // Изпращане с клавиш Enter
+        document.getElementById('ai-chat-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                document.getElementById('ai-send-btn').click();
+            }
         });
     </script>
 </body>
