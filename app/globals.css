@@ -14,8 +14,8 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, Aptos, "Segoe UI", Arial, sans-serif; font-size: 18px; }
+html { max-width: 100%; overflow-x: clip; scroll-behavior: smooth; }
+body { max-width: 100%; margin: 0; overflow-x: clip; background: var(--paper); color: var(--ink); font-family: Inter, Aptos, "Segoe UI", Arial, sans-serif; font-size: 18px; }
 button, input, textarea, select { font: inherit; }
 button { color: inherit; }
 button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid rgba(14, 200, 194, .28); outline-offset: 3px; }
@@ -489,11 +489,12 @@ footer > span { margin-left: auto; color: #7f9298; font-size: 11px; }
   .sidebar.is-open { transform: translateX(0); }
   .drawer-scrim { display: block; position: fixed; inset: 0; z-index: 45; border: 0; background: rgba(4, 14, 20, .55); opacity: 0; pointer-events: none; transition: opacity .2s; }
   .drawer-scrim.is-open { opacity: 1; pointer-events: auto; }
-  .topbar { justify-content: space-between; }
-  .topbar > .brand-mark { display: flex; }
-  .topbar > .brand-mark .brand-word { font-size: 17px; }
-  .topbar > .brand-mark .brand-glyph { transform: scale(.8); margin-right: -5px; }
-  .menu-button { display: grid; }
+  .topbar { display: grid; grid-template-columns: 42px minmax(0, 1fr) 42px; gap: 8px; }
+  .topbar > .brand-mark { display: none; }
+  .menu-button { grid-column: 1; grid-row: 1; display: grid; }
+  .system-status { position: static; grid-column: 2; grid-row: 1; justify-self: center; max-width: 100%; transform: none; }
+  .guide-exit { grid-column: 3; grid-row: 1; width: 42px; min-height: 42px; margin-left: 0; padding: 0; font-size: 0; }
+  .guide-exit::before { content: "←"; font-size: 18px; line-height: 1; }
   .hero { grid-template-columns: 1fr; }
   .hero-copy { position: relative; z-index: 2; }
   .hero-visual { margin-top: -25px; }
@@ -513,10 +514,11 @@ footer > span { margin-left: auto; color: #7f9298; font-size: 11px; }
 
 @media (max-width: 680px) {
   .page-pad { padding-left: 20px; padding-right: 20px; }
-  .topbar { height: 58px; padding: 0 14px; }
+  .topbar { height: 58px; padding: 0 10px; }
   .system-status > span { display: none; }
   .system-status { gap: 0; padding: 5px; }
   .system-status b { min-width: 104px; padding: 6px 9px; }
+  .guide-exit { width: 40px; min-height: 40px; }
   .hero { min-height: auto; padding-top: 42px; padding-bottom: 38px; }
   .hero h1 { font-size: 40px; }
   .hero h2 { margin-top: 23px; }
