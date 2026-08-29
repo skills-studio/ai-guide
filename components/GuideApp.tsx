@@ -170,9 +170,10 @@ function AccessGate({ accessTier, view }: { accessTier: AccessTier; view: View }
       <p>{accessTier === "starter"
         ? "Инструментът е част от Pro. Надгради с еднократно доплащане и запази локалния прогрес на това устройство."
         : "Инструментът е заключен в публичното превю. Избери Starter за основната система или Pro за пълния инструментариум."}</p>
+      {accessTier === "starter" && (view === "library" || view === "copilot") && <ProFeaturePreview view={view} />}
       {accessTier === "starter" ? (
         <div className="access-gate-actions">
-          <a className="button button--gold" href={marketConfig.checkout.upgrade} rel="noreferrer">Надгради за {marketConfig.prices.upgrade} <span>→</span></a>
+          <a className="button button--gold starter-upgrade-cta" href={marketConfig.checkout.upgrade} rel="noreferrer">Отключи Pro за 20 евро <span>→</span></a>
           <small>Stripe Checkout • еднократно • след плащане се отваря Pro версията</small>
         </div>
       ) : (
@@ -183,6 +184,38 @@ function AccessGate({ accessTier, view }: { accessTier: AccessTier; view: View }
       )}
       <aside className="legal-note"><span>i</span><p><b>Достъпът е чрез отделен GitHub Pages линк, без профил и парола.</b> Линкът не е персонален и не трябва да се споделя.</p></aside>
     </main>
+  );
+}
+
+function ProFeaturePreview({ view }: { view: "library" | "copilot" }) {
+  if (view === "library") {
+    return (
+      <section className="pro-feature-preview pro-feature-preview--library" aria-label="Визуализация на Control Library">
+        <div className="pro-preview-bar"><span>CONTROL LIBRARY™</span><b>40 готови структури</b></div>
+        <div className="pro-library-visual">
+          {["Маркетинг", "Продажби", "Съдържание", "HR", "Анализ", "Операции"].map((item, index) => (
+            <article key={item}><span>{String(index + 1).padStart(2, "0")}</span><i>▦</i><b>{item}</b><small>Готова контролна структура</small></article>
+          ))}
+        </div>
+        <p><span>Избираш задача</span><i>→</i><span>Отваряш структура</span><i>→</i><strong>Прилагаш веднага</strong></p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="pro-feature-preview pro-feature-preview--copilot" aria-label="Визуализация на AI Консултант">
+      <div className="pro-preview-bar"><span>AI КОНСУЛТАНТ™</span><b>Локален Brief Builder</b></div>
+      <div className="pro-copilot-visual">
+        <div className="pro-copilot-input">
+          <span>01 • ИЗБЕРИ ЦЕЛ</span>
+          <div><b className="is-active">◎ Стратегия</b><b>◌ Промпт</b><b>◇ Риск</b></div>
+          <span>02 • ОПИШИ КАЗУСА</span>
+          <p>Как да превърна повтаряема задача в контролиран AI процес?</p>
+        </div>
+        <i>→</i>
+        <div className="pro-copilot-output"><span>CONTROL BRIEF</span><b>Цел и контекст</b><b>Процес и човешки контрол</b><b>Рискове и измерване</b><strong>Готово за избрания AI ✓</strong></div>
+      </div>
+    </section>
   );
 }
 
@@ -235,7 +268,7 @@ function Sidebar({
     <>
       <button className={cn("drawer-scrim", open && "is-open")} onClick={onClose} aria-label="Затвори менюто" />
       <aside className={cn("sidebar", open && "is-open")}>
-        <div className="sidebar-brand"><BrandMark /><p>Пълен контрол<br />над вашия AI</p></div>
+        <div className="sidebar-brand"><BrandMark /><p>От AI хаос<br />до ясен бизнес резултат</p></div>
         <nav aria-label="Основна навигация">
           <p className="nav-caption"><span>✣</span> Център за управление</p>
           <button className={cn("nav-start", view === "dashboard" && "is-active")} onClick={() => nav("dashboard")}>
@@ -262,7 +295,7 @@ function Sidebar({
           <div className="progress-dots">{levels.map(level => <span key={level.id} className={completed.includes(level.id) ? "is-done" : ""}>{completed.includes(level.id) ? "✓" : ""}</span>)}</div>
           <p>{completed.length === 6 ? "Системата е завършена. Приложи я към реален процес." : "Прогресът се пази локално на това устройство."}</p>
         </div>
-        {accessTier === "starter" && <a className="sidebar-upgrade" href={marketConfig.checkout.upgrade} rel="noreferrer"><span>Starter → Pro</span><b>Надгради за {marketConfig.prices.upgrade}</b><em>Stripe Checkout →</em></a>}
+        {accessTier === "starter" && <a className="sidebar-upgrade" href={marketConfig.checkout.upgrade} rel="noreferrer"><span>Starter → Pro</span><b>Отключи Pro за 20 евро</b><em>Stripe Checkout →</em></a>}
         <div className="edition-stamp">AI CONTROL™<small>BG EDITION • v1.0 • 2026</small></div>
       </aside>
     </>
@@ -270,12 +303,13 @@ function Sidebar({
 }
 
 function Topbar({ onMenu, accessTier, onExit }: { onMenu: () => void; accessTier: AccessTier; onExit?: () => void }) {
+  const activeAccess = accessTier === "pro" ? "Pro" : accessTier === "starter" ? "Starter" : "Превю";
   return (
     <header className="topbar">
       <button className="menu-button" onClick={onMenu} aria-label="Отвори менюто"><span /><span /><span /></button>
       <BrandMark />
       {onExit && <button className="guide-exit" onClick={onExit}>← Към продукта</button>}
-      <div className="system-status"><span>Достъп</span><b><i /> {accessTier === "pro" ? "Pro активен" : accessTier === "starter" ? "Starter активен" : "Превю"}</b></div>
+      <div className={cn("system-status", `system-status--${accessTier}`)} aria-label={`Активен достъп: ${activeAccess}`}><span>Активен достъп</span><b><i /> {activeAccess}</b></div>
     </header>
   );
 }

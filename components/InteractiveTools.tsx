@@ -170,7 +170,7 @@ export function PromptStudio({ generationLimit, upgradeUrl }: { generationLimit?
       <ToolHeader eyebrow={generationLimit === undefined ? "PRO инструмент 01 • PCTCO" : "STARTER инструмент • PCTCO"} title="Prompt Studio" copy="Превърни идеята си в ясна, проверима и контролирана AI инструкция." icon="◌" note="Данните остават само на това устройство" />
       {generationLimit !== undefined && <aside className={limitReached ? "starter-limit is-reached" : "starter-limit"}>
         <div><span>STARTER ДОСТЪП</span><b>{limitReached ? "2 от 2 генерации са използвани" : `${remaining} от ${generationLimit} генерации остават`}</b><p>Лимитът се пази локално на това устройство.</p></div>
-        {upgradeUrl && <a href={upgradeUrl} rel="noreferrer">Надгради до Pro • €20.00 →</a>}
+        {upgradeUrl && <a className="starter-upgrade-inline" href={upgradeUrl} rel="noreferrer">Отключи Pro за 20 евро →</a>}
       </aside>}
       <div className="studio-layout">
         <section className="studio-form">
