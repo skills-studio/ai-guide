@@ -59,3 +59,16 @@ test("keeps all GitHub Pages assets relative to the repository path", async () =
     assert.doesNotMatch(page, /(?:src|href)="\/assets\//);
   }
 });
+
+test("mirrors the complete GitHub Pages build at the repository root", async () => {
+  const entryFiles = ["index.html", "basic-guide.html", "landing_page.html"];
+
+  for (const entryFile of entryFiles) {
+    const [docsEntry, rootEntry] = await Promise.all([
+      readFile(new URL(`../docs/${entryFile}`, import.meta.url), "utf8"),
+      readFile(new URL(`../${entryFile}`, import.meta.url), "utf8"),
+    ]);
+
+    assert.equal(rootEntry, docsEntry);
+  }
+});
